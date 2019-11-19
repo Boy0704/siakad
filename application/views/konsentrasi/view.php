@@ -6,7 +6,7 @@ echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Da
     <thead>
         <tr>
             <th width="7">Nomor</th>
-            <th>Nama Konsentrasi</th>
+            <th>Nama Jurusan</th>
             <th>Nama Prodi</th>
             <th>Jenjang, Semester</th>
             <th>Gelar</th>

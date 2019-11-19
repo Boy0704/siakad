@@ -17,7 +17,7 @@ $class      ="class='form-control'";
     </td>
     </tr>
     <tr>
-    <td width="150">Nama Konsentrasi</td><td>
+    <td width="150">Nama Jurusan</td><td>
         <?php echo inputan('text', 'nama','col-sm-5','Nama prodi ..', 1, '','');?>
     </td>
     </tr>
