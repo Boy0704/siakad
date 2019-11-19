@@ -69,14 +69,7 @@
                         </div>
                 <div class="col-md-8">
                                             <br>
-                    <div class="alert alert-info">
-                      <?php
-                      //echo ucwords("<p style='text-align: justify;'>Masukkan Username dan Password anda yang benar untuk masuk di Halaman sistem, anda akan di alihkan di halaman sistem jika validasi telah berhasil.</p>");
-                       ?>
-                      
-
-
-                    </div>
+                    
                 </div>
 
             </div>
