@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends MY_Controller 
 {
 
-	var $title = "siakad.ac.id";
+	var $title = "STAIN KEPULAUAN RIAU";
 
 	public function __construct()
 	{
