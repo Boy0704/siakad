@@ -14,7 +14,7 @@
             <td rowspan='2' width='70'><img src=<?php echo base_url()."assets/images/avatar.png" ?> width='50'></td>
         </tr>
         <tr>
-            <td>Prodi, Konsentrasi</td><td><?php echo strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi']); ?></td>
+            <td>Jurusan, Prodi</td><td><?php echo strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi']); ?></td>
             <td>Semester</td><td><?php echo $d['semester_aktif']; ?></td>
         </tr>
         </table>

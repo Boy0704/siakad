@@ -10,7 +10,7 @@
             }
         </style>
         <tr class='alert-info'><th colspan="8">Jadwal Mengajar</th></tr>
-        <tr class='alert-info'><th>No</th><th>Jurusan</th><th>Kode</th><th>Matakuliah</th><th>Hari</th><th>Ruangan</th><th>Jam</th><th>SKS</th></tr>
+        <tr class='alert-info'><th>No</th><th>Prodi</th><th>Kode</th><th>Matakuliah</th><th>Hari</th><th>Ruangan</th><th>Jam</th><th>SKS</th></tr>
         <?php
         $no=1;
         foreach ($jadwal as $j)

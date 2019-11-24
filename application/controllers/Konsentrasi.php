@@ -4,7 +4,7 @@ class konsentrasi extends MY_Controller{
     var $folder =   "konsentrasi";
     var $tables =   "akademik_konsentrasi";
     var $pk     =   "konsentrasi_id";
-    var $title  =   "Konsentrasi";
+    var $title  =   "Prodi";
     
     function __construct() {
         parent::__construct();

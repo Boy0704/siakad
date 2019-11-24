@@ -118,8 +118,8 @@ else
 <div class="col-sm-3">
     <table class="table table-bordered">
 
-    <tr><td>Program Studi <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?></td></tr>
-    <tr><td>Jurusan <?php echo combodumy('konsentrasi', 'konsentrasi')?></td></tr>
+    <tr><td>Jurusan <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?></td></tr>
+    <tr><td>Prodi <?php echo combodumy('konsentrasi', 'konsentrasi')?></td></tr>
     <tr><td>Semester <?php echo combodumy('semester', 'semester')?></td></tr>
     <tr><td><?php echo anchor('matakuliah/post','<span class="glyphicon glyphicon-plus"></span> Input Data',array('class'=>'btn btn-primary  btn-sm'));?>
         <?php //echo anchor('matakuliah/#','<span class="glyphicon glyphicon-print"></span> Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?></td></tr>

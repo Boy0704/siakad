@@ -713,7 +713,8 @@ class mahasiswa extends MY_Controller{
             $no=1;
             foreach ($data as $r)
             {
-                $gender=$r->gender==1?'Laki-Laki':'Perempuan';
+                // $gender=$r->gender==1?'Laki-Laki':'Perempuan';
+                $gender=$r->gender;
                 echo "<tr id='hide$r->mahasiswa_id'>
                     <td align='center'>".$no++."</td>
                     <td>".  strtoupper($r->nim)."</td>";

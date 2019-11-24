@@ -5,14 +5,14 @@ $semester   =array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8);
 $class      ="class='form-control'";
 ?>
 <table class="table table-bordered">
-    <tr class="success"><td colspan="2">INPUT KONSENTRASI</td></tr>
+    <tr class="success"><td colspan="2">INPUT JURUSAN</td></tr>
     <tr>
     <td width="150">Nama Prodi</td><td>
         <?php echo buatcombo('prodi', 'akademik_prodi', 'col-sm-3', 'nama_prodi', 'prodi_id', '', '');?>
     </td>
     </tr>
     <tr>
-    <td width="150">Nama Konsentrasi</td><td>
+    <td width="150">Nama Jurusan</td><td>
         <?php echo inputan('text', 'nama','col-sm-5','Nama prodi ..', 1, '','');?>
     </td>
     </tr>

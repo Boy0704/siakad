@@ -47,7 +47,7 @@ if ($s1 > $s2) {
           <td rowspan='3' width='70'><img src=<?php echo $_SERVER["DOCUMENT_ROOT"]."assets/images/avatar.png" ?> width='50'></td>
       </tr>
       <tr>
-          <td>Prodi, Konsentrasi</td><td width='1'>:</td><td><?php echo strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi']); ?></td>
+          <td>Jurusan, Prodi</td><td width='1'>:</td><td><?php echo strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi']); ?></td>
           <td>Semester</td><td width='1'>:</td><td> <?php echo $v_semester; ?> </td>
       </tr>
       </table>

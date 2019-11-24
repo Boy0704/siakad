@@ -4,7 +4,7 @@ class prodi extends MY_Controller{
     var $folder =   "prodi";
     var $tables =   "akademik_prodi";
     var $pk     =   "prodi_id";
-    var $title  =   "Program Studi";
+    var $title  =   "Jurusan";
     
     function __construct() {
         parent::__construct();

@@ -83,7 +83,7 @@ else
     </tr>
     
     <tr>
-        <td width="150">Konsentrasi /Prodi</td><td>
+        <td width="150">Jurusan /Prodi</td><td>
             <div class="col-sm-3">
         <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
             </div>

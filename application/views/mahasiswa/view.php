@@ -154,9 +154,9 @@ $class      ="class='form-control' id='status'"; ?>
     <table class="table table-bordered">
     <tr>
       <td>
-        Prodi<?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
+        Jurusan<?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
       </td>
-      <td>Konsentrasi<?php echo combodumy('konsentrasi', 'konsentrasi')?></td>
+      <td>Prodi<?php echo combodumy('konsentrasi', 'konsentrasi')?></td>
       <td>
         Tahun Angkatan<?php echo buatcombo('tahun_angkatan', 'student_angkatan', '', 'keterangan', 'angkatan_id', '', array('id'=>'tahun_angkatan'))?>
       </td>
@@ -247,7 +247,7 @@ $class      ="class='form-control' id='status'"; ?>
                                       <span class="control-span col-md-2 " for="name">Jenis Kelamin</span>
                                       <span class=" col-md-2 ">:</span>
                                       <div class="col-md-8">
-                                      <span><?php echo $record->gender==1?"Laki-laki":"Perempuan"; ?></span>
+                                      <span><?php echo $record->gender==1?"Laki-laki":"Perempua"; ?></span>
                                       </div>
                         </div> </td>
                     </tr> <tr>

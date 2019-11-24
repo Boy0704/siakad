@@ -73,7 +73,7 @@ else
     </td>
     </tr>
     <tr>
-    <td width="050">Prodi / Konsentrasi</td><td>
+    <td width="050">Jurusan / Prodi</td><td>
         <div class="col-sm-6">
             <?php
             $prodi=  getField('akademik_konsentrasi', 'prodi_id', 'konsentrasi_id', $r['konsentrasi_id'])

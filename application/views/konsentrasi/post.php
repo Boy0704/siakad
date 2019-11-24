@@ -12,12 +12,12 @@ $class      ="class='form-control'";
 <table class="table table-bordered">
    
     <tr>
-    <td width="150">Nama Prodi</td><td>
+    <td width="150">Nama Jurusan</td><td>
         <?php echo buatcombo('prodi', 'akademik_prodi', 'col-sm-3', 'nama_prodi', 'prodi_id', '', '');?>
     </td>
     </tr>
     <tr>
-    <td width="150">Nama Jurusan</td><td>
+    <td width="150">Nama Prodi</td><td>
         <?php echo inputan('text', 'nama','col-sm-5','Nama prodi ..', 1, '','');?>
     </td>
     </tr>

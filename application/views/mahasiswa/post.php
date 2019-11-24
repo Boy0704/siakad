@@ -89,7 +89,7 @@ else
                                       <?php echo form_error('tanggal_lahir','<div class="text-danger">','</div>'); ?>
                                     </div>
                               </td></tr>
-                         <tr><td>Prodi, Konsentrasi</td>
+                         <tr><td>Jurusan, Prodi</td>
                              <td>
                                  <div class="col-sm-6">
                                     <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>

@@ -221,10 +221,10 @@ else
   <div class="col-sm-3">
       <table class="table table-bordered">
         <tr>
-          <td>Prodi<?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
+          <td>Jurusan<?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
           </td>
         </tr>
-        <tr><td>Konsentrasi<?php echo combodumy('konsentrasi', 'konsentrasi')?></td></tr>
+        <tr><td>Prodi<?php echo combodumy('konsentrasi', 'konsentrasi')?></td></tr>
         <tr>
             <td>Tahun Angkatan
                 <div class="col-md-14">
