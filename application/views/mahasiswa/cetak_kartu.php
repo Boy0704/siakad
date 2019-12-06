@@ -34,11 +34,11 @@
              <th style="text-align: center; width: 10px;"><img src="<?php echo base_url('images/logo/logouit.png') ?>" alt="" width="50"></th>
              <td style="text-align: center;font-size: 10px; font-weight: bold;">
                <div style="margin-left: -20px;margin-top:0px;">
-                 AKADEMI KEBIDANAN <br>
-                 <p style="font-size:9px;margin-top:2px;">KELUARGA BUNDA JAMBI</p>
+                 SEKOLAH TINGGI AGAMA ISLAM NEGERI <br>
+                 <p style="font-size:9px;margin-top:2px;">SULTAN ABDURAHMAN</p>
                </div>
                 <div style="margin-left: -20px;margin-top:-5px;font-size: 5px;">
-                  Kampus : Talang Bakung, Jambi Sel., Kota Jambi, Jambi 36138 <br> Telp / Fax 0813-6685-5307 E.Mail : email : info@akbidkeluargabunda.ac.id
+                  Alamat : Jl. MT. Haryono , No. 01 Kel. Tanjung Unggat, Kec. Bukit Bestari Kota Tanju 29122 <br> Telp / Fax 0813-6685-5307 E.Mail : email : info@stainkepri.ac.id
                 </div>
               </td>
           </tr>

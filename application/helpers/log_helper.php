@@ -1,5 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+    function log_r($string = null, $var_dump = false)
+    {
+        if ($var_dump) {
+            var_dump($string);
+        } else {
+            echo "<pre>";
+            print_r($string);
+        }
+        exit;
+    }
+
+    function log_data($string = null, $var_dump = false)
+    {
+        if ($var_dump) {
+            var_dump($string);
+        } else {
+            echo "<pre>";
+            print_r($string);
+        }
+        // exit;
+    }
+
+
     function helper_log($tipe = "", $str = ""){
 
     $CI =& get_instance();
