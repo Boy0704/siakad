@@ -285,7 +285,7 @@ class khs extends MY_Controller{
             <td width=100>NIM</td><td>".  strtoupper($d['nim'])."</td><td rowspan='2' width='70'><img src='".  base_url()."assets/images/avatar.png' width='50'></td>
         </tr>
         <tr>
-            <td>Prodi, Konsentrasi</td><td>".  strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi'])."</td>
+            <td>Jurusan, Prodi</td><td>".  strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi'])."</td>
             <td>Semester</td><td>".$smstr_aktif."</td>
         </tr>
         </table>

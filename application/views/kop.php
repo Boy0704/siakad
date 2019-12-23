@@ -1,6 +1,6 @@
 <table border="0" style="border-collapse: collapse;width: 100%;">
     <tr>
-       <th rowspan="2" style="text-align: center; width: 10px;"><img src="<?php echo base_url('images/logo/logouit.gif') ?>" style="width : 70px; height: 70px;" alt=""></th>
+       <th rowspan="2" style="text-align: center; width: 10px;"><img src="<?php echo base_url('images/logo/logouit.png') ?>" style="width : 70px; height: 70px;" alt=""></th>
        <td style="text-align: center;font-size: 16px; font-weight: bold;">
          <div style="margin-left:-50px;margin-top:-10px;">
            STAIN KEPRI <br> SULTAN ABDURAHMAN

@@ -227,6 +227,7 @@ class Krs extends MY_Controller {
 
     function lihat()
     {
+        // log_r($this->session->userdata());
         $level = $this->session->userdata('level');
         if ($level == 1 OR $level == 2) {
             $data['title']=  $this->title;
@@ -321,7 +322,7 @@ class Krs extends MY_Controller {
             <td width=100>NIM</td><td>".  strtoupper($d['nim'])."</td><td rowspan='2' width='70'><img src='".  base_url()."assets/images/avatar.png' width='50'></td>
         </tr>
         <tr>
-            <td>Prodi / Konsentrasi</td><td>".  strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi'])."</td>
+            <td>Jurusan / Prodi</td><td>".  strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi'])."</td>
             <td>SEMESTER</td><td>".$d['semester_aktif']."</td>
         </tr>
         </table>
@@ -431,10 +432,12 @@ class Krs extends MY_Controller {
         $nim=  getField('student_mahasiswa', 'nim', 'mahasiswa_id', $mahasiswa_id);
         $thn            =  get_tahun_ajaran_aktif('tahun_akademik_id');
         $semester_aktif=  getField('student_mahasiswa', 'semester_aktif', 'mahasiswa_id', $mahasiswa_id);
+        //jumlah sks
         $krs            =   "SELECT sum(mm.sks) as sks
                             FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak WHERE jk.makul_id=mm.makul_id and jk.jadwal_id=ak.jadwal_id and ak.nim=$nim and ak.semester=$semester_aktif";
 
         $data           =  $this->db->query($krs)->result();
+        // log_r($this->db->last_query());
         // print_r($data->sks);
         $sksbatas = 0;
         foreach ($data as $r)
@@ -458,10 +461,12 @@ class Krs extends MY_Controller {
             for($i=1;$i<=$jmlSemester;$i++)
             {
                 echo"<tr class='warning'><td colspan=9>Semester $i</td></tr>";
+                //tampilkan data Makul di KRS
                 $query          =   "SELECT mm.kode_makul,mm.sks,mm.jam,mm.kode_makul,mm.nama_makul,mm.sks,jk.jadwal_id,ds.nama_lengkap
                                     FROM akademik_jadwal_kuliah as jk, makul_matakuliah as mm, app_dosen as ds
                                     WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$konsentrasi and mm.semester=$i and ds.dosen_id=jk.dosen_id and  jk.tahun_akademik_id='$thn' and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim')";
                 $makul          = $this->db->query($query)->result();
+                // log_r($this->db->last_query());
                 $no=1;
                 foreach ($makul as $m)
                 {

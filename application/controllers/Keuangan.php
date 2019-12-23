@@ -59,7 +59,7 @@ class keuangan extends MY_Controller
     function tampilkandata2($konsentrasi,$tahun_angkatan)
     {
         echo   "<table class='table table-bordered'>
-                <tr><td width='150'>Konsentrasi</td><td>". strtoupper( getField('akademik_konsentrasi', 'nama_konsentrasi', 'konsentrasi_id', $konsentrasi))."</td></tr>
+                <tr><td width='150'>Jurusan</td><td>". strtoupper( getField('akademik_konsentrasi', 'nama_konsentrasi', 'konsentrasi_id', $konsentrasi))."</td></tr>
                 <tr><td>Tahun Angkatan</td><td>".  getField('student_angkatan', 'keterangan', 'angkatan_id', $tahun_angkatan)."</td></tr>
                 </table>";
         $jenis_bayar=  $this->db->get('keuangan_jenis_bayar');

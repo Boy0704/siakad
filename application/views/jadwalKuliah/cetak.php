@@ -34,14 +34,14 @@
 <table width="100%;">
     <tr>
         <td rowspan="3">
-          <img src="<?php echo base_url()?>assets/images/logo.gif" width="100" style="float: left;margin-right: 10px;">
+          <img src="<?php echo base_url()?>images/logo/logouit.png" width="100" style="float: left;margin-right: 10px;">
             <h2>STAIN  <br> SULTAN ABDURAHMAN</h2>
             Kampus : Toapaya Asri, Toapaya, Kabupaten Bintan, Kepulauan Riau 29132<br>
             Telp 813-6685-5307 E.Mail :  info@stainkepri.ac.id
         </td>
         <td style="font-weight: bold; width:10%;">Program Studi</td><td style="font-weight: bold">: <?php echo $prodi;?></td>
     </tr>
-    <tr style="font-weight: bold"><td>Konsentrasi</td><td>: <?php echo $konsentrasi;?></td></tr>
+    <tr style="font-weight: bold"><td>Jurusan</td><td>: <?php echo $konsentrasi;?></td></tr>
     <tr style="font-weight: bold"><td>Semester</td><td> : <?php echo $semester;?></td></tr>
 </table>
 

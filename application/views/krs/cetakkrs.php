@@ -77,12 +77,11 @@
         <td align="right" colspan="3" style="padding-right: 20px; padding-bottom: 15px;">Jambi, <?php echo tgl_indo(substr(waktu(), 0, 10)) ?></td>
     </tr>
     <tr>
-        <td style="padding-bottom: 60px;" align="center">Ketua Prodi DIII Kebidanan</td>
         <td style="padding-bottom: 60px;" align="center">Penasehat Akademik</td>
         <td style="padding-bottom: 60px;" align="center">Mahasiswa</td>
     </tr>
     <tr>
-        <td align="center">Rosa Riya, SKM, M.Kes<?php //echo strtoupper($profile2['nama_lengkap']) ?></td>
+        
         <td align="center"><?php echo $dosen_pa ?></td>
         <td align="center"><?php echo strtoupper($profile['nama']) ?></td>
     </tr>

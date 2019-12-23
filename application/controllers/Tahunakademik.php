@@ -16,6 +16,7 @@ class tahunakademik extends MY_Controller
         $data['title']=  $this->title;
         $data['desc']="";
         $data['pk']  = $this->pk;
+        $this->db->order_by('keterangan', 'desc');
         $data['record']=  $this->db->get($this->tables)->result();
 	    $this->template->load('template', $this->folder.'/view',$data);
     }
