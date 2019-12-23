@@ -31,7 +31,7 @@
        <td style="text-align: center;font-size: 20px; font-weight: arial;">LAPORAN KEUANGAN</td>
     </tr>
     <tr>
-        <td style="text-align: center;font-size: 20px; font-weight: arial;">AKADEMI KEBIDANAN KELUARGA BUNDA JAMBI</td>
+        <td style="text-align: center;font-size: 20px; font-weight: arial;">STAIN KEPRI SULTAN ABDURAHMAN</td>
     </tr>
 </table>
 <table>

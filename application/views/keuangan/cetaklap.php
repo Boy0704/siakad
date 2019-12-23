@@ -27,7 +27,7 @@
         page-break-after:always;
     }
 </style>
-<h3>LAPORAN KEUANGAN AKADEMI KEBIDANAN KELUARGA BUNDA JAMBI</h3>
+<h3>LAPORAN KEUANGAN STAIN KEPRI SULTAN ABDURAHMAN</h3>
 
 <?php
 if($tahun_akademik==0)

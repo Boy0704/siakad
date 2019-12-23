@@ -10,10 +10,10 @@
 <table border="1" style=" border-collapse: collapse;width: 100%;">
   <tr>
     <td width="10%" rowspan="2"><img style="width: 80px; height:80px;" src="<?php echo base_url() ?>images/logo/logouit.gif" alt="" ></td>
-    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>DATA DOSEN FAKULTAS ILMU KEBIDANAN</b></td>
+    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>DATA DOSEN </b></td>
   </tr>
   <tr>
-    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>AKADEMI KEBIDANAN KELUARGA BUNDA JAMBI</b></td>
+    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>STAIN KEPRI SULTAN ABDURAHMAN</b></td>
   </tr>
 </table>
 <br>
@@ -78,7 +78,7 @@ $bulan = array("","Januari","Februari","Maret","April","Mei","Juni","Juli","Agus
 echo '<br><br>';
 echo '<table style="margin:0 auto;">
     <tr><td width="500">Bidang Akademik<br><br><br></td><td>Ketua Program Studi<br><br><br></td></tr><br>'.
-    '<tr><td height="100"><u>Syahrul Syawal, S.Pd.,MT</u></td><td><u>Bahrun Herdanial B, S.Kom, M.M</u></td></tr>
+    '<tr><td height="100"><u>Syahrul Syawal, S.Pd.,MT</u></td><td><u>NOT SET</u></td></tr>
 </table>';
 
 echo '<br><br>';

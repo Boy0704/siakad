@@ -10,10 +10,10 @@
 <table border="1" style=" border-collapse: collapse;width: 100%;">
   <tr>
     <td width="10%" rowspan="2"><img style="width: 80px; height:80px;" src="<?php echo base_url() ?>images/logo/logouit.gif" alt="" ></td>
-    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>DATA MAHASISWA FAKULTAS ILMU KEBIDANAN</b></td>
+    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>DATA MAHASISWA</b></td>
   </tr>
   <tr>
-    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>AKBID KELUARGA BUNDA JAMBI</b></td>
+    <td width="90%" height="30" style="font-size: 25px; text-align: center;"><b>STAIN KEPRI SULTAN ABDURAHMAN</b></td>
   </tr>
 </table>
 <br>
@@ -84,4 +84,4 @@ echo "Makassar, ".$hari[date("w")].", ".date("j")." ".$bulan[date("n")]." ".date
 
  ?>
 <BR></br><br><br>
-  TASRIN ADIPUTRA
+  NOT SET

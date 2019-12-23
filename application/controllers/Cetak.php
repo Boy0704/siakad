@@ -46,11 +46,11 @@ class cetak extends MY_Controller
         $pdf->AddPage();
        // head
        $pdf->SetFont('TIMES','',16);
-       $pdf->Cell(190, 5, 'SEKOLAH TINGGI ILMU KESEHATAN', 0, 1, 'C');
-       $pdf->Cell(190, 5, 'KELUARGA BUNDA JAMBI', 0, 1, 'C');
+       $pdf->Cell(190, 5, 'SEKOLAH TINGGI AGAMA ISLAM', 0, 1, 'C');
+       $pdf->Cell(190, 5, 'SULTAN ABDURAHMAN', 0, 1, 'C');
        $pdf->SetFont('TIMES','',10);
-       $pdf->Cell(190, 4, 'Kampus :  Talang Bakung, South Jambi, Jambi City, Jambi', 0, 1, 'C');
-       $pdf->Cell(190, 5, 'Telp 813-6685-5307 E.Mail :  info@stikeskeluargabunda.ac.id', 0, 1, 'C');
+       $pdf->Cell(190, 4, 'Kampus :  Toapaya Asri, Toapaya, Kabupaten Bintan, Kepulauan Riau 29132', 0, 1, 'C');
+       $pdf->Cell(190, 5, 'Telp 813-6685-5307 E.Mail :  info@stainkepri.ac.id', 0, 1, 'C');
        $pdf->Image(base_url().'images/logo/logouit.gif', 10, 8, 20);
        $pdf->Line(10, 30, 200, 30);
 
@@ -216,11 +216,11 @@ class cetak extends MY_Controller
         $pdf = new FPDF('L','mm','A5');
         $pdf->AddPage();
         $pdf->SetFont('TIMES','',17);
-        $pdf->Cell(135,4,'AKADEMI KEBIDANAN',0,1, 'C');
-        $pdf->Cell(130, 4, 'KELUARGA BUNDA JAMBI', 0, 1, 'C');
+        $pdf->Cell(135,4,'STAI',0,1, 'C');
+        $pdf->Cell(130, 4, 'ABDURAHMAN', 0, 1, 'C');
         $pdf->SetFont('TIMES','',10);
-        $pdf->Cell(130, 4, 'Kampus : Talang Bakung, Jambi Sel., Kota Jambi, Jambi 36138', 0, 1, 'C');
-        $pdf->Cell(130, 4, 'Telp / Fax 0813-6685-5307 E.Mail : email : info@akbidkeluargabunda.ac.id', 0, 1, 'C');
+        $pdf->Cell(130, 4, 'Kampus : Toapaya Asri, Toapaya, Kabupaten Bintan, Kepulauan Riau 29132', 0, 1, 'C');
+        $pdf->Cell(130, 4, 'Telp 813-6685-5307 E.Mail :  info@stainkepri.ac.id', 0, 1, 'C');
         $pdf->Image(base_url().'images/logo/logouit.gif', 10, 6, 20);
         $pdf->Line(11, 27, 120, 27);
 
@@ -283,14 +283,14 @@ class cetak extends MY_Controller
           // tanda tangan
           // $pdf->Cell(150, 5, '', 0, 1);
           $pdf->Cell(150, 5, '', 0, 0);
-          $pdf->Cell(150, 5, 'Kotamobagu, '.  tgl_indo(waktu()), 0, 1);
+          $pdf->Cell(150, 5, 'BINTAN, '.  tgl_indo(waktu()), 0, 1);
           $pdf->Cell(150, 5, '', 0, 0);
           $pdf->SetFont('times','b',10);
           $pdf->Cell(150, 5, 'Ketua Program Studi,', 0, 1);
           $pdf->Cell(150, 1, '', 0, 0);
           $pdf->Cell(150, 9, '', 0, 1);
           $pdf->Cell(150, 5, '', 0, 0);
-          $pdf->Cell(150, 5, 'Ns. Ferlan A.Pondaag, M.Kep,', 0, 0);
+          $pdf->Cell(150, 5, 'NOT SET,', 0, 0);
           $pdf->Output();
     }
 

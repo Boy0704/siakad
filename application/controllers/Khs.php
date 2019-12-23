@@ -868,12 +868,12 @@ class khs extends MY_Controller{
           $pdf->AddPage();
          // head
          $pdf->SetFont('TIMES','',16);
-         $pdf->Cell(190, 5, 'AKADEMI KEBIDANAN KELUARGA BUNDA JAMBI
+         $pdf->Cell(190, 5, 'SEKOLAH TINGGI AGAMA ISLAM
 ', 0, 1, 'C');
          $pdf->SetFont('TIMES','',10);
-         $pdf->Cell(190, 5, 'Talang Bakung, Jambi Sel., Kota Jambi, Jambi 36138', 0, 1, 'C');
-         $pdf->Cell(190, 4, 'Telp/Fax 0434-2621672 - E-mail : email : info@akbidkeluargabunda.ac.id', 0, 1, 'C');
-         $pdf->Cell(190, 5, 'Website : http://www.akbidkeluargabunda.ac.id/', 0, 1, 'C');
+         $pdf->Cell(190, 5, 'Toapaya Asri, Toapaya, Kabupaten Bintan, Kepulauan Riau 29132', 0, 1, 'C');
+         $pdf->Cell(190, 4, 'Telp 813-6685-5307 E.Mail :  info@stainkepri.ac.id', 0, 1, 'C');
+         $pdf->Cell(190, 5, 'Website : http://www.stainkepri.ac.id/', 0, 1, 'C');
          $pdf->Image(base_url().'images/logo/logouit.gif', 10, 8, 20);
          $pdf->Line(10, 30, 200, 30);
 
