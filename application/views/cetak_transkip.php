@@ -28,7 +28,7 @@
 
 <?php $this->load->view('kop'); ?>
 
-<h3 align="center">KARTU RENCANA STUDI</h3><br>
+<h3 align="center">TRANSKIP NILAI</h3><br>
 
 <table border="0" style="border-collapse: collapse;width: 100%;">
     <tr>
@@ -36,7 +36,7 @@
     <?php $kode = $profile['nim']; ?>
     <td width="20" rowspan="4" align="right"><img src="<?php echo base_url('laporan/barcode/'.$kode) ?>" alt=""></td>
     </tr>
-    <tr><td style="width: 100px;">Nim / Semester</td><td>: <?php echo strtoupper($profile['nim']). " / " . $this->uri->segment(4) ?></td></tr>
+    <tr><td style="width: 100px;">Nim</td><td>: <?php echo strtoupper($profile['nim']) ?></td></tr>
     <tr><td style="width: 100px;">Jurusan</td><td>: <?php echo strtoupper($profile['nama_prodi'])?></td></tr>
     <tr><td style="width: 100px;">Prodi</td><td>: <?php echo strtoupper($profile['nama_konsentrasi'])?></td></tr>
 </table>
@@ -44,21 +44,29 @@
 <table border="1" style="border-collapse: collapse;width: 100%;">
 
     <tr>
-        <th width="10">No</th>
+        <th width="10">NO</th>
         <th>KODE</th>
         <th>MATA KULIAH</th>
         <th>SKS</th>
+        <th>NILAI</th>
+        <th>MUTU</th>
+        <th>GRADE</th>
     </tr>
     <?php
+    $nim = $this->uri->segment(3);
+    // $semester = $this->uri->segment(4);
     $no =1 ;
     $sks = 0;
-    foreach ($record2 as $r) {
+    foreach ($this->db->get_where('v_khs', array('nim'=>$nim))->result() as $r) {
         ?>
             <tr>
                 <td align="center"><?php echo $no++; ?></td>
                 <td align="center" width="60"><?php echo strtoupper($r->kode_makul) ?></td>
                 <td style="padding-left: 10px;"><?php echo strtoupper($r->nama_makul) ?></td>
                 <td align="center" width="40"><?php echo $r->sks ?></td>
+                <td align="center" width="40"><?php echo $r->nilai ?></td>
+                <td align="center" width="40"><?php echo $r->mutu ?></td>
+                <td align="center" width="40"><?php echo $r->grade ?></td>
             </tr>
         <?php
         $sks = $sks+$r->sks;
@@ -67,7 +75,11 @@
     ?>
     <tr>
         <td align="center" colspan="3"><b>Total SKS</b></td>
-        <td align="center"><b><?php echo  $sks;?></b></td>
+        <td align="left" colspan="4"><b><?php echo  $sks;?></b></td>
+    </tr>
+    <tr>
+        <td align="center" colspan="3"><b>Index Prestasi Komulatif (IPK)</b></td>
+        <td align="left" colspan="4"><b><?php echo number_format(ipk($nim),2);?></b></td>
     </tr>
 </table>
 

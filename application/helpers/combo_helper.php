@@ -1,6 +1,6 @@
 <?php
 
-function editcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$value,$txt_null='')
+function editcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$value,$txt_null='',$disable='')
 {
     $CI =& get_instance();
     $CI->load->model('mcrud');
@@ -27,7 +27,7 @@ function editcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$value,$txt_nul
     if ($txt_null!='') {
       $txt_null = 'required';
     }
-    echo"<div class='$class'><select class='form-control' name='".$nama."' $tagtemp $txt_null>";
+    echo"<div class='$class'><select class='form-control' name='".$nama."' $tagtemp $txt_null $disable>";
     if ($txt_null!='') {
       echo "<option value=''>- Pilih -</option>";
     }
@@ -40,7 +40,7 @@ function editcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$value,$txt_nul
         echo"</select></div>";
 }
 
-function buatcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$txt_null='')
+function buatcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$txt_null='',$disable='')
 {
     $CI =& get_instance();
     $CI->load->model('mcrud');
@@ -71,7 +71,7 @@ function buatcombo($nama,$table,$class,$field,$pk,$kondisi,$tags,$txt_null='')
       $txt_null = 'required';
     }
 
-    echo"<div class='$class'><select name='".$nama."'  class='form-control' $tagtemp $txt_null>";
+    echo"<div class='$class'><select name='".$nama."'  class='form-control' $tagtemp $txt_null $disable>";
     if ($txt_null!='') {
       echo "<option value=''>- Pilih -</option>";
     }
@@ -741,7 +741,7 @@ function chek_jadwal_kuliah($konsentrasi,$hari,$tahun_akademik,$semester,$no)
     }
 }
 
-function inputan($type,$names,$class,$placeholder,$required,$values,$tags)
+function inputan($type,$names,$class,$placeholder,$required,$values,$tags,$disable=null)
 {
     if(empty($tags))
     {
@@ -756,7 +756,7 @@ function inputan($type,$names,$class,$placeholder,$required,$values,$tags)
         }
     }
     $requred=$required==0?'':"required='required'";
-    return "<div class='$class'><input type='$type' name='$names' placeholder='$placeholder' class='form-control' $requred value='$values' $tagtemp></div>";
+    return "<div class='$class'><input type='$type' name='$names' placeholder='$placeholder' class='form-control' $requred value='$values' $tagtemp $disable></div>";
 }
 
 function textarea($name,$id,$class,$rows,$values)

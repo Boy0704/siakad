@@ -211,9 +211,9 @@ else
 <div class="row">
   <div class="col-sm-12">
     <?php if ($this->session->userdata('level')!='6'): ?>
-    <a href="khs/form_import" class="btn btn-primary" >Import KHS</a>
+    <!-- <a href="khs/form_import" class="btn btn-primary" >Import KHS</a>
     <?php endif; ?>
-    <a href="javascript:void(0);" onclick="khs_export()" class="btn btn-primary">Export KHS</a>
+    <a href="javascript:void(0);" onclick="khs_export()" class="btn btn-primary">Export KHS</a> -->
     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#example-modal2">Input KRS Manual</a>
     
   </div>

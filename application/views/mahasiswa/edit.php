@@ -20,7 +20,7 @@ $(document).ready(function(){
 </script>
 
 <?php
-echo form_open_multipart($this->uri->segment(1).'/edit/');
+echo form_open_multipart($this->uri->segment(1).'/edit_mhs/');
 echo "<input type='hidden' name='id' value='$r[mahasiswa_id]'>";
 echo form_hidden('nim_old', $r['nim']);
 if($this->session->userdata('level')==1)
@@ -31,15 +31,21 @@ else
 {
     $param=array('prodi_id'=>$this->session->userdata('keterangan'));
 }
+
+$disable = '';
+if ($this->session->userdata('level') == 4) {
+    $disable = 'readonly';
+}
+
 ?>
 <table class="table table-bordered">
     <tr class="alert-info"><th colspan="2">BIODATA PRIBADI</th><th colspan="2">BIODATA ORANG TUA</th></tr>
     <tr><td width="150">NPM /NAMA</td><td WIDTH="450">
-        <?php echo inputan('text', 'nim','col-sm-4','Nim ..', 1, $r['nim'],'');?>
+        <?php echo inputan('text', 'nim','col-sm-4','Nim ..', 1, $r['nim'],'',$disable);?>
         <div class="col-md-6 row">
         <?php echo form_error('nim','<div class="text-danger">','</div>'); ?>
       </div>
-         <?php echo inputan('text', 'nama','col-sm-8','Nama ..', 1, $r['nama'],'');?></td>
+         <?php echo inputan('text', 'nama','col-sm-8','Nama ..', 1, $r['nama'],'',$disable);?></td>
 
         <td width="150">Nama Ayah, Ibu</td><td>
             <?php echo inputan('text', 'nama_ayah','col-sm-6','Nama Ayah ..', 0, $r['nama_ayah'],'');?>
@@ -78,10 +84,10 @@ else
             <?php
             $prodi=  getField('akademik_konsentrasi', 'prodi_id', 'konsentrasi_id', $r['konsentrasi_id'])
             ?>
-        <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?>
+        <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'),'',$disable)?>
         </div>
             <div class="col-sm-6">
-         <?php echo editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'])?>
+         <?php echo editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable)?>
             </div>
     </td>
     <td>Penghasilan Ayah, Ibu</td>
@@ -164,12 +170,12 @@ else
       <th colspan="2">DOSEN PEMBIMBING AKADEMIK (PA)</th>
       <th colspan="2">STATUS MAHASISWA</th>
     </tr>
-    <tr>
+    <tr style="display: none;">
       <td colspan="2">
         <?php echo editcombo('dosen_pa','app_dosen','col-sm-12','nama_lengkap','dosen_id','','',$r['dosen_pa']);?>
       </td>
       <?php
-      $status = array(''=>'AKTIF','lulus'=>'LULUS');
+      $status = array('Aktif'=>'AKTIF','lulus'=>'LULUS');
       $class  = "class='form-control' id='status'"; ?>
       <td colspan="2">
         <?php echo form_dropdown('status_mhs',$status,$r['status_mhs'],$class);?>
@@ -179,7 +185,7 @@ else
          <td></td><td colspan="4">
             <div style="float:right;">
               <input type="submit" name="submit" value="simpan" class="btn btn-danger  btn-sm">
-              <?php echo anchor($this->uri->segment(1),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
+              <?php echo anchor(base_url(),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
             </div>
         </td></tr>
 

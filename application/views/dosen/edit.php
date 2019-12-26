@@ -1,6 +1,6 @@
 
 <?php
-echo form_open($this->uri->segment(1).'/edit');
+echo form_open(base_url().'users/edit_dosen');
 echo "<input type='hidden' name='id' value='$r[dosen_id]'>";
 $gender=array(''=>'- Pilih -',1=>'Laki Laki',2=>'Perempuan');
 $kawin=array(''=>'- Pilih -',1=>'Kawin',2=>'Belum Kawin');
@@ -69,7 +69,7 @@ $class="class='form-control' required";
          <td></td><td colspan="2">
           <div class="col-sm-3">
             <input type="submit" name="submit" value="Simpan" class="btn btn-primary  btn-sm">
-            <?php echo anchor($this->uri->segment(1),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
+            <?php echo anchor(base_url(),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
           </div>
         </td></tr>
 

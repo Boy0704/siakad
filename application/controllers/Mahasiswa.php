@@ -704,7 +704,7 @@ class mahasiswa extends MY_Controller{
         $data           =   $this->db->get_where('student_mahasiswa',array('konsentrasi_id'=>$konsentrasi,'angkatan_id'=>$tahun_angkatan))->result();
         // log_r($this->db->last_query());
         echo "<tr class='alert-info'><th width='5'>No</th><th width='70'>Nim</th><th>Nama</th>
-            <th width=100>Gender</th><th>Status</th>";
+            <th>Status</th>";
             if ($level=='1' or $level=='2') {
               echo "
               <th width='150'>Operasi</th></tr>";
@@ -727,7 +727,7 @@ class mahasiswa extends MY_Controller{
                     </a>
                     </td>
                     <?php echo "
-                    <td>$gender</td>
+                    
                     <td>".  ucwords($r->status_mhs)."</td>";
                     ?>
                     <?php if ($level== 1 OR $level==2): ?>

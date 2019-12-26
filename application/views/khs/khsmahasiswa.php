@@ -5,8 +5,9 @@
             <td colspan=5><?php
              $id       =  $this->session->userdata('keterangan');
              $semester =  getField('student_mahasiswa', 'semester_aktif', 'mahasiswa_id', $id);
+             $nim =  getField('student_mahasiswa', 'nim', 'mahasiswa_id', $id);
 
-             echo anchor('cetak/cetakkhs/'.$semester.'/'.$id,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'));?></td>
+             echo anchor('cetak/cetak_khs_new/'.$nim.'/'.$semester,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'));?></td>
             </tr>
         <tr>
             <td width='150'>NAMA</td><td><?php echo strtoupper($d['nama']); ?></td>
@@ -201,7 +202,7 @@
                         <td align='center'>".$total."</td>
                         </tr>
                         <tr>
-                            <td align='center' colspan='8' style='font-size:13px;font-family:arial;letter-spacing:0.6px;'><b>Index Predikat Kumulatif (IPK) = ".$ipk."</b></td>
+                            <td align='center' colspan='8' style='font-size:13px;font-family:arial;letter-spacing:0.6px;'><b>Index Predikat Kumulatif (IPK) = ".number_format(ip($nim,$semester),2)."</b></td>
                         </tr>
                    </table>";
                 }

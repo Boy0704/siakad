@@ -86,8 +86,12 @@ class registrasi extends MY_Controller{
     function pregistrasi()
     {
         $id_ms      =   $_GET['id'];
+        $nim = get_data('student_mahasiswa','mahasiswa_id',$id_ms,'nim');
         // get batas registrasi tahun akademik yang aktif
         $thun_admk  = $this->db->get_where('akademik_tahun_akademik',array('status'=>'y'))->row_array();
+        //cek tahun akademik skrg
+        $thn_akademik = $thun_admk['keterangan'];
+
         $thun_admk  = $thun_admk['batas_registrasi'];
         if(substr(waktu(),0,10)>$thun_admk)
         {
@@ -96,7 +100,9 @@ class registrasi extends MY_Controller{
         else{
             
         $sql        =   $this->db->query("select nim,semester_aktif from student_mahasiswa where mahasiswa_id='$id_ms'")->row_array();
-        $semester   =   $sql['semester_aktif']+1;
+        $semester   =   cek_semester($nim,$thn_akademik);
+
+
         $data       =   array( 'nim'=>$sql['nim'],
                                 'tahun_akademik_id'=>  get_tahun_ajaran_aktif('tahun_akademik_id'),
                                 'semester'=>$semester,
@@ -111,13 +117,12 @@ class registrasi extends MY_Controller{
         $jadwal="   SELECT jk.jadwal_id
                     FROM makul_matakuliah as mm, akademik_jadwal_kuliah as jk
                     WHERE jk.makul_id=mm.makul_id and mm.semester=$sms_aktf";
-        $jadwal=  $this->db->query($jadwal)->result();
+        $jadwal =  $this->db->query($jadwal)->result();
             foreach ($jadwal as $j)
             {
                 $this->db->insert('akademik_krs',array('nim'=>$sql['nim'],'jadwal_id'=>$j->jadwal_id,'semester'=>$semester));
                 // insert to khs
                 $id_krs= $this->db->get_where('akademik_krs',array('nim'=>$sql['nim'],'jadwal_id'=>$j->jadwal_id))->row_array();
-                $this->db->insert('akademik_khs',array('krs_id'=>$id_krs['krs_id'],'mutu'=>0,'confirm'=>'2'));
                 $this->db->insert('akademik_khs',array('krs_id'=>$id_krs['krs_id'],'mutu'=>0,'confirm'=>'2'));
             }
          echo "<div class='alert alert-success'>Registrasi Berhasil <i class='gi gi-ok'></i> </div>"; 

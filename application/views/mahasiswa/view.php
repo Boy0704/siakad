@@ -134,7 +134,7 @@ if($level == 1 or $level == 6)
 }
 else
 {
-    $param=array('prodi_id'=>$this->session->userdata('keterangan'));
+    $param=array('prodi_id'=>$this->session->userdata('konsentrasi_id'));
 }
 ?>
 <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
@@ -247,7 +247,7 @@ $class      ="class='form-control' id='status'"; ?>
                                       <span class="control-span col-md-2 " for="name">Jenis Kelamin</span>
                                       <span class=" col-md-2 ">:</span>
                                       <div class="col-md-8">
-                                      <span><?php echo $record->gender==1?"Laki-laki":"Perempua"; ?></span>
+                                      <span><?php echo $record->gender==1?"Laki-laki":"Perempuan"; ?></span>
                                       </div>
                         </div> </td>
                     </tr> <tr>

@@ -20,7 +20,7 @@
                 <td width=100>NIM</td><td><?php echo strtoupper($d->nim)?></td><td rowspan='2' width='70'><img width='50' src=<?php echo base_url()."assets/images/avatar.png"?> ></td>
             </tr>
             <tr>
-                <td>Prodi / Konsentrasi</td><td><?php echo strtoupper($d->nama_prodi.' / '.$d->nama_konsentrasi); ?></td>
+                <td>Jurusan / Prodi</td><td><?php echo strtoupper($d->nama_prodi.' / '.$d->nama_konsentrasi); ?></td>
                 <td>SEMESTER</td><td><?php echo $d->semester_aktif; ?> </td>
             </tr>
         </table>

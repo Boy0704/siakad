@@ -39,7 +39,7 @@ echo form_open('keuangan/pembayaran');
         <td wisth="90" align="center" rowspan="3"><img src="<?php echo base_url()?>assets/images/noprofile.gif" width="85"></td>
     </tr>
     <tr><td>Nama</td><td>  : <?php echo $statuss=="kosong"?"":strtoupper($profile['nama'])?></td></tr>
-    <tr><td>Prodi / Konsentrasi</td><td> : <?php echo $statuss=="kosong"?"":strtoupper($profile['nama_konsentrasi'].' / '.$profile['nama_prodi'])?></td></tr>
+    <tr><td>Jurusan / Prodi</td><td> : <?php echo $statuss=="kosong"?"":strtoupper($profile['nama_konsentrasi'].' / '.$profile['nama_prodi'])?></td></tr>
  
 </table>
 </form>

@@ -16,7 +16,7 @@ if ($level == 1 OR $level ==2) {
             <th>Nama Lengkap</th>
             <th>Email</th>
             <th>Handphone</th>
-            <th>Prodi</th>
+            <th>Jurusan</th>
              <?php if ($level == 1 OR $level==2): ?>
             <th>Opsi</th>
             <?php endif ?>
@@ -37,7 +37,7 @@ if ($level == 1 OR $level ==2) {
             <td><?php cetak(strtoupper($r->nama_lengkap));?></td>
             <td><?php cetak($r->email);?></td>
             <td><?php echo $r->hp;?></td>
-            <td><?php cetak(strtoupper($r->nama_prodi));?></td>
+            <td><?php cetak(strtoupper($r->nama_konsentrasi));?></td>
             <?php if ($level == 1 OR $level==2): ?>
                  <td class="text-center">
                 <div class="btn-group">

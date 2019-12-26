@@ -21,7 +21,7 @@ class setupbiayakuliah extends MY_Controller
         echo "<table class='table table-bordered'>
               <tr>
                 <th rowspan='2'>NO</th>
-                <th rowspan='2' ali><div align='center'>Konsentrasi</div></th>
+                <th rowspan='2' ali><div align='center'>Prodi</div></th>
                 <th colspan='".$jenis_bayar->num_rows()."'><div align='center'>JENIS BIAYA </div></th>
                 </tr>
             <tr>";

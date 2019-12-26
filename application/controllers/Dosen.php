@@ -21,16 +21,16 @@ class dosen extends MY_Controller{
         {
             if($level==2)
             {
-                $sess=$this->session->userdata('keterangan');
-                $param="and ap.prodi_id='$sess'";
+                $sess=$this->session->userdata('konsentrasi_id');
+                $param="and ap.konsentrasi_id='$sess'";
             }
             else
             {
                 $param="";
             }
-            $sql    =   "SELECT ad.hp,ad.email,ad.dosen_id,ad.nama_lengkap,ad.nidn,ad.nip,ap.nama_prodi
-                        FROM app_dosen as ad,akademik_prodi as ap
-                        WHERE ad.prodi_id=ap.prodi_id and dosen_id not in('0') $param";
+            $sql    =   "SELECT ad.hp,ad.email,ad.dosen_id,ad.nama_lengkap,ad.nidn,ad.nip,ap.nama_konsentrasi
+                        FROM app_dosen as ad,akademik_konsentrasi as ap
+                        WHERE ad.konsentrasi_id=ap.konsentrasi_id and dosen_id not in('0') $param";
             $data['title']=  $this->title;
             $data['desc']="";
             $data['record']=  $this->db->query($sql)->result();
@@ -40,8 +40,8 @@ class dosen extends MY_Controller{
         {
             $data['title']=  strtoupper($this->session->userdata('username'));
             $ses = $this->session->userdata('keterangan');
-            $get="SELECT ad.hp,ad.email,ad.dosen_id,ad.nama_lengkap,ad.nidn,ad.nip,ap.nama_prodi
-                        FROM app_dosen as ad,akademik_prodi as ap
+            $get="SELECT ad.hp,ad.email,ad.dosen_id,ad.nama_lengkap,ad.nidn,ad.nip,ap.nama_konsentrasi
+                        FROM app_dosen as ad,akademik_konsentrasi as ap
                         WHERE ad.dosen_id=$ses";
             $data['record'] = $this->db->query($get)->row();
             $this->template->load('template', $this->folder.'/view',$data);
@@ -76,8 +76,7 @@ class dosen extends MY_Controller{
                                         'status_kawin'=>$kawin,
                                         'alamat'=>$alamat,'hp'=>$hp,
                                         'email'=>$email,
-                                        'prodi_id'=>$prodi_id,
-                                        'prodi_id'=> $this->session->userdata('keterangan'));
+                                        'prodi_id'=>$prodi_id,);
             $username       =   $this->input->post('username');
             $password       =   $this->input->post('password');
             $this->db->insert($this->tables,$data);

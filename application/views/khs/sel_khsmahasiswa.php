@@ -48,7 +48,7 @@ $semester =  getField('student_mahasiswa', 'semester_aktif', 'mahasiswa_id', $id
 ?>
 <div class="row">
   <div class="col-sm-12">
-      <table class='table table-bordered'>
+      <!-- <table class='table table-bordered'>
          <tr>
             <td colspan=5>
               <label class="col-md-1" style="margin-top:10px;">SEMESTER</label>
@@ -86,8 +86,8 @@ $semester =  getField('student_mahasiswa', 'semester_aktif', 'mahasiswa_id', $id
             <td>Jurusan, Prodi</td><td><?php echo strtoupper($d['nama_prodi'].' / '.$d['nama_konsentrasi']); ?></td>
             <td>Semester</td><td> <label id="semester">-</label> </td>
         </tr>
-        </table>
-
-        <div id="v_khs"></div>
+        </table> -->
+        <a href="<?php echo base_url() ?>cetak/cetak_transkip_new/<?php echo $d['nim'] ?>"  class="btn btn-primary" id="v_cetak" target="_blank" style="float:right"><i class="fa fa-print"></i> CetakTranskip KHS</a>
+        <!-- <div id="v_khs"></div> -->
 
   </div>

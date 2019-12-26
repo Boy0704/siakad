@@ -602,37 +602,51 @@ class khs extends MY_Controller{
         akses_dosen();
         $id     =   $_GET['id'];
         $nilai  =   $_GET['nilai'];
-        switch ($nilai) {
-          case $nilai <=50   : $grade = "E"; break;
-          case $nilai <=52.5 : $grade = "D"; break;
-          case $nilai <=55   : $grade = "D+"; break;
-          case $nilai <=57.5 : $grade = "CD"; break;
-          case $nilai <=60   : $grade = "C-"; break;
-          case $nilai <=62.5 : $grade = "C"; break;
-          case $nilai <=65   : $grade = "C+"; break;
-          case $nilai <=67.5 : $grade = "BC"; break;
-          case $nilai <=70   : $grade = "B-"; break;
-          case $nilai <=72.5 : $grade = "B"; break;
-          case $nilai <=75   : $grade = "B+"; break;
-          case $nilai <=77.5 : $grade = "AB"; break;
-          case $nilai <=80   : $grade = "A-"; break;
-          case $nilai <=90   : $grade = "A"; break;
-          case $nilai <=100  : $grade = "A+"; break;
-          default: $grade="salah";$grade="-";
+        // switch ($nilai) {
+        //   case $nilai <=50   : $grade = "E"; break;
+        //   case $nilai <=52.5 : $grade = "D"; break;
+        //   case $nilai <=55   : $grade = "D+"; break;
+        //   case $nilai <=57.5 : $grade = "CD"; break;
+        //   case $nilai <=60   : $grade = "C-"; break;
+        //   case $nilai <=62.5 : $grade = "C"; break;
+        //   case $nilai <=65   : $grade = "C+"; break;
+        //   case $nilai <=67.5 : $grade = "BC"; break;
+        //   case $nilai <=70   : $grade = "B-"; break;
+        //   case $nilai <=72.5 : $grade = "B"; break;
+        //   case $nilai <=75   : $grade = "B+"; break;
+        //   case $nilai <=77.5 : $grade = "AB"; break;
+        //   case $nilai <=80   : $grade = "A-"; break;
+        //   case $nilai <=90   : $grade = "A"; break;
+        //   case $nilai <=100  : $grade = "A+"; break;
+        //   default: $grade="salah";$grade="-";
+        // }
+        // if ($grade=='A' or $grade=='A-' or $grade=='A+' or $grade=='AB') {
+        //   $mutu = '4';
+        // }elseif ($grade=='B' or $grade=='B-' or $grade=='B+' or $grade=='BC') {
+        //   $mutu = '3';
+        // }elseif ($grade=='C' or $grade=='C-' or $grade=='C+' or $grade=='CD') {
+        //   $mutu = '2';
+        // }elseif ($grade=='D' or $grade=='D-' or $grade=='D+' or $grade=='DE') {
+        //   $mutu = '1';
+        // }elseif ($grade=='E' or $grade=='E-' or $grade=='E+') {
+        //   $mutu = '0';
+        // }else {
+        //   $mutu = '-';
+        // }
+
+        $grade = '';
+        $mutu = '';
+        $grade_nilai = $this->db->get('app_nilai_grade');
+        foreach ($grade_nilai->result() as $rw) {
+            if ($nilai >= $rw->dari && $nilai <= $rw->sampai) {
+                $grade = $rw->grade;
+                $mutu = $rw->mutu;
+            }
+            // echo $rw->dari.'<br>';
+            // echo $grade;
         }
-        if ($grade=='A' or $grade=='A-' or $grade=='A+' or $grade=='AB') {
-          $mutu = '4';
-        }elseif ($grade=='B' or $grade=='B-' or $grade=='B+' or $grade=='BC') {
-          $mutu = '3';
-        }elseif ($grade=='C' or $grade=='C-' or $grade=='C+' or $grade=='CD') {
-          $mutu = '2';
-        }elseif ($grade=='D' or $grade=='D-' or $grade=='D+' or $grade=='DE') {
-          $mutu = '1';
-        }elseif ($grade=='E' or $grade=='E-' or $grade=='E+') {
-          $mutu = '0';
-        }else {
-          $mutu = '-';
-        }
+        // log_r($grade);
+        
         $this->Mcrud->update($this->tables,array('nilai'=>$nilai,'mutu'=>$mutu,'grade'=>$grade), $this->pk,$id);
 
         echo json_encode(array('id'=>$id, 'mutu'=>$mutu, 'grade'=>$grade));

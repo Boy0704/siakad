@@ -9,10 +9,148 @@ class users extends MY_Controller{
         parent::__construct();
         $level = $this->session->userdata('level');
         if ($level==3) {
-            redirect(base_url());
+            $this->edit_dosen;
         }
         elseif ($level==4) {
-            redirect(base_url());
+            // redirect(base_url('user'));
+        }
+    }
+
+    function edit_mhs()
+    {
+        if(isset($_POST['submit']))
+        {
+
+            $this->load->library('form_validation');
+            $nim = $this->input->post('nim');
+            $nim_old = $this->input->post('nim_old');
+            $callback           = "";
+            if($nim !== $nim_old){
+                $callback = "|is_unique[student_mahasiswa.nim]";
+            }
+            else{
+                $callback  = "";
+            }
+
+            $this->form_validation->set_rules('nim', 'Nim Mahasiswa', 'required'.$callback);
+            $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+            if ($this->form_validation->run())
+            {
+                $id     = $this->input->post('id');
+                            // pribadi
+                $nama               =   $this->input->post('nama');
+                // $nim                =   $this->input->post('nim');
+                $alamat             =   $this->input->post('alamat');
+                $konsentrasi        =   $this->input->post('konsentrasi');
+                $tahun              =   $this->input->post('tahun_angkatan');
+                $tempat_lahir       =   $this->input->post('tempat_lahir');
+                $tgl_lahir          =   $this->input->post('tanggal_lahir');
+                $agama              =   $this->input->post('agama');
+                $gender             =   $this->input->post('gender');
+                // orang tua
+                $nama_ayah          =   $this->input->post('nama_ayah');
+                $nama_ibu           =   $this->input->post('nama_ibu');
+                $pekerjaan_ayah     =   $this->input->post('pekerjan_ayah');
+                $pekerjaan_ibu      =   $this->input->post('pekerjaan_ibu');
+                $alamat_ayah        =   $this->input->post('alamat_ayah');
+                $alamat_ibu         =   $this->input->post('alamat_ibu');
+                $penghsln_ayah      =   $this->input->post('penghasilan_ayah');
+                $penghsln_ibu       =   $this->input->post('penghasilan_ibu');
+                $no_hp_ortu         =   $this->input->post('no_hp_ortu');
+
+                // sekolah
+                $sekolah_nama       =   $this->input->post('sekolah_nama');
+                $sekolah_telpon     =   $this->input->post('sekolah_telpon');
+                $sekolah_alamat     =   $this->input->post('sekolah_alamat');
+                $sekolah_jurus      =   $this->input->post('sekolah_jurusan');
+                $sekolah_tahun      =   $this->input->post('sekolah_tahun');
+                // kampus
+                $kampus_nama        =   $this->input->post('kampus_nama');
+                $kampus_telpon      =   $this->input->post('kampus_telpon');
+                $kampus_alamat      =   $this->input->post('kampus_alamat');
+                $kampus_jurus       =   $this->input->post('kampus_jurusan');
+                $kampus_tahun       =   $this->input->post('kampus_tahun');
+                // instansi
+                $instansi_nama      =   $this->input->post('instansi_nama');
+                $instansi_telpon    =   $this->input->post('instansi_telpon');
+                $instansi_alamat    =   $this->input->post('instansi_alamat');
+                $instansi_mulai     =   $this->input->post('instansi_mulai');
+                $instansi_sampai    =   $this->input->post('instansi_sampai');
+                // institusi
+                $institusi_nama     =   $this->input->post('institusi_nama');
+                $institusi_telpon   =   $this->input->post('institusi_telpon');
+                $institusi_alamat   =   $this->input->post('institusi_alamat');
+
+                $dosen_pa           =   $this->input->post('dosen_pa');
+                $status_mhs         =   $this->input->post('status_mhs');
+
+                if ($status_mhs=='') {
+                  $status_mhs = Null;
+                }
+
+                $instansi           =   array(  'instansi_nama'=>$instansi_nama,
+                                                'instansi_telpon'=>$instansi_telpon,
+                                                'instansi_alamat'=>$instansi_alamat,
+                                                'instansi_mulai'=>$instansi_mulai,
+                                                'instansi_sampai'=>$instansi_sampai);
+                $institusi          =   array(  'institusi_nama'=>$institusi_nama,
+                                                'institusi_telpon'=>$institusi_telpon,
+                                                'institusi_alamat'=>$institusi_alamat);
+
+                $pribadi            =   array(  'nama'=>$nama,
+                                                'agama_id'=>$agama,
+                                                'gender'=>$gender,
+                                                'tempat_lahir'=>$tempat_lahir,
+                                                'tanggal_lahir'=>$tgl_lahir,
+                                                'nim'=>$nim,
+                                                'konsentrasi_id'=>$konsentrasi,
+                                                'alamat'=>$alamat,
+                                                'dosen_pa'=>$dosen_pa,
+                                                'status_mhs'=>$status_mhs
+                                                );
+
+                $sekolah            =   array(  'sekolah_nama'=>$sekolah_nama,
+                                                'sekolah_telpon'=>$sekolah_telpon,
+                                                'sekolah_alamat'=>$sekolah_alamat,
+                                                'sekolah_tahun_lulus'=>$sekolah_tahun,
+                                                'sekolah_jurusan'=>$sekolah_jurus);
+
+                $kampus             =   array(  'kampus_nama'=>$sekolah_nama,
+                                                'kampus_telpon'=>$sekolah_telpon,
+                                                'kampus_alamat'=>$sekolah_alamat,
+                                                'kampus_tahun_lulus'=>$sekolah_tahun,
+                                                'kampus_jurusan'=>$sekolah_jurus);
+
+                $orangtua           =   array(  'nama_ayah'=>$nama_ayah,
+                                                'nama_ibu'=>$nama_ibu,
+                                                'pekerjaan_id_ayah'=>$pekerjaan_ayah,
+                                                'pekerjaan_id_ibu'=>$pekerjaan_ibu,
+                                                'alamat_ayah'=>$alamat_ayah,
+                                                'alamat_ibu'=>$alamat_ibu,
+                                                'no_hp_ortu'=>$no_hp_ortu,
+                                                'penghasilan_ayah'=>$penghsln_ayah,
+                    'penghasilan_ibu'=>$penghsln_ibu);
+                $data               =array_merge($orangtua,$kampus,$sekolah,$pribadi,$instansi,$institusi);
+                $this->Mcrud->update('student_mahasiswa',$data, 'mahasiswa_id',$id);
+                $this->session->set_flashdata('pesan', "<div class='alert alert-success'>Data $nama Berhasil Diedit</div>");
+                redirect($this->uri->segment(1).'/edit_mhs');
+            }
+            else
+            {
+                $data['title']=  $this->title;
+                $data['desc']="";
+                $id          =  $this->uri->segment(3);
+                $data['r']   =  $this->Mcrud->getByID('student_mahasiswa',  'mahasiswa_id',$id)->row_array();
+                $this->template->load('template', 'mahasiswa/edit',$data);
+            }
+        }
+        else
+        {
+            $data['title']=  $this->title;
+            $data['desc']="";
+            $id          =  $this->session->userdata('keterangan');;
+            $data['r']   =  $this->Mcrud->getByID('student_mahasiswa',  'mahasiswa_id',$id)->row_array();
+            $this->template->load('template', 'mahasiswa/edit',$data);
         }
     }
     
@@ -100,45 +238,49 @@ class users extends MY_Controller{
             $this->template->load('template', $this->folder.'/post',$data);
         }
     }
-    function edit()
+    
+    function edit_dosen()
     {
+        
         if(isset($_POST['submit']))
         {
-            $username  =   $this->input->post('username');
-            $username_lama  =   $this->input->post('username_lama');
-            $password  =   $this->input->post('password');
-            $passhash  =   hash_string($password);
             $id     = $this->input->post('id');
-            $data   =   array('username'=>$username,'password'=>$passhash);
-            
-            if($username == $username_lama){
-                $this->Mcrud->update($this->tables,$data, $this->pk,$id);
-                redirect($this->uri->segment(1));
-            } else {
-                $cekusername = $this->db->get_where('app_users', array('username'=>$username));
-                if($cekusername->num_rows()>0){
-                    ?>
-                    <script type="text/javascript">
-                    	alert('username sudah ada');
-                    	window.location="<?php echo base_url('users') ?>";
-                    </script>
-                    <?php
-                } else {
-                    $this->Mcrud->update($this->tables,$data, $this->pk,$id);
-                    redirect($this->uri->segment(1));
-                }
-            }
-            
-            
+            $nama           =   $this->input->post('nama');
+            $nidn           =   $this->input->post('nidn');
+            $nip            =   $this->input->post('nip');
+            $tempat_lahir   =   $this->input->post('tempat_lahir');
+            $tanggal_lahir  =   $this->input->post('tanggal_lahir');
+            $gender         =   $this->input->post('gender');
+            $agama          =   $this->input->post('agama');
+            $kawin          =   $this->input->post('kawin');
+            $alamat         =   $this->input->post('alamat');
+            $hp             =   $this->input->post('hp');
+            $email          =   $this->input->post('email');
+            $prodi_id       =   $this->input->post('prodi_id');
+            $data           =   array(  'nama_lengkap'=>$nama,
+                                        'nidn'=>$nidn,
+                                        'nip'=>$nip,
+                                        'tempat_lahir'=>$tempat_lahir,
+                                        'tanggal_lahir'=>$tanggal_lahir,
+                                        'gender'=>$gender,
+                                        'agama_id'=>$agama,
+                                        'status_kawin'=>$kawin,
+                                        'alamat'=>$alamat,'hp'=>$hp,
+                                        'email'=>$email,
+                                        'prodi_id'=>$prodi_id);
+            $this->Mcrud->update('app_dosen',$data, 'dosen_id',$id);
+            redirect($this->uri->segment(1));
         }
         else
         {
             $data['title']=  $this->title;
-            $id          =  $this->uri->segment(3);
-            $data['r']   =  $this->Mcrud->getByID($this->tables,  $this->pk,$id)->row_array();
-            $this->template->load('template', $this->folder.'/edit',$data);
+            $data['desc']="Edit Dosen";
+            $id          =  $this->session->userdata('keterangan');;
+            $data['r']   =  $this->Mcrud->getByID('app_dosen',  'dosen_id',$id)->row_array();
+            $this->template->load('template', 'dosen/edit',$data);
         }
     }
+
     function delete()
     {
         $id     =  $_GET['id'];

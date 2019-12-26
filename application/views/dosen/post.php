@@ -60,8 +60,9 @@ $class="class='form-control' required";
     </td>
     </tr>
    <tr>
-      <td width="150">Prodi</td><td>
-          <?php echo buatcombo('prodi_id', 'akademik_prodi', 'col-md-6', 'nama_prodi', 'prodi_id', '', '',1)?>
+      <td width="150">Jurusan</td><td>
+           <?php echo buatcombo('konsentrasi_id', 'akademik_konsentrasi', 'col-md-6', 'nama_konsentrasi', 'konsentrasi_id', '', '',1)?> 
+          <!-- <?php echo combodumy('konsentrasi', 'konsentrasi')?> -->
       </td>
     </tr>
 

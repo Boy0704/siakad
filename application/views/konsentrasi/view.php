@@ -7,6 +7,7 @@ echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Da
         <tr>
             <th width="7">Nomor</th>
             <th>Nama Jurusan</th>
+            <th>Kode Prodi</th>
             <th>Nama Prodi</th>
             <th>Jenjang, Semester</th>
             <th>Gelar</th>
@@ -24,6 +25,7 @@ echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Da
         <?php echo "<tr id='hide".$r->$pk."'>"; ?>
             <td align="center"><?php echo $i;?></td>
             <td><?php echo strtoupper($r->nama_prodi);?></td>
+            <td><?php echo strtoupper($r->kode_prodi);?></td>
             <td><?php echo strtoupper($r->nama_konsentrasi)?></td>
             <td><?php echo strtoupper($r->jenjang).', '.$r->jml_semester;?></td>
             <td><?php echo strtoupper($r->gelar);?></td>

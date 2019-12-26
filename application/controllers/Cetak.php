@@ -164,6 +164,24 @@ class cetak extends MY_Controller
        $pdf->Output("$nim.pdf",'D');
     }
 
+    public function cetak_khs_new($nim,$semester)
+    {
+      $profileSQL=    "SELECT sm.nama,sm.nim,ak.nama_konsentrasi,ap.nama_prodi FROM
+                        student_mahasiswa  as sm,akademik_prodi as ap,akademik_konsentrasi as ak
+                        WHERE sm.konsentrasi_id=ak.konsentrasi_id and ap.prodi_id=ak.prodi_id and sm.nim=$nim";
+        $data['profile']   = $this->db->query($profileSQL)->row_array();
+      $this->load->view('cetak_khs',$data);
+    }
+
+    public function cetak_transkip_new($nim)
+    {
+      $profileSQL=    "SELECT sm.nama,sm.nim,ak.nama_konsentrasi,ap.nama_prodi FROM
+                        student_mahasiswa  as sm,akademik_prodi as ap,akademik_konsentrasi as ak
+                        WHERE sm.konsentrasi_id=ak.konsentrasi_id and ap.prodi_id=ak.prodi_id and sm.nim=$nim";
+        $data['profile']   = $this->db->query($profileSQL)->row_array();
+      $this->load->view('cetak_transkip',$data);
+    }
+
     // cetak kartu rencana studi
     function cetakkrs()
     {
