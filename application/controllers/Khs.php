@@ -355,7 +355,8 @@ class khs extends MY_Controller{
                             <td>".  strtoupper($r->nama_lengkap)."</td>
                             <td width=150>
                             <form action=\"khs/simpan_khs_manual/".$r->khs_id."\" method=\"post\">
-                                <input type=\"text\" class=\"form-control input-sm\" name=\"nilai\" value=\"  ".$r->nilai." \" autocomplete=\"off\">
+                                <input type=\"text\" class=\"form-control input-sm\" name=\"nilai\" value=\"".$r->nilai."\" autocomplete=\"off\">
+                                <button type=\"submit\" class=\"btn btn-sm btn-info\"><i class=\"fa fa-save\"></i></button>
                             </form>
                             </td>
                             <td align='center'>".$r->grade."</td>
@@ -561,7 +562,12 @@ class khs extends MY_Controller{
                 <td align='center' width='90'>";
                 // echo inputan('text', '','col-sm-12','Kehadiran', 0, $r->kehadiran,array('onkeyup'=>'simpankehadiran('.$r->khs_id.')','id'=>'ambilkehadiran'.$r->khs_id)).'</td><td>';
                 // echo inputan('text', '','col-sm-12','Tugas ..', 0, $r->tugas,array('onkeyup'=>'simpantugas('.$r->khs_id.')','id'=>'ambiltugas'.$r->khs_id)).'</td><td>';
-                echo inputan('text', '','col-sm-12','Nilai ...', 0, $r->nilai,array('onkeyup'=>'simpannilai('.$r->khs_id.')','id'=>'ambilnilai'.$r->khs_id)).'</td><td align="center">';
+
+                // input nilai yang lama
+                // echo inputan('text', '','col-sm-12','Nilai ...', 0, $r->nilai,array('onkeyup'=>'simpannilai('.$r->khs_id.')','id'=>'ambilnilai'.$r->khs_id)).'</td><td align="center">';
+
+                echo inputan('text', '','col-sm-12','Nilai ...', 0, $r->nilai,array('id'=>'ambilnilai'.$r->khs_id)).'<button onclick="simpannilai('.$r->khs_id.')" class="btn btn-sm btn-info"><i class="fa fa-save"></i></button></td><td align="center">';
+
                 // echo inputan('text', 'link','col-sm-12','Link ...', 1, $r->mutu,array('onkeyup'=>'simpan('.$r->khs_id.')','id'=>'ambil'.$r->khs_id));
                 echo "<b style='font-size:20px' id='mutu_$r->khs_id'>$r->mutu</b>";
                 echo"</td>

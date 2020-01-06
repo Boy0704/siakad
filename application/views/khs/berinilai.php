@@ -88,6 +88,7 @@ $(document).ready(function(){
            $("#mutu_"+data.id).html(data.mutu);
            $("#grade_"+data.id).html(data.grade);
            $("#pesan").html("");
+           swal("Nilai Behasil disimpan !", "ok!", "success");
        }
      });
   }

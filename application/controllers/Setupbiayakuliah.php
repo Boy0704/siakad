@@ -96,6 +96,7 @@ class setupbiayakuliah extends MY_Controller
     function loadform()
     {
         $konsentrasi            =   $_GET['konsentrasi'];
+        // log_r($konsentrasi);
         $tahun_angkatan_id      =   $this->db->get_where('student_angkatan',array('aktif'=>'y'))->row_array();
         $tahun_ajaran           =   $tahun_angkatan_id['angkatan_id'];
         $no=1;

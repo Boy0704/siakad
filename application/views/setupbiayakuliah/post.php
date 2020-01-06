@@ -47,7 +47,7 @@ $(document).ready(function(){
  
 <div class="col-sm-3">
     <table class="table table-bordered">
-        <tr class="alert-info"><th>Pilih Konsentrasi</th></tr>
+        <tr class="alert-info"><th>Pilih Prodi</th></tr>
         <tr><td><input  type="text" value="<?php echo $tahun_ajrn['keterangan'];?>" class="form-control" disabled=""></td></tr>
         <tr><td>
             <div class="col-sm-13">
