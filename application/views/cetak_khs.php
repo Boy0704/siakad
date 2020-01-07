@@ -89,13 +89,13 @@
         <td align="right" colspan="3" style="padding-right: 20px; padding-bottom: 15px;">Bintan, <?php echo tgl_indo(substr(waktu(), 0, 10)) ?></td>
     </tr>
     <tr>
-        <td style="padding-bottom: 60px;" align="center">Ketua Prodi</td>
-        <td style="padding-bottom: 60px;" align="center">Mahasiswa</td>
+        <td style="padding-bottom: 60px;" align="center">Diketahui Oleh <br> Wakil Ketua I</td>
+        <td style="padding-bottom: 60px;" align="center">Ketua Jurusan <br><?php echo strtoupper($profile['nama_prodi'])?></td>
     </tr>
     <tr>
         
-        <td align="center"><?php //echo $dosen_pa ?></td>
-        <td align="center"><?php echo strtoupper($profile['nama']) ?></td>
+        <td align="center"><u>ARIS BINTANIA, M.Ag</u> <br>NIDN. 2023077501</td>
+        <td align="center"><u>Drs. H. RUNTONI, M.Pd</u> <br>NIDN. 2112126701</td>
     </tr>
 
 </table>
