@@ -41,6 +41,7 @@ class registrasi extends MY_Controller{
             <th width=100>Tahun AKD</th>
             <th>Status</th>
             <th>Tanggal Registrasi</th>
+            <th>Pembayaran</th>
             <th></th></tr>";
         if (!empty($data)) 
         {
@@ -71,6 +72,7 @@ class registrasi extends MY_Controller{
                     }
                     echo "</td>
                     <td>". tgl_indo($tanggal)."</td>
+                    <td align='center'><a href=\"keuangan/pembayaran/".$r->nim."\" class=\"btn btn-info\">Bayar</a></td>
                     <td align='center'>$btn</td>
                     </tr>";
                 $no++;
