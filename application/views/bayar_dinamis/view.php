@@ -97,6 +97,7 @@
 	</div>
 	<div class="col-md-2">
 		<input type="number" name="jumlah_bayar" class="form-control" placeholder="jumlah bayar">
+		<input type="hidden" name="tahun_akademik" class="form-control" value="<?php echo $thn_akademik ?>">
 	</div>
 	<div class="col-md-2">
 		<button class="btn btn-info">SIMPAN</button>
