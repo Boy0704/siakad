@@ -65,6 +65,11 @@
         // exit;
     }
 
+    function alert_biasa($pesan,$type)
+    {
+        return 'swal("'.$pesan.'", "You clicked the button!", "'.$type.'");';
+    }
+
 
     function helper_log($tipe = "", $str = ""){
 
