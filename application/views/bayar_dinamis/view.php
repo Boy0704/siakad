@@ -12,6 +12,16 @@
 	</form>
 </div>
 
+<?php 
+
+		$thun_admk  = $this->db->get_where('akademik_tahun_akademik',array('status'=>'y'))->row_array();
+        //cek tahun akademik skrg
+        $thn_akademik = $thun_admk['keterangan'];
+
+        $thun_admk  = $thun_admk['batas_registrasi'];
+        $semester   =   cek_semester($nim,$thn_akademik);
+
+ ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -23,6 +33,10 @@
 						<?php echo get_data('student_mahasiswa','nim',$nim,'nim'); ?>
 					</span>
 				</td>
+				<td width="100px">Semester</td>
+				<td>
+					<?php echo $semester ?>
+				</td>
 			</tr>
 			<tr>
 				<td width="100px;">Nama</td>
@@ -30,6 +44,10 @@
 					<span id="nama">
 						<?php echo get_data('student_mahasiswa','nim',$nim,'nama'); ?>
 					</span>
+				</td>
+				<td width="100px;">Tahun AKD</td>
+				<td>
+					<?php echo $thn_akademik ?>
 				</td>
 			</tr>
 			<tr>
@@ -41,6 +59,21 @@
 						echo get_data('akademik_konsentrasi','konsentrasi_id',$konsentrasi_id,'nama_konsentrasi');
 						 ?>
 					</span>
+				</td>
+				<td>
+					Registrasi
+				</td>
+				<td>
+				<?php 
+				$last_id=  $this->db->query("SELECT registrasi_id FROM akademik_registrasi WHERE nim='$nim' and semester='$semester' order by registrasi_id desc limit 1");
+				if ($last_id->num_rows() == 0) {
+				 ?>
+				 <a onclick="javasciprt: return confirm('Yakin akan akan aktifkan mahasiswa ini ?')" href="<?php echo base_url() ?>bayar_dinamis/pregistrasi/<?php echo $nim ?>" class="btn btn-info">REGISTRASI</a>
+				<?php } else {
+				$id_reg = $last_id->row();
+				 ?>
+				<a onclick="javasciprt: return confirm('Yakin akan akan batalkan Registrasi mahasiswa ini ?')" href="<?php echo base_url() ?>bayar_dinamis/hapus_registrasi/<?php echo $id_reg->registrasi_id.'/'.$nim ?>" class="btn btn-success">SUDAH REGISTRASI</a>
+				<?php } ?>
 				</td>
 			</tr>
 		</table>
@@ -60,7 +93,7 @@
 		<input type="text" name="nim" class="form-control" value="<?php echo $nim ?>" readonly>
 	</div>
 	<div class="col-md-2">
-		<input type="text" name="semester" class="form-control" placeholder="semester">
+		<input type="text" name="semester" class="form-control" placeholder="semester" value="<?php echo $semester ?>">
 	</div>
 	<div class="col-md-2">
 		<input type="number" name="jumlah_bayar" class="form-control" placeholder="jumlah bayar">

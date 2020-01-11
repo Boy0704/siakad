@@ -119,7 +119,9 @@ class registrasi extends MY_Controller{
         $jadwal="   SELECT jk.jadwal_id
                     FROM makul_matakuliah as mm, akademik_jadwal_kuliah as jk
                     WHERE jk.makul_id=mm.makul_id and mm.semester=$sms_aktf";
+
         $jadwal =  $this->db->query($jadwal)->result();
+        if ($semester == 1) {
             foreach ($jadwal as $j)
             {
                 $this->db->insert('akademik_krs',array('nim'=>$sql['nim'],'jadwal_id'=>$j->jadwal_id,'semester'=>$semester));
@@ -127,6 +129,7 @@ class registrasi extends MY_Controller{
                 $id_krs= $this->db->get_where('akademik_krs',array('nim'=>$sql['nim'],'jadwal_id'=>$j->jadwal_id))->row_array();
                 $this->db->insert('akademik_khs',array('krs_id'=>$id_krs['krs_id'],'mutu'=>0,'confirm'=>'2'));
             }
+        }
          echo "<div class='alert alert-success'>Registrasi Berhasil <i class='gi gi-ok'></i> </div>"; 
         }
         
