@@ -123,6 +123,11 @@ else
     <tr><td>Semester <?php echo combodumy('semester', 'semester')?></td></tr>
     <tr><td><?php echo anchor('matakuliah/post','<span class="glyphicon glyphicon-plus"></span> Input Data',array('class'=>'btn btn-primary  btn-sm'));?>
         <?php //echo anchor('matakuliah/#','<span class="glyphicon glyphicon-print"></span> Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?></td></tr>
+    <tr>
+      <td>
+        <a id="btn_import" class="btn btn-primary">Import MK</a>
+      </td>
+    </tr>
 </table>
 </div>
 
@@ -132,3 +137,19 @@ else
         <!-- <tr><th width="5">No</th><th width="100">Kode</th><th width="50">Kelompok</th><th>Matakuliah</th><th width="40">SKS</th><th colspan="3">Operasi</th></tr> -->
     </table>
 </div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $('#btn_import').click(function(event) {
+    
+      window.open('<?php echo base_url() ?>manual/import_mk/', '_blank', 'location=yes,height=570,width=800,scrollbars=yes,status=yes');
+    });
+
+
+
+
+
+  });
+</script>

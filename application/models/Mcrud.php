@@ -76,6 +76,29 @@ class Mcrud extends CI_Model{
     {
        return $this->db->get_where('users',array('username'=>$username,'password'=>$password));
     }
+
+    // Fungsi untuk melakukan proses upload file
+    public function upload_file($filename,$lokasi_file,$type_file){
+        $this->load->library('upload'); // Load librari upload
+        
+        $config['upload_path'] = $lokasi_file;
+        $config['allowed_types'] = $type_file;
+        $config['max_size'] = '10000';
+        $config['overwrite'] = true;
+        $config['file_name'] = $filename;
+    
+        $this->upload->initialize($config); // Load konfigurasi uploadnya
+        if($this->upload->do_upload('file')){ // Lakukan upload dan Cek jika proses upload berhasil
+            // Jika berhasil :
+            $return = array('result' => 'success', 'file' => $this->upload->data(), 'error' => '');
+            return $return;
+        }else{
+            // Jika gagal :
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
+    }
+
 }
 
 ?>
