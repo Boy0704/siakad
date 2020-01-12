@@ -48,7 +48,7 @@
         <th>KODE</th>
         <th>MATA KULIAH</th>
         <th>SKS</th>
-        <th>NILAI</th>
+        <!-- <th>NILAI</th> -->
         <th>MUTU</th>
         <th>GRADE</th>
     </tr>
@@ -64,7 +64,7 @@
                 <td align="center" width="60"><?php echo strtoupper($r->kode_makul) ?></td>
                 <td style="padding-left: 10px;"><?php echo strtoupper($r->nama_makul) ?></td>
                 <td align="center" width="40"><?php echo $r->sks ?></td>
-                <td align="center" width="40"><?php echo $r->nilai ?></td>
+                <!-- <td align="center" width="40"><?php echo $r->nilai ?></td> -->
                 <td align="center" width="40"><?php echo $r->mutu ?></td>
                 <td align="center" width="40"><?php echo $r->grade ?></td>
             </tr>
@@ -93,7 +93,7 @@
         <td style="padding-bottom: 60px;" align="center">Ketua Jurusan <br><?php echo strtoupper($profile['nama_prodi'])?></td>
     </tr>
     <tr>
-        
+           
         <td align="center"><u>ARIS BINTANIA, M.Ag</u> <br>NIDN. 2023077501</td>
         <td align="center"><u>Drs. H. RUNTONI, M.Pd</u> <br>NIDN. 2112126701</td>
     </tr>
