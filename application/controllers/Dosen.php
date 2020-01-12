@@ -54,6 +54,7 @@ class dosen extends MY_Controller{
         akses_admin();
         if(isset($_POST['submit']))
         {
+            // log_r($_POST);
             $nama           =   $this->input->post('nama');
             $nidn           =   $this->input->post('nidn');
             $nip            =   $this->input->post('nip');
@@ -76,7 +77,9 @@ class dosen extends MY_Controller{
                                         'status_kawin'=>$kawin,
                                         'alamat'=>$alamat,'hp'=>$hp,
                                         'email'=>$email,
-                                        'prodi_id'=>$prodi_id,);
+                                        'konsentrasi_id'=>$this->input->post('konsentrasi_id'),
+                                        'prodi_id'=>get_data('akademik_konsentrasi','konsentrasi_id',$this->input->post('konsentrasi_id'),'prodi_id'),
+                                    );
             $username       =   $this->input->post('username');
             $password       =   $this->input->post('password');
             $this->db->insert($this->tables,$data);

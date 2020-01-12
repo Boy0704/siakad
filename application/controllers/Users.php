@@ -269,7 +269,7 @@ class users extends MY_Controller{
                                         'email'=>$email,
                                         'prodi_id'=>$prodi_id);
             $this->Mcrud->update('app_dosen',$data, 'dosen_id',$id);
-            redirect($this->uri->segment(1));
+            redirect($this->uri->segment(1).'/'.$this->uri->segment(2));
         }
         else
         {

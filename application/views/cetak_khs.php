@@ -50,6 +50,7 @@
         <th>SKS</th>
         <!-- <th>NILAI</th> -->
         <th>MUTU</th>
+        <th>NM</th>
         <th>GRADE</th>
     </tr>
     <?php
@@ -66,6 +67,7 @@
                 <td align="center" width="40"><?php echo $r->sks ?></td>
                 <!-- <td align="center" width="40"><?php echo $r->nilai ?></td> -->
                 <td align="center" width="40"><?php echo $r->mutu ?></td>
+                <td align="center" width="40"><?php echo $r->mutu*$r->sks ?></td>
                 <td align="center" width="40"><?php echo $r->grade ?></td>
             </tr>
         <?php

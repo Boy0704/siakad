@@ -215,6 +215,7 @@ else
     <?php endif; ?>
     <a href="javascript:void(0);" onclick="khs_export()" class="btn btn-primary">Export KHS</a> -->
     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#example-modal2">Input KRS Manual</a>
+    <a id="btn_import" class="btn btn-primary">Import KHS EXCEL</a>
     
   </div>
 
@@ -362,3 +363,14 @@ else
 
 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    $('#btn_import').click(function(event) {
+    
+      window.open('<?php echo base_url() ?>manual/import_khs/', '_blank', 'location=yes,height=570,width=800,scrollbars=yes,status=yes');
+    });
+
+  });
+</script>

@@ -104,6 +104,72 @@ class Manual extends CI_Controller {
 		
 	}
 
+
+	public function import_khs()
+	{
+		if ($_FILES != NULL) {
+			$filename = $_FILES['file']['name'];
+			// log_r($_FILES);
+			$data = array(); // Buat variabel $data sebagai array
+		
+			if(isset($_POST['preview'])){ // Jika user menekan tombol Preview pada form
+				// lakukan upload file dengan memanggil function upload yang ada di SiswaModel.php
+				$upload = $this->Mcrud->upload_file($filename,'./excel','xlsx');
+				
+				if($upload['result'] == "success"){ // Jika proses upload sukses
+					// Load plugin PHPExcel nya
+					include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+					
+					$excelreader = new PHPExcel_Reader_Excel2007();
+					$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+					$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+					
+					// Masukan variabel $sheet ke dalam array data yang nantinya akan di kirim ke file form.php
+					// Variabel $sheet tersebut berisi data-data yang sudah diinput di dalam excel yang sudha di upload sebelumnya
+					$data['sheet'] = $sheet; 
+					$data['filename'] = $filename;
+				}else{ // Jika proses upload gagal
+					$data['upload_error'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
+				}
+			}
+			
+			$this->load->view('manual_import/import_khs', $data);
+
+
+		} else {
+			$this->load->view('manual_import/import_khs');
+		}
+		
+	}
+
+	public function aksi_import_khs()
+	{
+		$filename = $this->input->post('filename');
+		// log_r($filename);
+		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+					
+		$excelreader = new PHPExcel_Reader_Excel2007();
+		$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+		$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+		//skip untuk header
+		unset($sheet[1]);
+		$this->db->truncate('makul_matakuliah');
+		foreach ($sheet as $rw) {
+			$data = array(
+				'kode_makul' => $rw['A'],
+				'nama_makul' => $rw['B'],
+				'sks' => $rw['C'],
+				'semester' => $rw['D'],
+				'konsentrasi_id' => get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id'),
+				'kelompok_id' => $rw['F'],
+				'aktif' => 'y',
+				'jam' => $rw['C'],
+			);
+			$this->db->insert('makul_matakuliah', $data);
+		}
+		
+	}
+
 	
 
 
