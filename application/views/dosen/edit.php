@@ -61,7 +61,8 @@ $class="class='form-control' required";
     </tr>
    <tr>
       <td width="150">Prodi</td><td>
-          <?php echo editcombo('prodi_id', 'akademik_prodi', 'col-md-6', 'nama_prodi', 'prodi_id', '','',$r['prodi_id'],1)?>
+          <!-- <?php echo editcombo('prodi_id', 'akademik_prodi', 'col-md-6', 'nama_prodi', 'prodi_id', '','',$r['prodi_id'],1)?> -->
+          <?php echo buatcombo('konsentrasi_id', 'akademik_konsentrasi', 'col-md-6', 'nama_konsentrasi', 'konsentrasi_id', '', '',1)?> 
       </td>
     </tr>
 
