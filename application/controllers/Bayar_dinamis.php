@@ -26,6 +26,15 @@ class Bayar_dinamis extends MY_Controller{
         }
     }
 
+    public function cetak_pembayaran($value='')
+    {
+        if ($value == 'all') {
+            $this->load->view('bayar_dinamis/cetak_all');
+        } else {
+            $this->load->view('bayar_dinamis/cetak');
+        }
+    }
+
     public function simpan_pembayaran()
     {
         $this->db->insert('bayar_dinamis', $_POST);

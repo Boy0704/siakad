@@ -3,7 +3,7 @@
        <th rowspan="2" style="text-align: center; width: 10px;"><img src="<?php echo base_url('images/logo/logouit.png') ?>" style="width : 70px; height: 70px;" alt=""></th>
        <td style="text-align: center;font-size: 16px; font-weight: bold;">
          <div style="margin-left:-50px;margin-top:-10px;">
-           KEMENTERIAN AGAMA REPUBLIK INDONESIAN <br>
+           KEMENTERIAN AGAMA REPUBLIK INDONESIA <br>
            SEKOLAH TINGGI AGAMA ISLAM NEGERI <br>
            SULTAN ABDURRAHMAN KEPULAUAN RIAU
          </div>
