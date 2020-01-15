@@ -48,6 +48,7 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 				 ?>
 			</td>
 		</tr>
+	<?php } ?>
 	</table>
 
 
