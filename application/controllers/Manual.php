@@ -87,20 +87,44 @@ class Manual extends CI_Controller {
 		$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
 		//skip untuk header
 		unset($sheet[1]);
-		$this->db->truncate('makul_matakuliah');
+		// $this->db->truncate('makul_matakuliah');
+		$no1=0;
+		$no2=0;
 		foreach ($sheet as $rw) {
-			$data = array(
-				'kode_makul' => $rw['A'],
-				'nama_makul' => $rw['B'],
-				'sks' => $rw['C'],
-				'semester' => $rw['D'],
-				'konsentrasi_id' => get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id'),
-				'kelompok_id' => $rw['F'],
-				'aktif' => 'y',
-				'jam' => $rw['C'],
-			);
-			$this->db->insert('makul_matakuliah', $data);
+
+			$cek_mk = $this->db->get_where('makul_matakuliah', array('kode_makul'=>$rw['A'],'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id')));
+			if ($cek_mk->num_rows() == 0) {
+				$no1++;
+				$data_insert = array(
+					'kode_makul' => $rw['A'],
+					'nama_makul' => $rw['B'],
+					'sks' => $rw['C'],
+					'semester' => $rw['D'],
+					'konsentrasi_id' => get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id'),
+					'kelompok_id' => $rw['F'],
+					'aktif' => 'y',
+					'jam' => $rw['C'],
+				);
+				$this->db->insert('makul_matakuliah', $data_insert);
+			}else {
+				$no2++;
+				$data_update = array(
+					'nama_makul' => $rw['B'],
+					'sks' => $rw['C'],
+					'semester' => $rw['D'],
+					'kelompok_id' => $rw['F'],
+					'aktif' => 'y',
+					'jam' => $rw['C'],
+				);
+				$this->db->where('kode_makul', $rw['A']);
+				$this->db->where('konsentrasi_id', get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id'));
+				$this->db->update('makul_matakuliah', $data_update);
+			}
+
+			
 		}
+		echo $no1.'<br>';
+		echo $no2.'<br>';
 		
 	}
 

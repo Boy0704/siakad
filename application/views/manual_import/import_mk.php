@@ -43,28 +43,47 @@
 								<th>Semester</th>
 								<th>Kode Prodi</th>
 								<th>Kelompok MK</th>
+								<th> - </th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php 
+						$style = '';
 						$no= 1;
+						$kosong = 0;
 						// log_r($sheet);
 						//skip untuk header
 						unset($sheet[1]);
 						foreach ($sheet as $rw) {
+
+						$cek_mk = $this->db->get_where('makul_matakuliah', array('kode_makul'=>$rw['A'],'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id')));
+						if ($cek_mk->num_rows() == 0) {
+							$style = 'style="background-color: red;"';
+							$kosong++; 
+						}else {
+							$style = '';
+						}
 						 ?>
 						
 							<tr>
 								<td><?php echo $no; ?></td>
-								<td><?php echo $rw['A']; ?></td>
+								<td <?php echo $style; ?> ><?php echo $rw['A']; ?></td>
 								<td><?php echo $rw['B']; ?></td>
 								<td><?php echo $rw['C']; ?></td>
 								<td><?php echo $rw['D']; ?></td>
 								<td><?php echo $rw['E']; ?></td>
 								<td><?php echo $rw['F']; ?></td>
+								<td><?php 
+								// $d = $cek_mk->row();
+								echo get_data('akademik_konsentrasi','kode_prodi',$rw['E'],'konsentrasi_id');
+								 ?></td>
 							</tr>
 
 						<?php $no++; } ?>
+							<tr>
+								<td>Jumlah Kosong</td>
+								<td colspan="7"><?php echo $kosong ?></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
