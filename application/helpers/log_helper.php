@@ -36,7 +36,7 @@
             $hitung = (($thn_akademik_sub - $nim_sub)*2)+1;
             $semester = $hitung;
         } elseif ($nim_sub < $thn_akademik_sub && $thn_akademik_ak == 2) {
-            $hitung = (($thn_akademik_sub - $nim_sub)*2)+1;
+            $hitung = (($thn_akademik_sub - $nim_sub)*2)+2;
             $semester = $hitung;
         }
         // log_r($semester);
