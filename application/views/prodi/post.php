@@ -15,7 +15,14 @@ echo form_open_multipart($this->uri->segment(1).'/post');
     </tr>
     <tr>
     <td width="150">Ketua</td><td>
-        <?php echo inputan('text', 'ketua','col-sm-4','Ketua ..', 0, '','');?>
+        <?php //echo inputan('text', 'ketua','col-sm-4','Ketua ..', 0, '','');?>
+        <select name="ketua" class="form_control select2">
+            <?php 
+            foreach ($this->db->get('app_dosen')->result() as $rw) {
+             ?>
+            <option value="<?php echo $rw->nama_lengkap ?>"><?php echo $rw->nama_lengkap ?></option>
+            <?php } ?>
+        </select>
     </td>
     </tr>
     <tr>

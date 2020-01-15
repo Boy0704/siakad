@@ -16,7 +16,15 @@ echo "<input type='hidden' name='id' value='$r[prodi_id]'>";
     </tr>
     <tr>
     <td width="150">Ketua</td><td>
-        <?php echo inputan('text', 'ketua','col-sm-4','Ketua ..', 0, $r['ketua'],'');?>
+        <?php //echo inputan('text', 'ketua','col-sm-4','Ketua ..', 0, $r['ketua'],'');?>
+        <select name="ketua" class="form_control select2">
+            <option value="<?php echo $r['ketua'] ?>"><?php echo $r['ketua'] ?></option>
+            <?php 
+            foreach ($this->db->get('app_dosen')->result() as $rw) {
+             ?>
+            <option value="<?php echo $rw->nama_lengkap ?>"><?php echo $rw->nama_lengkap ?></option>
+            <?php } ?>
+        </select>
     </td>
     </tr>
     <tr>
