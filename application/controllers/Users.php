@@ -16,6 +16,46 @@ class users extends MY_Controller{
         }
     }
 
+    function edit()
+    {
+        if(isset($_POST['submit']))
+        {
+            $username  =   $this->input->post('username');
+            $username_lama  =   $this->input->post('username_lama');
+            $password  =   $this->input->post('password');
+            $passhash  =   hash_string($password);
+            $id     = $this->input->post('id');
+            $data   =   array('username'=>$username,'password'=>$passhash);
+            
+            if($username == $username_lama){
+                $this->Mcrud->update($this->tables,$data, $this->pk,$id);
+                redirect($this->uri->segment(1));
+            } else {
+                $cekusername = $this->db->get_where('app_users', array('username'=>$username));
+                if($cekusername->num_rows()>0){
+                    ?>
+                    <script type="text/javascript">
+                        alert('username sudah ada');
+                        window.location="<?php echo base_url('users') ?>";
+                    </script>
+                    <?php
+                } else {
+                    $this->Mcrud->update($this->tables,$data, $this->pk,$id);
+                    redirect($this->uri->segment(1));
+                }
+            }
+            
+            
+        }
+        else
+        {
+            $data['title']=  $this->title;
+            $id          =  $this->uri->segment(3);
+            $data['r']   =  $this->Mcrud->getByID($this->tables,  $this->pk,$id)->row_array();
+            $this->template->load('template', $this->folder.'/edit',$data);
+        }
+    }
+
     function edit_mhs()
     {
         if(isset($_POST['submit']))
