@@ -182,6 +182,42 @@ class cetak extends MY_Controller
       $this->load->view('cetak_transkip',$data);
     }
 
+
+    function cetak_absen_kosong($jadwal_id)
+    {
+        $thn      =  get_tahun_ajaran_aktif('tahun_akademik_id');
+        $d        =  $this->db->query("SELECT 
+                      ad.nama_lengkap,
+                      mm.nama_makul,
+                      ad.konsentrasi_id,
+                      mm.kode_makul,
+                      mm.sks,
+                      mm.semester
+                    FROM app_dosen as ad,makul_matakuliah as mm,akademik_jadwal_kuliah as jk
+                    WHERE jk.makul_id=mm.makul_id and jk.dosen_id=ad.dosen_id and jk.jadwal_id=$jadwal_id");
+        // log_r($this->db->last_query());
+        $sql="  SELECT sm.nim,sm.nama,kh.mutu,kh.nilai,kh.khs_id,kh.tugas,kh.kehadiran,kh.grade
+                FROM akademik_krs as ak,student_mahasiswa as sm,akademik_khs as kh,akademik_jadwal_kuliah as jk
+                WHERE kh.krs_id=ak.krs_id and sm.nim=ak.nim and ak.jadwal_id='$jadwal_id' and jk.jadwal_id=ak.jadwal_id and jk.tahun_akademik_id='$thn' and sm.semester_aktif!=0 GROUP BY sm.nim ORDER BY sm.nama";
+        $this->load->view('cetak_absen_kosong', array('d'=>$d,'sql'=>$sql));
+    }
+
+    function cetak_absen_dosen($jadwal_id)
+    {
+        $thn      =  get_tahun_ajaran_aktif('tahun_akademik_id');
+        $d        =  $this->db->query("SELECT 
+                      ad.nama_lengkap,
+                      mm.nama_makul,
+                      ad.konsentrasi_id,
+                      ad.nidn,
+                      mm.kode_makul,
+                      mm.sks,
+                      mm.semester
+                    FROM app_dosen as ad,makul_matakuliah as mm,akademik_jadwal_kuliah as jk
+                    WHERE jk.makul_id=mm.makul_id and jk.dosen_id=ad.dosen_id and jk.jadwal_id=$jadwal_id");
+        $this->load->view('cetak_hadir_dosen', array('d'=>$d));
+    }
+
     // cetak kartu rencana studi
     function cetakkrs()
     {
