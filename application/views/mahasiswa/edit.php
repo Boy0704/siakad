@@ -34,7 +34,7 @@ else
 
 $disable = '';
 if ($this->session->userdata('level') == 4) {
-    $disable = '';
+    $disable = 'readonly';
 }
 
 ?>
@@ -45,7 +45,7 @@ if ($this->session->userdata('level') == 4) {
         <div class="col-md-6 row">
         <?php echo form_error('nim','<div class="text-danger">','</div>'); ?>
       </div>
-         <?php echo inputan('text', 'nama','col-sm-8','Nama ..', 1, $r['nama'],'',$disable);?></td>
+         <?php echo inputan('text', 'nama','col-sm-8','Nama ..', 1, $r['nama'],'','');?></td>
 
         <td width="150">Nama Ayah, Ibu</td><td>
             <?php echo inputan('text', 'nama_ayah','col-sm-6','Nama Ayah ..', 0, $r['nama_ayah'],'');?>

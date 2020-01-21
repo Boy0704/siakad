@@ -532,7 +532,7 @@ class mahasiswa extends MY_Controller{
         }
     }
 
-    function edit()
+    function edit_mhs()
     {
         akses_admin();
         if(isset($_POST['submit']))
@@ -548,6 +548,8 @@ class mahasiswa extends MY_Controller{
             else{
                 $callback  = "";
             }
+
+            // log_r($_POST);
 
             $this->form_validation->set_rules('nim', 'Nim Mahasiswa', 'required'.$callback);
             $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -734,7 +736,7 @@ class mahasiswa extends MY_Controller{
                     <td class='text-center'>
                       <div class="btn-group">
                          <a href="<?php echo base_url().'cetak/kartu_mhs/'.$r->mahasiswa_id;?>" data-toggle="tooltip" data-placement='bottom' title="Cetak Kartu Mahasiswa" class="btn btn-sm btn-info" target="_blank"><span class="fa fa-credit-card"></span></a>
-                         <a href="<?php echo base_url().''.$this->uri->segment(1).'/edit/'.$r->mahasiswa_id;?>" data-toggle="tooltip" data-placement='bottom' title="Edit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                         <a href="<?php echo base_url().''.$this->uri->segment(1).'/edit_mhs/'.$r->mahasiswa_id;?>" data-toggle="tooltip" data-placement='bottom' title="Edit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
                          <a href='javascript:void(0)' onclick='hapus(<?php echo $r->mahasiswa_id  ?>)' data-toggle='tooltip' data-placement='bottom' title='Delete' class='btn btn-sm btn-danger'><span class='glyphicon glyphicon-trash'></span></a>
                       </div>
                     </td>
