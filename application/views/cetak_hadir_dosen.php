@@ -1,5 +1,5 @@
-<!-- <body onload="window.print()"> -->
-<body >
+<body onload="window.print()">
+<!-- <body > -->
 <!-- <a target="_blank" href="cetak/cetak_absen_kosong/" class="btn btn-primary">Cetak Absen</a> -->
 </body>
 <style type="text/css">
