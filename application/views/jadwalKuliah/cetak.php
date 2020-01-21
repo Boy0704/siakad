@@ -77,7 +77,7 @@
 <table style="font-weight: bold; width: 100%; text-align: center;">
     <tr>
         <td width="500">Mengetahui<br>Pembantu Direktur I<br>Bidang Akademik</td>
-        <td>Kota Jambi, <?php echo $this->M_users->tgl_id(date('d-m-Y')); ?><br>Ka. Jurusan<br>Sekretaris Jurusan</td>
+        <td>Bintan, <?php echo $this->M_users->tgl_id(date('d-m-Y')); ?><br>Ka. Jurusan<br>Sekretaris Jurusan</td>
     </tr>
     <tr>
         <td height="100">

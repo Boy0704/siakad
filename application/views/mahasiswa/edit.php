@@ -34,7 +34,7 @@ else
 
 $disable = '';
 if ($this->session->userdata('level') == 4) {
-    $disable = 'readonly';
+    $disable = '';
 }
 
 ?>
