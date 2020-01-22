@@ -82,9 +82,10 @@ class dosen extends MY_Controller{
                                     );
             $username       =   $this->input->post('username');
             $password       =   $this->input->post('password');
+            $konsentrasi_id       =   $this->input->post('konsentrasi_id');
             $this->db->insert($this->tables,$data);
             $id             = getField('app_dosen', 'dosen_id', 'nama_lengkap', $nama);
-            $account        = array('username'=>$username,'password'=>  hash_string($password),'keterangan'=>$id,'level'=>3);
+            $account        = array('username'=>$username,'password'=>  hash_string($password),'keterangan'=>$id,'level'=>3,'konsentrasi_id'=>$konsentrasi_id);
             $this->db->insert('app_users',$account);
             redirect($this->uri->segment(1));
         }
