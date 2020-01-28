@@ -349,6 +349,8 @@ echo form_open('jadwalkuliah/autosetup');
                                     <option value="4">Semester 4</option>
                                     <option value="5">Semester 5</option>
                                     <option value="6">Semester 6</option>
+                                    <option value="7">Semester 7</option>
+                                    <option value="8">Semester 8</option>
                                 </select>
                             </td>
                         </tr>
