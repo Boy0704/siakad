@@ -487,7 +487,8 @@ class jadwalkuliah extends MY_Controller
 
         function get_matkul_manual(){
             $id=$this->input->post('id');
-            $data=$this->db->get_where('makul_matakuliah', array('semester'=>$id))->result();
+            $konsentrasi_id=$this->input->post('konsentrasi_id');
+            $data=$this->db->get_where('makul_matakuliah', array('semester'=>$id,'konsentrasi_id'=>$konsentrasi_id))->result();
             foreach ($data as $row) {
                 echo "<option value='$row->makul_id'> $row->makul_id $row->nama_makul </option>";
             }

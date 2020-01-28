@@ -64,11 +64,12 @@ $(document).ready(function(){
 <script>
     $(document).ready(function(){
         $("#semester_matkul").change(function(){
+            var id_kons = $("#konsentrasi_manual").val();
             var id=$(this).val();
             $.ajax({
                 url : "<?php echo base_url();?>index.php/jadwalkuliah/get_matkul_manual",
                 method : "POST",
-                data : {id: id},
+                data : {id: id, konsentrasi_id: id_kons},
                 success: function(data){
                     $('#matkul_manual').html(data);
                     //alert(data);
