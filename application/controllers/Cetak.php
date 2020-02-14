@@ -189,7 +189,7 @@ class cetak extends MY_Controller
         $d        =  $this->db->query("SELECT 
                       ad.nama_lengkap,
                       mm.nama_makul,
-                      ad.konsentrasi_id,
+                      jk.konsentrasi_id,
                       mm.kode_makul,
                       mm.sks,
                       mm.semester
