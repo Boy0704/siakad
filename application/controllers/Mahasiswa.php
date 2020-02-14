@@ -466,6 +466,8 @@ class mahasiswa extends MY_Controller{
 
                 $dosen_pa           =   $this->input->post('dosen_pa');
 
+                $keterangan           =   $this->input->post('keterangan_mhs');
+
                 $instansi           =   array(  'instansi_nama'=>$instansi_nama,
                                                 'instansi_telpon'=>$instansi_telpon,
                                                 'instansi_alamat'=>$instansi_alamat,
@@ -485,7 +487,9 @@ class mahasiswa extends MY_Controller{
                                                 'konsentrasi_id'=>$konsentrasi,
                                                 'alamat'=>$alamat,
                                                 'angkatan_id'=> $angkatan,
-                                                'dosen_pa'=> $dosen_pa);
+                                                'dosen_pa'=> $dosen_pa,
+                                                'keterangan'=> $keterangan
+                                            );
 
                 $sekolah            =   array(  'sekolah_nama'=>$sekolah_nama,
                                                 'sekolah_telpon'=>$sekolah_telpon,
@@ -652,7 +656,12 @@ class mahasiswa extends MY_Controller{
                 $data               =array_merge($orangtua,$kampus,$sekolah,$pribadi,$instansi,$institusi);
                 $this->Mcrud->update($this->tables,$data, $this->pk,$id);
                 $this->session->set_flashdata('pesan', "<div class='alert alert-success'>Data $nama Berhasil Diedit</div>");
-                redirect($this->uri->segment(1));
+                if ($this->session->userdata('level') != 1) {
+                    redirect($this->uri->segment(1));
+                } else {
+                    redirect('mahasiswa/edit_mhs/'.$id,'refresh');
+                }
+                
             }
             else
             {
@@ -705,13 +714,21 @@ class mahasiswa extends MY_Controller{
         }
         $data           =   $this->db->get_where('student_mahasiswa',array('konsentrasi_id'=>$konsentrasi,'angkatan_id'=>$tahun_angkatan))->result();
         // log_r($this->db->last_query());
-        echo "<tr class='alert-info'><th width='5'>No</th><th width='70'>Nim</th><th>Nama</th>
-            <th>Status</th>";
+        ?>
+        <table id="datatable" class="table table-striped table-bordered table-hover">
+          <thead>
+            <?php 
+            echo "<tr class='alert-info'><th width='5'>No</th><th width='70'>Nim</th><th>Nama</th>
+            <th>Status</th><th>Keterangan</th>";
             if ($level=='1' or $level=='2') {
               echo "
               <th width='150'>Operasi</th></tr>";
             }
-        if (!empty($data))
+             ?>
+          </thead>
+          <tbody>
+              <?php 
+              if (!empty($data))
         {
             $no=1;
             foreach ($data as $r)
@@ -731,6 +748,7 @@ class mahasiswa extends MY_Controller{
                     <?php echo "
                     
                     <td>".  ucwords($r->status_mhs)."</td>";
+                    echo " <td>".  ucwords($r->keterangan)."</td>";
                     ?>
                     <?php if ($level== 1 OR $level==2): ?>
                     <td class='text-center'>
@@ -750,6 +768,28 @@ class mahasiswa extends MY_Controller{
         else{
             echo "<td colspan='6' rowspan='' align='center'>Data Tidak Ditemukan</td>";
         }
+               ?>
+          </tbody>
+        </table>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable({
+                  scrollY: 360,
+                  scrollCollapse: true,
+                  scroller: true,
+                  responsive: true,
+                        columnDefs: [
+                            { responsivePriority: 1, targets: 0 },
+                            { responsivePriority: 2, targets: -1 }
+                        ]
+                  
+
+                });
+             });
+        </script>
+        <?php
+        
+        
     }
 
 }

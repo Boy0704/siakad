@@ -24,6 +24,7 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 			<td>Semester</td>
 			<td>UKT/Semester</td>
 			<td>Keterangan</td>
+			<td>Status Mahasiswa</td>
 		</tr>
 		<?php 
 		$no = 1;
@@ -47,6 +48,7 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 				}
 				 ?>
 			</td>
+			<td><?php echo $rw->keterangan; ?></td>
 		</tr>
 	<?php } ?>
 	</table>

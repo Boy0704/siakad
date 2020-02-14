@@ -171,10 +171,9 @@ $class      ="class='form-control' id='status'"; ?>
 </div>
 
 <div class="col-sm-12">
-    <table class="table table-bordered dt-responsive nowrap" id="mahasiswa">
-      <thead>
-      </thead>
-    </table>
+    <div id="mahasiswa">
+      
+    </div>
   <!-- <div id="datatable"></div> -->
 </div>
 <?php else: ?>

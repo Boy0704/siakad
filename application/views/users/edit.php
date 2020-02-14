@@ -41,7 +41,7 @@ $class      ="class='form-control' id='level'";
     <tr>
         <tr>
     <td width="150">Password</td><td>
-        <?php echo inputan('password', 'password','col-sm-3','Password ..', 1, '','');?>
+        <div class='col-sm-3'><input type='password' name='password' placeholder='Password ..' class='form-control' value=''  ></div>
     </td>
     </tr>
     

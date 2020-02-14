@@ -66,12 +66,12 @@ $class="class='form-control' required";
       </td>
     </tr>
 
-   <tr>
+   <!-- <tr>
       <td width="150">Username & Password</td><td>
           <?php echo inputan('text', 'username','col-sm-4','Username ..', 1, '','');?>
           <?php echo inputan('password', 'password','col-sm-3','Password ..', 1, '','');?>
       </td>
-    </tr>
+    </tr> -->
 
          <td></td><td colspan="2">
             <input type="submit" name="submit" value="Simpan" class="btn btn-danger  btn-sm">

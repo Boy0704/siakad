@@ -104,6 +104,23 @@ else
                                <?php echo textarea('alamat', '', 'col-sm-02', 2, '');?>
                             </div>
                           </td></tr>
+                          <tr><td>Keterangan Mahasiswa</td><td>
+                            <div class="col-sm-12">
+                               <div class='col-sm-02'>
+                                 <select name="keterangan_mhs" class="form-control" required="">
+                                   <option value="">-- Pilih -- </option>
+                                   <option value="mahasiswa aktif">mahasiswa aktif</option>
+                                   <option value="cuti resmi">cuti resmi</option>
+                                   <option value="cuti tanpa keterangan">cuti tanpa keterangan</option>
+                                   <option value="mahasiswa baru">mahasiswa baru</option>
+                                   <option value="meninggal dunia">meninggal dunia</option>
+                                   <option value="drop out">drop out</option>
+                                   <option value="mengundurkan diri">mengundurkan diri</option>
+                                   <option value="mutasi keluar perguruan tinggi">mutasi keluar perguruan tinggi</option>
+                                 </select>
+                               </div>                            
+                             </div>
+                          </td></tr>
                       </table>
 
                   </div>

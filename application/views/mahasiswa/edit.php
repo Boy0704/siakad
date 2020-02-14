@@ -170,12 +170,15 @@ if ($this->session->userdata('level') == 4) {
       <th colspan="2">DOSEN PEMBIMBING AKADEMIK (PA)</th>
       <th colspan="2">STATUS MAHASISWA</th>
     </tr>
-    <tr style="display: none;">
+    <?php 
+    if ($this->session->userdata('level') == 1) {
+        ?>
+        <tr>
       <td colspan="2">
         <?php echo editcombo('dosen_pa','app_dosen','col-sm-12','nama_lengkap','dosen_id','','',$r['dosen_pa']);?>
       </td>
       <?php
-      $status = array('Aktif'=>'AKTIF','lulus'=>'LULUS');
+      $status = array('Aktif'=>'AKTIF','lulus'=>'LULUS', 'non-aktif'=>'NON-AKTIF');
       $class  = "class='form-control' id='status'"; ?>
       <td colspan="2">
         <?php echo form_dropdown('status_mhs',$status,$r['status_mhs'],$class);?>
@@ -188,6 +191,10 @@ if ($this->session->userdata('level') == 4) {
               <?php echo anchor(base_url(),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
             </div>
         </td></tr>
+        <?php
+    }
+     ?>
+    
 
 </table>
 </form>

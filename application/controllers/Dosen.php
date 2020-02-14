@@ -80,12 +80,12 @@ class dosen extends MY_Controller{
                                         'konsentrasi_id'=>$this->input->post('konsentrasi_id'),
                                         'prodi_id'=>get_data('akademik_konsentrasi','konsentrasi_id',$this->input->post('konsentrasi_id'),'prodi_id'),
                                     );
-            $username       =   $this->input->post('username');
-            $password       =   $this->input->post('password');
+            // $username       =   $this->input->post('username');
+            // $password       =   $this->input->post('password');
             $konsentrasi_id       =   $this->input->post('konsentrasi_id');
             $this->db->insert($this->tables,$data);
             $id             = getField('app_dosen', 'dosen_id', 'nama_lengkap', $nama);
-            $account        = array('username'=>$username,'password'=>  hash_string($password),'keterangan'=>$id,'level'=>3,'konsentrasi_id'=>$konsentrasi_id);
+            $account        = array('username'=>$nidn,'password'=>  hash_string("12345"),'keterangan'=>$id,'level'=>3,'konsentrasi_id'=>$konsentrasi_id);
             $this->db->insert('app_users',$account);
             redirect($this->uri->segment(1));
         }
@@ -126,6 +126,9 @@ class dosen extends MY_Controller{
                                         'email'=>$email,
                                         'prodi_id'=>$prodi_id);
             $this->Mcrud->update($this->tables,$data, $this->pk,$id);
+            // update nidn di akun users
+            $this->db->where('keterangan', $id);
+            $this->db->update('app_users', array('nidn'=>$nidn));
             redirect($this->uri->segment(1));
         }
         else
@@ -142,7 +145,7 @@ class dosen extends MY_Controller{
         akses_admin();
         $id     =  $_GET['id'];
         $this->Mcrud->delete($this->tables,  $this->pk,  $id);
-        $this->Mcrud->delete('app_users',  'keterangan_id',  $id);
+        $this->Mcrud->delete('app_users',  'keterangan',  $id);
 
     }
 
