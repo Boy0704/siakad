@@ -36,13 +36,14 @@ class registrasi extends MY_Controller{
         $tahun_angkatan =   $_GET['tahun_angkatan'];
         $data           =   $this->db->get_where('student_mahasiswa',array('konsentrasi_id'=>$konsentrasi,'angkatan_id'=>$tahun_angkatan))->result();
         echo "
-        <table class='table table-bordered'>
+        <table id='datatable' class='table table-striped table-bordered table-hover'>
+        <thead>
         <tr class='alert-info'><th width='5'>No</th><th width='70'>NIM</th><th>NAMA</th>
             <th width=100>Tahun AKD</th>
             <th>Status</th>
             <th>Tanggal Registrasi</th>
             <th>Pembayaran</th>
-            <th></th></tr>";
+            <th></th></tr> </thead>";
         if (!empty($data)) 
         {
             $no=1;
@@ -58,6 +59,7 @@ class registrasi extends MY_Controller{
                 $btnaktf="<button class='btn btn-primary btn-sm' onclick='registrasi($r->mahasiswa_id)'>Belum Registrasi</button>";
                 $btnnon=anchor('registrasi/delete/'.$last_id['registrasi_id'],'Batalkan registrasi',array('class'=>'btn btn-success btn-sm'));
                 $btn=$tanggal==''?$btnaktf:$btnnon;
+                echo "<tbody>";
                 echo "<tr id='hide$r->mahasiswa_id'>
                     <td align='center'>$no</td>
                     <td>".  strtoupper($r->nim)."</td>
@@ -75,14 +77,36 @@ class registrasi extends MY_Controller{
                     <td align='center'><a href=\"keuangan/pembayaran/".$r->nim."\" class=\"btn btn-info\">Bayar</a></td>
                     <td align='center'>$btn</td>
                     </tr>";
+                    echo "</tbody>";
+
                 $no++;
                 // 
             }
         }
         else{
+            echo "<tbody>";
             echo "<td colspan='7' rowspan='' align='center'>Data Tidak Ditemukan</td>";
+            echo "</tbody>";
         }
         echo "</table>";
+        ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable({
+                  scrollY: 360,
+                  scrollCollapse: true,
+                  scroller: true,
+                  responsive: true,
+                        columnDefs: [
+                            { responsivePriority: 1, targets: 0 },
+                            { responsivePriority: 2, targets: -1 }
+                        ]
+                  
+
+                });
+             });
+        </script>
+        <?php
     }
     
     function pregistrasi()
