@@ -117,6 +117,9 @@ if ($this->session->userdata('level') == 4) {
         <?php echo inputan('text', 'no_hp_ortu','col-sm-7','No Hp Orang Tua ..', 0, $r['no_hp_ortu'],'');?>
     </td>
     </tr>
+    <?php 
+    if ($this->session->userdata('level') == 1) {
+        ?>
     <tr>
         <td>Keterangan Mahasiswa</td><td>
         <div class="col-sm-12">
@@ -138,6 +141,9 @@ if ($this->session->userdata('level') == 4) {
       <td></td>
       <td></td>
     </tr>
+    <?php 
+    }
+        ?>
     <tr class="alert-info"><th colspan="2">Data Sekolah Asal</th><th colspan="2">Data Perguruan Tinggi Asal ( Khusus Mahasiswa Pindahan)</th></tr>
     <tr>
         <td>Nama Sekolah, Telpon</td>
@@ -206,6 +212,9 @@ if ($this->session->userdata('level') == 4) {
         <?php echo form_dropdown('status_mhs',$status,$r['status_mhs'],$class);?>
       </td>
     </tr>
+    <?php
+    }
+     ?>
     <tr>
          <td></td><td colspan="4">
             <div style="float:right;">
@@ -213,9 +222,7 @@ if ($this->session->userdata('level') == 4) {
               <?php echo anchor(base_url(),'kembali',array('class'=>'btn btn-danger btn-sm'));?>
             </div>
         </td></tr>
-        <?php
-    }
-     ?>
+        
     
 
 </table>

@@ -63,10 +63,10 @@ if ($level == 1 OR $level ==2) {
                     <a href="<?php echo base_url().''.$this->uri->segment(1).'/edit/'.$r->id_users;?>" data-toggle="tooltip" title="Edit" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit" class="disabled"></i></a>
                       
                     <?php 
-                    if ($r->level == 1) {
+                    if ($r->level == 1 && $r->level == 3) {
                       echo ""; 
                     }
-                    if($r->level != 1){ ?>
+                    if($r->level != 1 && $r->level != 3 ){ ?>
                       <a href="javascript:void(0)" onclick="hapus(<?php cetak($r->id_users) ?>)" data-toggle="tooltip" title="Delete" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
         
                     <?php
