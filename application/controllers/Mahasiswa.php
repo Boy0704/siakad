@@ -606,6 +606,7 @@ class mahasiswa extends MY_Controller{
 
                 $dosen_pa           =   $this->input->post('dosen_pa');
                 $status_mhs         =   $this->input->post('status_mhs');
+                $keterangan         =   $this->input->post('keterangan_mhs');
 
                 if ($status_mhs=='') {
                   $status_mhs = Null;
@@ -629,7 +630,8 @@ class mahasiswa extends MY_Controller{
                                                 'konsentrasi_id'=>$konsentrasi,
                                                 'alamat'=>$alamat,
                                                 'dosen_pa'=>$dosen_pa,
-                                                'status_mhs'=>$status_mhs
+                                                'status_mhs'=>$status_mhs,
+                                                'keterangan'=>$keterangan
                                                 );
 
                 $sekolah            =   array(  'sekolah_nama'=>$sekolah_nama,

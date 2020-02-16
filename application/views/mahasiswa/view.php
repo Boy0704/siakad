@@ -149,7 +149,7 @@ else
 
 <div class="col-sm-12">
 <?php
-$status=array(''=>'AKTIF','lulus'=>'LULUS');
+$status=array(''=>'AKTIF','lulus'=>'LULUS','non-aktif'=>'NON-AKTIF');
 $class      ="class='form-control' id='status'"; ?>
     <table class="table table-bordered">
     <tr>

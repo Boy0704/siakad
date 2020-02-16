@@ -112,9 +112,31 @@ if ($this->session->userdata('level') == 4) {
     <td width="050">Alamat</td><td>
         <?php echo textarea('alamat', '', 'col-sm-02', 2, $r['alamat']);?>
     </td>
+
     <td>No Hp Ortu</td><td>
         <?php echo inputan('text', 'no_hp_ortu','col-sm-7','No Hp Orang Tua ..', 0, $r['no_hp_ortu'],'');?>
     </td>
+    </tr>
+    <tr>
+        <td>Keterangan Mahasiswa</td><td>
+        <div class="col-sm-12">
+           <div class='col-sm-02'>
+             <select name="keterangan_mhs" class="form-control" required="">
+               <option value="<?php echo $r['keterangan'] ?>"><?php echo $r['keterangan'] ?></option>
+               <option value="mahasiswa aktif">mahasiswa aktif</option>
+               <option value="cuti resmi">cuti resmi</option>
+               <option value="cuti tanpa keterangan">cuti tanpa keterangan</option>
+               <option value="mahasiswa baru">mahasiswa baru</option>
+               <option value="meninggal dunia">meninggal dunia</option>
+               <option value="drop out">drop out</option>
+               <option value="mengundurkan diri">mengundurkan diri</option>
+               <option value="mutasi keluar perguruan tinggi">mutasi keluar perguruan tinggi</option>
+             </select>
+           </div>                            
+         </div>
+      </td>
+      <td></td>
+      <td></td>
     </tr>
     <tr class="alert-info"><th colspan="2">Data Sekolah Asal</th><th colspan="2">Data Perguruan Tinggi Asal ( Khusus Mahasiswa Pindahan)</th></tr>
     <tr>
