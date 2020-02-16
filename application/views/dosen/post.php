@@ -3,7 +3,7 @@
 echo form_open_multipart($this->uri->segment(1).'/post');
 $gender=array(''=>'- Pilih -',1=>'Laki Laki',2=>'Perempuan');
 $kawin=array(''=>'- Pilih -',1=>'Kawin',2=>'Belum Kawin');
-$class="class='form-control' required";
+$class="class='form-control' ";
 ?>
  <div class="panel panel-default">
   <div class="panel-heading">
@@ -41,7 +41,7 @@ $class="class='form-control' required";
 
         <tr>
     <td width="150">Agama ,Status Kawin</td><td>
-        <?php echo buatcombo('agama','app_agama','col-sm-2','keterangan','agama_id','','',1); ?>
+        <?php echo buatcombo('agama','app_agama','col-sm-2','keterangan','agama_id','','',0); ?>
          <div class="col-sm-2">
                         <?php echo form_dropdown('kawin',$kawin,'',$class)?>
                  </div>

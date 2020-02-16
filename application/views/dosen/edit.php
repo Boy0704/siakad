@@ -1,10 +1,14 @@
 
 <?php
-echo form_open(base_url().'users/edit_dosen');
+if ($this->session->userdata('level') == '1') {
+  echo form_open(base_url().'dosen/edit');
+} else {
+  echo form_open(base_url().'users/edit_dosen');
+}
 echo "<input type='hidden' name='id' value='$r[dosen_id]'>";
 $gender=array(''=>'- Pilih -',1=>'Laki Laki',2=>'Perempuan');
 $kawin=array(''=>'- Pilih -',1=>'Kawin',2=>'Belum Kawin');
-$class="class='form-control' required";
+$class="class='form-control' ";
 ?>
  <div class="panel panel-default">
   <div class="panel-heading">
@@ -26,8 +30,8 @@ $class="class='form-control' required";
     </tr>
      <tr>
     <td width="150">Tempat ,Tanggal Lahir</td><td>
-        <?php echo inputan('text', 'tempat_lahir','col-sm-4','Tempat Lahir ..', 1, $r['tempat_lahir'],'');?>
-        <?php echo inputan('text', 'tanggal_lahir','col-sm-2','Tanggal Lahir ..', 1, $r['tanggal_lahir'],array('id'=>'datepicker'));?>
+        <?php echo inputan('text', 'tempat_lahir','col-sm-4','Tempat Lahir ..', 0, $r['tempat_lahir'],'');?>
+        <?php echo inputan('text', 'tanggal_lahir','col-sm-2','Tanggal Lahir ..', 0, $r['tanggal_lahir'],array('id'=>'datepicker'));?>
     </td>
     </tr>
 
@@ -41,7 +45,7 @@ $class="class='form-control' required";
 
         <tr>
     <td width="150">Agama ,Status Kawin</td><td>
-        <?php echo editcombo('agama','app_agama','col-sm-2','keterangan','agama_id','','',$r['agama_id'],1); ?>
+        <?php echo editcombo('agama','app_agama','col-sm-2','keterangan','agama_id','','',$r['agama_id'],0); ?>
          <div class="col-sm-2">
                         <?php echo form_dropdown('kawin',$kawin,$r['status_kawin'],$class)?>
                  </div>
@@ -55,14 +59,22 @@ $class="class='form-control' required";
     </tr>
         <tr>
     <td width="150">No Hp ,Email</td><td>
-        <?php echo inputan('text', 'hp','col-sm-2','No HP ..', 1, $r['hp'],'');?>
-         <?php echo inputan('email', 'email','col-sm-4','Email ..', 1, $r['email'],'');?>
+        <?php echo inputan('text', 'hp','col-sm-2','No HP ..', 0, $r['hp'],'');?>
+         <?php echo inputan('email', 'email','col-sm-4','Email ..', 0, $r['email'],'');?>
     </td>
     </tr>
    <tr>
       <td width="150">Prodi</td><td>
           <!-- <?php echo editcombo('prodi_id', 'akademik_prodi', 'col-md-6', 'nama_prodi', 'prodi_id', '','',$r['prodi_id'],1)?> -->
-          <?php echo buatcombo('konsentrasi_id', 'akademik_konsentrasi', 'col-md-6', 'nama_konsentrasi', 'konsentrasi_id', '', '',1)?> 
+          <?php //echo buatcombo('konsentrasi_id', 'akademik_konsentrasi', 'col-md-6', 'nama_konsentrasi', 'konsentrasi_id', '', '',1)?> 
+          <select name="konsentrasi_id" class="form-control">
+            <option value="<?php echo $r['konsentrasi_id'] ?>"><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi') ?></option>
+            <?php 
+            foreach ($this->db->get('akademik_konsentrasi')->result() as $rw) {
+             ?>
+             <option value="<?php echo $rw->konsentrasi_id ?>"><?php echo $rw->nama_konsentrasi ?></option>
+           <?php } ?>
+          </select>
       </td>
     </tr>
 

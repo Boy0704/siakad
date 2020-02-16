@@ -98,6 +98,7 @@ class dosen extends MY_Controller{
     }
     function edit()
     {
+        // log_r($_POST);
         akses_admin();
         if(isset($_POST['submit']))
         {
@@ -128,7 +129,8 @@ class dosen extends MY_Controller{
             $this->Mcrud->update($this->tables,$data, $this->pk,$id);
             // update nidn di akun users
             $this->db->where('keterangan', $id);
-            $this->db->update('app_users', array('nidn'=>$nidn));
+            $this->db->where('level', '3');
+            $this->db->update('app_users', array('username'=>$nidn));
             redirect($this->uri->segment(1));
         }
         else
