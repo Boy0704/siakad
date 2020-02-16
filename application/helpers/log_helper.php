@@ -65,6 +65,14 @@
         // exit;
     }
 
+    function cek_sisa_ruang($jadwal_id,$ruangan_id)
+    {
+        $CI =& get_instance();
+        $kapasitas = get_data('app_ruangan','ruangan_id',$ruangan_id,'kapasitas');
+        $data = $CI->db->query("SELECT ($kapasitas - sum(ruangan_id)) as sisa from v_krs where jadwal_id='$jadwal_id' and ruangan_id='$ruangan_id'")->row()->sisa;
+        return $data;
+    }
+
     function alert_biasa($pesan,$type)
     {
         return 'swal("'.$pesan.'", "You clicked the button!", "'.$type.'");';
