@@ -39,6 +39,99 @@ class Manual extends CI_Controller {
 		}
 	}
 
+	public function import_dosen($status)
+	{
+		$filename = 'upload dosen.xlsx';
+		if ($status == '0') {
+			// Load plugin PHPExcel nya
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+		} else {
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+			//skip untuk header
+			unset($sheet[1]);
+			// $this->db->truncate('makul_matakuliah');
+			$no1=0;
+			$no2=0;
+			foreach ($sheet as $rw) {
+				$data_insert = array(
+					'nidn'=>$rw['A'],
+					'nama_lengkap'=>$rw['B'],
+					'prodi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['C'],'prodi_id'),
+					'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['C'],'konsentrasi_id')
+				);
+				$this->db->insert('app_dosen', $data_insert);
+				$id_dosen = $this->db->insert_id();
+
+				$data_users = array(
+					'username'=>$rw['A'],
+					'password'=> hash_string("123456"),
+					'keterangan'=>$id_dosen,
+					'level'=>3,
+					'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['C'],'konsentrasi_id')
+				);
+				$this->db->insert('app_users', $data_users);
+
+			}
+			echo "BERHASIL UPLOAD DATA DOSEN";
+		}
+	}
+
+	public function import_mhs($status)
+	{
+		$filename = 'upload_mhs.xlsx';
+		if ($status == '0') {
+			// Load plugin PHPExcel nya
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+		} else {
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+			//skip untuk header
+			unset($sheet[1]);
+			// $this->db->truncate('makul_matakuliah');
+			$no1=0;
+			$no2=0;
+			foreach ($sheet as $rw) {
+				$data_insert = array(
+					'nim'=>$rw['A'],
+					'nama'=>$rw['B'],
+					'status_mhs'=>$rw['C'],
+					'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['D'],'konsentrasi_id'),
+					'angkatan_id'=>get_data('student_angkatan','keterangan',$rw['F'],'angkatan_id')
+				);
+				$this->db->insert('student_mahasiswa', $data_insert);
+				$id_mhs = $this->db->insert_id();
+
+				$data_users = array(
+					'username'=>$rw['A'],
+					'password'=> hash_string("123456"),
+					'keterangan'=>$id_mhs,
+					'level'=>4,
+					'konsentrasi_id'=>get_data('akademik_konsentrasi','kode_prodi',$rw['D'],'konsentrasi_id')
+				);
+				$this->db->insert('app_users', $data_users);
+
+			}
+			echo "BERHASIL UPLOAD DATA MAHASISWA";
+		}
+	}
+
 	public function import_mk()
 	{
 		if ($_FILES != NULL) {
