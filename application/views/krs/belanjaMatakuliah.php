@@ -94,7 +94,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         <td>$m->jam Jam</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'nama_ruangan'))."</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'kapasitas'))."</td>
-                        <td>".  strtoupper(cek_sisa_ruang($m->jadwal_id,$m->ruangan_id))."</td>
+                        <td>".  strtoupper(cek_sisa_kuota($m->jadwal_id))."</td>
                         ";
                         // if ($sksbatas>=$max_sks) {
                         //      echo "<td width='10' id='ambil' align='center'><span class='btn btn-sm btn-primary disabled' title='SKS MAKSIMUM'>Ambil</span></td>";
@@ -102,7 +102,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         // else{
                         //      echo "<td width='10' id='ambil' align='center'><span class='btn btn-sm btn-primary' onclick='ambil($m->jadwal_id,$mahasiswa_id)' title='Ambil Matakuliah'>Ambil</span></td>";
                         // }
-                        $sisa_ruang = cek_sisa_ruang($m->jadwal_id,$m->ruangan_id);
+                        $sisa_ruang = cek_sisa_kuota($m->jadwal_id);
                         echo "<td width='10' id='ambil' align='center'><span class='btn btn-sm btn-primary' onclick='ambil($m->jadwal_id,$mahasiswa_id,$sisa_ruang)' title='Ambil Matakuliah'>Ambil</span></td>";
                         echo "</tr>";
                     $no++;
