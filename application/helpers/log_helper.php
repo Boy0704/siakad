@@ -65,12 +65,20 @@
         // exit;
     }
 
-    function cek_sisa_ruang($jadwal_id,$ruangan_id)
+    function cek_sisa_kuota($jadwal_id)
     {
         $CI =& get_instance();
-        $kapasitas = get_data('app_ruangan','ruangan_id',$ruangan_id,'kapasitas');
-        $data = $CI->db->query("SELECT ($kapasitas - sum(ruangan_id)) as sisa from v_krs where jadwal_id='$jadwal_id' and ruangan_id='$ruangan_id'")->row()->sisa;
-        return $data;
+        $kapasitas = get_data('akademik_jadwal_kuliah','jadwal_id',$jadwal_id,'kuota');
+        $jml = $CI->db->query("SELECT jadwal_id from v_krs where jadwal_id='$jadwal_id'")->num_rows();
+        $sisa = $kapasitas - $jml;
+        return $sisa;
+    }
+
+    function cek_kuota_terisi($jadwal_id)
+    {
+        $CI =& get_instance();
+        $jml = $CI->db->query("SELECT jadwal_id from v_krs where jadwal_id='$jadwal_id'")->num_rows();
+        return $jml;
     }
 
     function alert_biasa($pesan,$type)
