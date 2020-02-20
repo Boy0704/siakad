@@ -192,6 +192,28 @@ function simpanjam(id)
         });
      }
 }
+
+function simpankuota(id)
+{
+     var kuota=$("#kuotaid"+id).val();
+     // alert(id+" "+kuota);
+     //alert("1 :"+id+" 2 :"+nilaijam+" 3 :"+nilairuang+" 4 :"+nilaihari+" 5 :"+jumlah)
+     $.ajax({
+          url:"<?php echo base_url();?>jadwalkuliah/simpankuota",
+          data:"id=" + id +"&kuota="+kuota ,
+          beforeSend: function() {
+              $("#pesan").html('<h1><b>Proses</b> menyimpan data . . .</h1>');
+          },
+          success: function(html)
+          {
+            $("#pesan").html('');
+            // loadkonsentrasi();
+            tampilmakul();
+            $("#hasil").html(html);
+          }
+    });
+}
+
 <?php } ?>
 
 function loadsemester()

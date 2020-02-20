@@ -50,6 +50,8 @@ class jadwalkuliah extends MY_Controller
         <th width=5>SKS</th>
         <th width=150>Ruang</th>
         <th  width=150>Jam</th>
+        <th  width=150>Kuota SKS</th>
+        <th  width=150>Kuota Terisi</th>
         <th>Dosen</th>
         <th>Dosen 2</th>
         <th>Dosen 3</th>
@@ -95,6 +97,15 @@ class jadwalkuliah extends MY_Controller
                         echo inputan('text','', 'col-sm-9', '', 1, $r->jam_selesai, array('disabled'=>'disabled'));
                         //echo editcombo('waktu_kuliah','akademik_waktu_kuliah','col-sm-13','keterangan','waktu_id','',array('onchange'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id),$r->waktu_id);
                         echo"</td>
+
+                        <td>";
+                        echo inputan('text', '', 'col-sm-9', '', 1, $r->kuota, array('onKeyup'=>'simpankuota('.$r->jadwal_id.')','id'=>'kuotaid'.$r->jadwal_id));
+                        echo"</td>
+
+                        <td>";
+                        echo cek_kuota_terisi($r->jadwal_id);
+                        echo"</td>
+
                         <td>";
                         echo editcombo('dosen','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id","dosenid")','id'=>'dosenid'.$r->jadwal_id),$r->dosen_id);
                         echo"</td>
@@ -169,6 +180,15 @@ class jadwalkuliah extends MY_Controller
                               //echo editcombo('waktu_kuliah','akademik_waktu_kuliah','col-sm-13','keterangan','waktu_id','',array('onchange'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id),$r->waktu_id);
                             }
                             echo"</td>
+
+                             <td>";
+                            echo inputan('text', '', 'col-sm-9', '', 1, $r->kuota, array('onKeyup'=>'simpankuota('.$r->jadwal_id.')','id'=>'kuotaid'.$r->jadwal_id));
+                            echo"</td>
+
+                            <td>";
+                            echo cek_kuota_terisi($r->jadwal_id);
+                            echo"</td>
+
                             <td>";
                             $app_dosen = $this->db->get_where('app_dosen', array('dosen_id'=>$r->dosen_id))->row();
                             if ($disabled=="disabled") {
@@ -341,6 +361,30 @@ class jadwalkuliah extends MY_Controller
          </script>";
     }
 
+    function simpankuota()
+    {
+        $id         =   $_GET['id'];
+        $kuota   =   $_GET['kuota'];
+        // log_r($_GET);
+        //$chek=  $this->chek_ruangan($nilairuang, $nilaihari, $nilaijam);
+
+        if($kuota > 0)
+        {
+            // save
+            $this->Mcrud->update($this->tables,array('kuota'=>$kuota), $this->pk,$id);
+            echo "<div class='alert alert-success'>Jadwal Berhasil Diperbaharui <i class='fa fa-check'></i> </div>";
+        }
+        else
+        {
+             echo "<div class='alert alert-danger'>Jadwal Gagal Diperbaharui <i class='fa fa-info'></i> </div>";
+        }
+        echo " <script>
+         $(document).ready(function(){
+              $('.alert').fadeIn('fast').show().delay(12000).fadeOut('fast');
+            });
+         </script>";
+    }
+
     function autosetup()
     {
         $tahun_akademik_id  =   $this->input->post('tahun_akademik');
@@ -376,7 +420,7 @@ class jadwalkuliah extends MY_Controller
                 $chek       =  $this->db->get_where('akademik_jadwal_kuliah',$param)->num_rows();
                 if($chek<1)
                 {
-                    $data       =   array(  'tahun_akademik_id'=>  get_tahun_akademik(),
+                    $data       =   array(  'tahun_akademik_id'=>  $tahun_akademik_id, //get_tahun_akademik(),
                                             'konsentrasi_id'=>$konsentrasi,
                                             'makul_id'=>$makul_id,
                                             'hari_id'=>0,
@@ -386,6 +430,8 @@ class jadwalkuliah extends MY_Controller
                                              'semester'=>$smstr,
                                             'dosen_id'=>0);
                     $this->db->insert('akademik_jadwal_kuliah',$data);
+                } else {
+                    echo "Jadwal Sudah ADA !!";
                 }
             }
         }
