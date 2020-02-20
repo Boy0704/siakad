@@ -93,8 +93,8 @@ class jadwalkuliah extends MY_Controller
                         cetak(editcombo('ruang','app_ruangan','col-sm-14','nama_ruangan','ruangan_id','',array('onchange'=>'simpanruang('.$r->jadwal_id.')','id'=>'ruangid'.$r->jadwal_id),$r->ruangan_id));
                         echo"</td>
                         <td>";
-                        echo inputan('text', '', 'col-sm-9', '', 1, $r->jam_mulai, array('onKeyup'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id));
-                        echo inputan('text','', 'col-sm-9', '', 1, $r->jam_selesai, array('disabled'=>'disabled'));
+                        echo inputan('text', '', 'col-sm-12', '', 1, $r->jam_mulai, array('onKeyup'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id));
+                        echo inputan('text','', 'col-sm-12', '', 1, $r->jam_selesai, array('disabled'=>'disabled'));
                         //echo editcombo('waktu_kuliah','akademik_waktu_kuliah','col-sm-13','keterangan','waktu_id','',array('onchange'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id),$r->waktu_id);
                         echo"</td>
 
@@ -175,8 +175,8 @@ class jadwalkuliah extends MY_Controller
                             if ($disabled=="disabled") {
                               echo "$r->jam_mulai - $r->jam_selesai";
                             }else {
-                              echo inputan('text', '', 'col-sm-9', '', 1, $r->jam_mulai, array('onKeyup'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id));
-                              echo inputan('text','', 'col-sm-9', '', 1, $r->jam_selesai, array('disabled'=>'disabled'));
+                              echo inputan('text', '', 'col-sm-12', '', 1, $r->jam_mulai, array('onKeyup'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id));
+                              echo inputan('text','', 'col-sm-12', '', 1, $r->jam_selesai, array('disabled'=>'disabled'));
                               //echo editcombo('waktu_kuliah','akademik_waktu_kuliah','col-sm-13','keterangan','waktu_id','',array('onchange'=>'simpanjam('.$r->jadwal_id.')','id'=>'jamid'.$r->jadwal_id),$r->waktu_id);
                             }
                             echo"</td>

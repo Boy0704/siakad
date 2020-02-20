@@ -132,6 +132,65 @@ class Manual extends CI_Controller {
 		}
 	}
 
+	public function import_khs_manual($status,$tahun_akademik_id=0)
+	{
+		$filename = 'KHS_GANJIL_2019.xlsx';
+		if ($status == '0') {
+			// Load plugin PHPExcel nya
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+		} else {
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$filename.''); // Load file yang tadi diupload ke folder excel
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
+			log_data($sheet);
+			//skip untuk header
+			unset($sheet[1]);
+			// $this->db->truncate('makul_matakuliah');
+			$no1=0;
+			$no2=0;
+			foreach ($sheet as $rw) {
+
+				//cek makul_id
+				$makul_id = get_data('makul_matakuliah','kode_makul',$rw['F'],'makul_id');
+
+				//cek jadwal_id
+				$jadwal_id = $this->db->get_where('akademik_jadwal_kuliah', array('makul_id'=>$makul_id,'tahun_akademik_id'=>$tahun_akademik_id))->row()->jadwal_id;
+				// log_r($jadwal_id);
+
+				//cek dosen_id
+				$dosen_id = get_data('app_dosen','nidn',$rw['G'],'dosen_id');
+				//update dosen
+				$this->db->where('jadwal_id', $jadwal_id);
+				$this->db->update('akademik_jadwal_kuliah', array('dosen_id'=>$dosen_id));
+
+				$data_insert_krs = array(
+					'nim'=>$rw['A'],
+					'jadwal_id'=>$jadwal_id,
+					'semester'=>$rw['C']
+				);
+				$this->db->insert('akademik_krs', $data_insert_krs);
+				$krs_id = $this->db->insert_id();
+
+				$data_khs = array(
+					'krs_id'=>$krs_id,
+					'mutu'=>$rw['E'],
+					'nilai'=>$rw['B'],
+					'grade'=>$rw['D'],
+					'confirm'=>1
+				);
+				$this->db->insert('akademik_khs', $data_khs);
+
+			}
+			echo "BERHASIL UPLOAD KHS MAHASISWA";
+		}
+	}
+
 	public function import_mk()
 	{
 		if ($_FILES != NULL) {
