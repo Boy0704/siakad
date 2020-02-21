@@ -108,15 +108,15 @@ class jadwalkuliah extends MY_Controller
 
                         <td>";
                         echo editcombo('dosen','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id","dosenid")','id'=>'dosenid'.$r->jadwal_id),$r->dosen_id);
-                        echo"</td>
-                        <td>";
-                        echo editcombo('dosen2','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id2","dosenid2")','id'=>'dosenid2'.$r->jadwal_id),$r->dosen_id2);
-                        echo"</td>
-                        <td>";
-                        echo editcombo('dosen3','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id3","dosenid3")','id'=>'dosenid3'.$r->jadwal_id),$r->dosen_id3);
-                        echo"</td>
+                        echo"</td>";
+                       // echo " <td>";
+                       //  echo editcombo('dosen2','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id2","dosenid2")','id'=>'dosenid2'.$r->jadwal_id),$r->dosen_id2);
+                       //  echo"</td>
+                       //  <td>";
+                       //  echo editcombo('dosen3','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id3","dosenid3")','id'=>'dosenid3'.$r->jadwal_id),$r->dosen_id3);
+                       //  echo"</td>
 
-                            </tr>";
+                            echo "</tr>";
                     $i++;
                 }
             }
@@ -200,32 +200,32 @@ class jadwalkuliah extends MY_Controller
                             }else {
                               echo editcombo('dosen','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id","dosenid")','id'=>'dosenid'.$r->jadwal_id),$r->dosen_id);
                             }
-                            echo"</td>
-                            <td>";
-                            $app_dosen2 = $this->db->get_where('app_dosen', array('dosen_id'=>$r->dosen_id2))->row();
-                            if ($disabled=="disabled") {
-                              if ($app_dosen2=='') {
-                                echo "-";
-                              }else {
-                                echo strtoupper($app_dosen2->nama_lengkap);
-                              }
-                            }else {
-                              echo editcombo('dosen2','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id2","dosenid2")','id'=>'dosenid2'.$r->jadwal_id),$r->dosen_id2);
-                            }
-                            echo"</td>
-                            <td>";
-                            $app_dosen3 = $this->db->get_where('app_dosen', array('dosen_id'=>$r->dosen_id3))->row();
-                            if ($disabled=="disabled") {
-                              if ($app_dosen3=='') {
-                                echo "-";
-                              }else {
-                                echo strtoupper($app_dosen3->nama_lengkap);
-                              }
-                            }else {
-                              echo editcombo('dosen3','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id3","dosenid3")','id'=>'dosenid3'.$r->jadwal_id),$r->dosen_id3);
-                            }
-                            echo"</td>
-                                </tr>";
+                            echo"</td>";
+                            // echo"<td>";
+                            // $app_dosen2 = $this->db->get_where('app_dosen', array('dosen_id'=>$r->dosen_id2))->row();
+                            // if ($disabled=="disabled") {
+                            //   if ($app_dosen2=='') {
+                            //     echo "-";
+                            //   }else {
+                            //     echo strtoupper($app_dosen2->nama_lengkap);
+                            //   }
+                            // }else {
+                            //   echo editcombo('dosen2','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id2","dosenid2")','id'=>'dosenid2'.$r->jadwal_id),$r->dosen_id2);
+                            // }
+                            // echo"</td>
+                            // <td>";
+                            // $app_dosen3 = $this->db->get_where('app_dosen', array('dosen_id'=>$r->dosen_id3))->row();
+                            // if ($disabled=="disabled") {
+                            //   if ($app_dosen3=='') {
+                            //     echo "-";
+                            //   }else {
+                            //     echo strtoupper($app_dosen3->nama_lengkap);
+                            //   }
+                            // }else {
+                            //   echo editcombo('dosen3','app_dosen','col-sm-13','nama_lengkap','dosen_id','',array('onchange'=>'simpandosen('.$r->jadwal_id.',"dosen_id3","dosenid3")','id'=>'dosenid3'.$r->jadwal_id),$r->dosen_id3);
+                            // }
+                            // echo"</td>
+                               echo "</tr>";
                         $i++;
                     }
                 }
