@@ -51,10 +51,8 @@ class jadwalkuliah extends MY_Controller
         <th width=150>Ruang</th>
         <th  width=150>Jam</th>
         <th  width=150>Kuota SKS</th>
-        <th  width=150>Kuota Terisi</th>
-        <th>Dosen</th>
-        <th>Dosen 2</th>
-        <th>Dosen 3</th>
+        <th  width=100>Kuota Terisi</th>
+        <th width=300>Dosen</th>
         ";
         $i=1;
 
