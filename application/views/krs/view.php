@@ -194,6 +194,7 @@ else
   <div class="col-sm-12">
     <!-- <a href="krs/form_import" class="btn btn-primary" >Import KRS</a>
     <a href="javascript:void(0);" onclick="krs_export()" class="btn btn-primary">Export KRS</a> -->
+    <a href="feeder/import_krs_feeder" target="_blank" class="btn btn-primary">Import Feeder KRS</a> 
   </div>
 
     <div class="col-sm-3">

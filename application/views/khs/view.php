@@ -216,6 +216,7 @@ else
     <a href="javascript:void(0);" onclick="khs_export()" class="btn btn-primary">Export KHS</a> -->
     <a href="" class="btn btn-primary" data-toggle="modal" data-target="#example-modal2">Input KRS Manual</a>
     <a id="btn_import" class="btn btn-primary">Import KHS EXCEL</a>
+    <a href="feeder/import_khs_feeder" target="_blank" class="btn btn-primary">Import Feeder KHS</a>
     
   </div>
 
