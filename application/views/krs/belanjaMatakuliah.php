@@ -28,13 +28,14 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
 <div class="row">
 	<div class="col-md-12">
 		<table class='table table-bordered'>
-            <tr class='alert-info'><th colspan=8>DAFTAR MATAKULIAH</th><th colspan=2><a href="<?php echo base_url('krs'); ?>" class="btn btn-primary"><i class="fa fa-mail-reply-all"></i> Kembali</a></th></tr>
+            <tr class='alert-info'><th colspan=8>DAFTAR MATAKULIAH</th><th colspan=3><a href="<?php echo base_url('krs'); ?>" class="btn btn-primary"><i class="fa fa-mail-reply-all"></i> Kembali</a></th></tr>
             <tr class='alert-info'><th width=10>No</th><th width=20>Kode</th>
                 <th>Nama Matakuliah</th>
                 <th>Dosen</th>
                 <th width=60>SKS</th>
                 <th width=60>JAM</th>
                 <th width=60>RUANG</th>
+                <th width=60>WAKTU</th>
                 <th width=60>KAPASITAS</th>
                 <th width=60>SISA</th>
                 <th>Ambil</th>
@@ -93,6 +94,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         <td>$m->sks SKS</td>
                         <td>$m->jam Jam</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'nama_ruangan'))."</td>
+                        <td>".  strtoupper(get_data('akademik_jadwal_kuliah','ruangan_id',$m->jadwal_id,'jam_mulai'))."</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'kapasitas'))."</td>
                         <td>".  strtoupper(cek_sisa_kuota($m->jadwal_id))."</td>
                         ";
