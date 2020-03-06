@@ -94,7 +94,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         <td>$m->sks SKS</td>
                         <td>$m->jam Jam</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'nama_ruangan'))."</td>
-                        <td>".  strtoupper(get_data('akademik_jadwal_kuliah','ruangan_id',$m->jadwal_id,'jam_mulai'))."</td>
+                        <td>".  get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'jam_mulai')."</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'kapasitas'))."</td>
                         <td>".  strtoupper(cek_sisa_kuota($m->jadwal_id))."</td>
                         ";
