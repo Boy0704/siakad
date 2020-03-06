@@ -35,7 +35,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                 <th width=60>SKS</th>
                 <th width=60>RUANG</th>
                 <th width=60>WAKTU</th>
-                <th width=60>KAPASITAS</th>
+                <th width=60>KUOTA KELAS</th>
                 <th width=60>SISA</th>
                 <th>Ambil</th>
             </tr>
