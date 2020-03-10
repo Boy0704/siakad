@@ -28,7 +28,7 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 		</tr>
 		<?php 
 		$no = 1;
-		$this->db->where('status_mhs', 'Aktif');
+		// $this->db->where('status_mhs', 'Aktif');
 		foreach ($this->db->get('student_mahasiswa')->result() as $rw) {
 		 ?>
 		<tr>
