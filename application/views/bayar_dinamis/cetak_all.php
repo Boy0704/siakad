@@ -41,10 +41,10 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 			<td>
 				<?php 
 				$cek = $this->db->get_where('bayar_dinamis', array('nim'=>$rw->nim));
-				if ($cek->num_rows() == 0) {
-					echo "Belum Lunas";
-				} else {
+				if ($cek->num_rows() > 0) {
 					echo "Lunas";
+				} else {
+					echo "Belum Lunas";
 				}
 				 ?>
 			</td>
