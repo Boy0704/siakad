@@ -50,6 +50,17 @@ $class      ="class='form-control'";
     </td>
     </tr>
     <tr>
+    <td width="150">Ka Prodi</td><td>
+        <select name="ka_prodi" class="form-control select2">
+            <?php 
+            foreach ($this->db->get('app_dosen')->result() as $rw) {
+             ?>
+            <option value="<?php echo $rw->dosen_id; ?>"><?php echo $rw->nidn.' - '.$rw->nama_lengkap ?></option>
+            <?php } ?>
+        </select>
+    </td>
+    </tr>
+    <tr>
          <td></td><td colspan="2"> 
             <input type="submit" name="submit" value="simpan" class="btn btn-primary">
             <?php echo anchor($this->uri->segment(1),' kembali',array('class'=>'btn btn-warning btn-lg fa fa-arrow-left'));?>

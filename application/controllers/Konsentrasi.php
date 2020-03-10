@@ -31,12 +31,14 @@ class konsentrasi extends MY_Controller{
             $gelar      =   $this->input->post('gelar');
             $jenjang    =   $this->input->post('jenjang');
             $semester   =   $this->input->post('semester');
+            $ka_prodi   =   $this->input->post('ka_prodi');
             $data       =   array(  'nama_konsentrasi'=>$nama,
                                     
                                     'kode_nomor'=>$kode,
                                     'gelar'=>$gelar,
                                     'jenjang'=>$jenjang,
                                     'jml_semester'=>$semester,
+                                    'ka_prodi'=>$ka_prodi,
                                     'prodi_id'=>$prodi);
             $this->db->insert($this->tables,$data);
             redirect($this->uri->segment(1));
@@ -62,11 +64,13 @@ class konsentrasi extends MY_Controller{
             $gelar      =   $this->input->post('gelar');
             $jenjang    =   $this->input->post('jenjang');
             $semester   =   $this->input->post('semester');
+             $ka_prodi   =   $this->input->post('ka_prodi');
             $data       =   array(  'nama_konsentrasi'=>$nama,
                                     'kode_nomor'=>$kode,
                                     'gelar'=>$gelar,
                                     'jenjang'=>$jenjang,
                                     'jml_semester'=>$semester,
+                                    'ka_prodi'=>$ka_prodi,
                                     'prodi_id'=>$prodi);
             $this->Mcrud->update($this->tables,$data, $this->pk,$id);
             redirect($this->uri->segment(1));

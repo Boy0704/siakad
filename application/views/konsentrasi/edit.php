@@ -46,6 +46,19 @@ $class      ="class='form-control'";
     </td>
     </tr>
     <tr>
+      <td width="150">Ka Prodi</td><td>
+          <select name="ka_prodi" class="form-control select2">
+            <option value="<?php echo $r['ka_prodi']; ?>"><?php echo $r['ka_prodi']; ?></option>
+              <?php 
+              foreach ($this->db->get('app_dosen')->result() as $rw) {
+               ?>
+              
+              <option value="<?php echo $rw->dosen_id; ?>"><?php echo $rw->nidn.' - '.$rw->nama_lengkap ?></option>
+              <?php } ?>
+          </select>
+      </td>
+    </tr>
+    <tr>
         <div class="row">
              <td></td>
          <td colspan="2"> 

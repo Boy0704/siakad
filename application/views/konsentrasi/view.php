@@ -5,12 +5,13 @@ echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Da
 <table id="datatable" class="table table-striped table-bordered table-hover nowrap">
     <thead>
         <tr>
-            <th width="7">Nomor</th>
-            <th>Nama Jurusan</th>
+            <th width="7">No</th>
+            <!-- <th>Nama Jurusan</th> -->
             <th>Kode Prodi</th>
             <th>Nama Prodi</th>
             <th>Jenjang, Semester</th>
-            <th>Gelar</th>
+            <!-- <th>Gelar</th> -->
+            <th>Ka Prodi</th>
             <th width="90">Opsi</th>
         </tr>
     </thead>
@@ -24,11 +25,12 @@ echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Da
         
         <?php echo "<tr id='hide".$r->$pk."'>"; ?>
             <td align="center"><?php echo $i;?></td>
-            <td><?php echo strtoupper($r->nama_prodi);?></td>
+            <!-- <td><?php echo strtoupper($r->nama_prodi);?></td> -->
             <td><?php echo strtoupper($r->kode_prodi);?></td>
             <td><?php echo strtoupper($r->nama_konsentrasi)?></td>
             <td><?php echo strtoupper($r->jenjang).', '.$r->jml_semester;?></td>
-            <td><?php echo strtoupper($r->gelar);?></td>
+            <!-- <td><?php echo strtoupper($r->gelar);?></td> -->
+            <td><?php echo get_data('app_dosen','dosen_id',$r->ka_prodi,'nama_lengkap')?></td>
             <td class="text-center">
                 <div class="btn-group">
                     <a href="<?php echo base_url().''.$this->uri->segment(1).'/edit/'.$r->$pk;?>" data-toggle="tooltip" title="Edit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
