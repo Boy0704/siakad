@@ -534,7 +534,7 @@ class jadwalkuliah extends MY_Controller
             $konsentrasi_id=$this->input->post('konsentrasi_id');
             $data=$this->db->get_where('makul_matakuliah', array('semester'=>$id,'konsentrasi_id'=>$konsentrasi_id))->result();
             foreach ($data as $row) {
-                echo "<option value='$row->makul_id'> $row->makul_id $row->nama_makul </option>";
+                echo "<option value='$row->makul_id'> $row->kode_makul - $row->nama_makul </option>";
             }
         }
 

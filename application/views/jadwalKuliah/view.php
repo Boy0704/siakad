@@ -380,7 +380,7 @@ echo form_open('jadwalkuliah/autosetup');
                         <tr>
                             <td>Matakuliah</td>
                             <td>
-                            <select name="matkul_manual" class="form-control select2_multiple" id="matkul_manual">
+                            <select name="matkul_manual" class="form-control select2" id="matkul_manual"  style="width: 100%;">
                                     <option value="0">--Pilih--</option>
                                 </select>
                             </td>
