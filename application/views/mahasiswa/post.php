@@ -44,10 +44,10 @@ else
           <div class="col-md-12 clearfix">
               <ul id="example-tabs" class="nav nav-tabs" data-toggle="tabs">
                   <li class="active"><a href="#biodata">Biodata</a></li>
-                  <li><a href="#orangtua">Orangtua</a></li>
+                  <!-- <li><a href="#orangtua">Orangtua</a></li>
                   <li><a href="#sekolah">Sekolah/ Perguruan tinggi Asal</a></li>
                   <li><a href="#institusi">Institusi Yang Mnegusulkan/ Tempat Kerja</a></li>
-                  <li><a href="#pa">Pembimbing Akademik</a></li>
+                  <li><a href="#pa">Pembimbing Akademik</a></li> -->
               </ul>
 
               <div class="tab-content">
@@ -104,6 +104,19 @@ else
                                <?php echo textarea('alamat', '', 'col-sm-02', 2, '');?>
                             </div>
                           </td></tr>
+                          <tr>
+                            <td  width="150">PILIH DOSEN PA</td><td>
+                                  <select name="dosen_pa" class="form-control select2" required="">
+                                    <option value="">--Pilih--</option>
+                                    <?php 
+                                    foreach ($this->db->get('app_dosen')->result() as $rw) {
+                                     ?>
+                                    <option value="<?php echo $rw->dosen_id; ?>"><?php echo $rw->nidn.' - '.$rw->nama_lengkap ?></option>
+                                    <?php } ?>
+                                </select>
+                                </td>
+
+                          </tr>
                           <tr><td>Keterangan Mahasiswa</td><td>
                             <div class="col-sm-12">
                                <div class='col-sm-02'>

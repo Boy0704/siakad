@@ -414,8 +414,8 @@ class mahasiswa extends MY_Controller{
             $this->load->library('form_validation');
             $this->form_validation->set_rules('nim', 'Nim Mahasiswa', 'required|is_unique[student_mahasiswa.nim]|max_length[15]|numeric');
             $this->form_validation->set_rules('nama', 'Nama Mahasiswa', 'required|max_length[35]');
-            $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|max_length[35]');
-            $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+            // $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|max_length[35]');
+            // $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
             $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
             if ($this->form_validation->run())
             {
