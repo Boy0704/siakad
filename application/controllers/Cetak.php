@@ -166,7 +166,7 @@ class cetak extends MY_Controller
 
     public function cetak_khs_new($nim,$semester)
     {
-      $profileSQL=    "SELECT sm.nama,sm.nim,ak.nama_konsentrasi,ap.nama_prodi FROM
+      $profileSQL=    "SELECT sm.nama,sm.nim,ak.nama_konsentrasi,ap.nama_prodi,ak.ka_prodi FROM
                         student_mahasiswa  as sm,akademik_prodi as ap,akademik_konsentrasi as ak
                         WHERE sm.konsentrasi_id=ak.konsentrasi_id and ap.prodi_id=ak.prodi_id and sm.nim=$nim";
         $data['profile']   = $this->db->query($profileSQL)->row_array();
@@ -199,6 +199,7 @@ class cetak extends MY_Controller
         $sql="  SELECT sm.nim,sm.nama,kh.mutu,kh.nilai,kh.khs_id,kh.tugas,kh.kehadiran,kh.grade
                 FROM akademik_krs as ak,student_mahasiswa as sm,akademik_khs as kh,akademik_jadwal_kuliah as jk
                 WHERE kh.krs_id=ak.krs_id and sm.nim=ak.nim and ak.jadwal_id='$jadwal_id' and jk.jadwal_id=ak.jadwal_id and jk.tahun_akademik_id='$thn' and sm.semester_aktif!=0 GROUP BY sm.nim ORDER BY sm.nama";
+                
         $this->load->view('cetak_absen_kosong', array('d'=>$d,'sql'=>$sql));
     }
 
