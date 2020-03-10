@@ -54,7 +54,7 @@
                                     </div>
 
                                   </div>
-                                  <div class="form-group">
+                                  <div class="form-group" style="display: none;">
                                     <?php echo $image; ?><br>
                                     <label>Kode Aman</label>
                                     <input type="text" name="_kode_aman" class="form-control" autocomplete="off" placeholder="Kode Aman" />
