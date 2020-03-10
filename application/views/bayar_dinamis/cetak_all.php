@@ -50,7 +50,7 @@ header("Content-Disposition: attachment; filename=Pembayaran UKT SEMUA MHS.xls")
 			</td>
 			<td><?php echo $rw->keterangan; ?></td>
 		</tr>
-	<?php } ?>
+	<?php $no++; } ?>
 	</table>
 
 
