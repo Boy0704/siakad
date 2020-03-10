@@ -76,11 +76,15 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                     echo"<tr class='warning'><td colspan=10>Semester $i</td></tr>";
                     $query = "SELECT jk.makul_id, mm.kode_makul,mm.sks,mm.jam,mm.nama_makul,mm.sks,jk.jadwal_id,ds.nama_lengkap,jk.ruangan_id FROM akademik_jadwal_kuliah as jk, makul_matakuliah as mm, app_dosen as ds WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$kon and mm.semester=$i and tahun_akademik_id='$thn' and ds.dosen_id=jk.dosen_id and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim')";
                     $makul = $this->db->query($query)->result();
-                } elseif ($ket_thn == '2' and $i%2==0) {
+                }else{
                     echo"<tr class='warning'><td colspan=10>Semester $i</td></tr>";
                     $query = "SELECT jk.makul_id, mm.kode_makul,mm.sks,mm.jam,mm.nama_makul,mm.sks,jk.jadwal_id,ds.nama_lengkap,jk.ruangan_id FROM akademik_jadwal_kuliah as jk, makul_matakuliah as mm, app_dosen as ds WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$kon and mm.semester=$i and tahun_akademik_id='$thn' and ds.dosen_id=jk.dosen_id and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim')";
                     $makul = $this->db->query($query)->result();
                 }
+
+                // echo"<tr class='warning'><td colspan=10>Semester $i</td></tr>";
+                //     $query = "SELECT jk.makul_id, mm.kode_makul,mm.sks,mm.jam,mm.nama_makul,mm.sks,jk.jadwal_id,ds.nama_lengkap,jk.ruangan_id FROM akademik_jadwal_kuliah as jk, makul_matakuliah as mm, app_dosen as ds WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$kon and mm.semester=$i and tahun_akademik_id='$thn' and ds.dosen_id=jk.dosen_id and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim')";
+                //     $makul = $this->db->query($query)->result();
                 
                 $no=1;
 
