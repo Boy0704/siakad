@@ -42,8 +42,10 @@ if($statuss!="kosong"){
     // konsentrasi
     $konsentrasi_id=getField('student_mahasiswa', 'konsentrasi_id', 'nim', $nim);
     $no=1;
+    // log_r($jenis_bayar);
     foreach ($jenis_bayar as $jb)
     {
+        // log_data($jb);
         $jumlah_bayar   =(int) get_biaya_kuliah($tahun_akademik_id, $jb->jenis_bayar_id, $konsentrasi_id, 'jumlah');
         $sudah_bayar    = (int)get_biaya_sudah_bayar($nim, $jb->jenis_bayar_id);
         $sisa           = $jumlah_bayar-$sudah_bayar;
@@ -66,27 +68,27 @@ if($statuss!="kosong"){
     // get semester aktif
     $smt_aktif = getField('student_mahasiswa', 'semester_aktif', 'nim', $nim);
     // looping semester
-    for($i=1;$i<=$smt_aktif;$i++)
-    {
-        $spp            =   (int) get_biaya_kuliah($tahun_akademik_id, 3, $konsentrasi_id, 'jumlah');
-        $spp_udah_bayar =   (int)get_semester_sudah_bayar($nim, $i);
-        $sisa           =   $spp-$spp_udah_bayar;
-        $keterangan           =   $sisa<=0?'Lunas':'Tunggakan '.$sisa;
-        echo "<tr align='center'><td>$no</td>
-            <td>BPP SEMESTER $i</td>
-            <td>".rp($spp)."</td>
-            <td>".rp($spp_udah_bayar)."</td>
-            <td>$sisa</td>
-            <td>".  rp(get_persentase_pembayaran($spp, $spp_udah_bayar))." %</td>";
-            if ($sisa<=0) {
-                echo "<td><span class='label label-success'>".$keterangan."</span></td>";
-            }
-            else{
-                echo "<td><span class='label label-warning'>".$keterangan."</span></td>"; 
-            }
-        echo "</tr>";
-        $no++;
-    }
+    // for($i=1;$i<=$smt_aktif;$i++)
+    // {
+    //     $spp            =   (int) get_biaya_kuliah($tahun_akademik_id, 3, $konsentrasi_id, 'jumlah');
+    //     $spp_udah_bayar =   (int)get_semester_sudah_bayar($nim, $i);
+    //     $sisa           =   $spp-$spp_udah_bayar;
+    //     $keterangan           =   $sisa<=0?'Lunas':'Tunggakan '.$sisa;
+    //     echo "<tr align='center'><td>$no</td>
+    //         <td>BPP SEMESTER $i</td>
+    //         <td>".rp($spp)."</td>
+    //         <td>".rp($spp_udah_bayar)."</td>
+    //         <td>$sisa</td>
+    //         <td>".  rp(get_persentase_pembayaran($spp, $spp_udah_bayar))." %</td>";
+    //         if ($sisa<=0) {
+    //             echo "<td><span class='label label-success'>".$keterangan."</span></td>";
+    //         }
+    //         else{
+    //             echo "<td><span class='label label-warning'>".$keterangan."</span></td>"; 
+    //         }
+    //     echo "</tr>";
+    //     $no++;
+    // }
 ?>
 
 </table>
