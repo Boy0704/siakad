@@ -515,7 +515,7 @@ class mahasiswa extends MY_Controller{
                 $this->db->insert($this->tables,$data);
                 $id             = getField('student_mahasiswa', 'mahasiswa_id', 'nim', $nim);
                 $konsentrasi_id = getField('akademik_konsentrasi', 'konsentrasi_id', 'konsentrasi_id', $konsentrasi);
-                $account        = array('username'=>$nim,'password'=>  hash_string($nim),'keterangan'=>$id,'level'=>4, 'konsentrasi_id'=>$konsentrasi_id);
+                $account        = array('username'=>$nim,'password'=>  hash_string('123456'),'keterangan'=>$id,'level'=>4, 'konsentrasi_id'=>$konsentrasi_id);
                 $this->db->insert('app_users',$account);
                 $this->session->set_flashdata('pesan', "<div class='alert alert-success'>Data $nama Sudah Tersimpan </div>");
                 redirect('mahasiswa');

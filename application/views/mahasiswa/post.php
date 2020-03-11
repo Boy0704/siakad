@@ -72,13 +72,13 @@ else
                           <tr><td>Tahun Agkatan</td><td>
                                   <?php echo buatcombo('tahun_angkatan','student_angkatan','col-sm-2','keterangan','angkatan_id','',''); ?>
                               </td></tr>
-                          <tr><td>Gender, Agama</td>
+                          <tr style="display: none;"><td>Gender, Agama</td>
                               <td>
                                   <div class="col-md-2">
                                   <?php  echo form_dropdown('gender',array('1'=>'Laki Laki','2'=>'Perempuan'),'',"class='form-control'");?>
                                   </div>
                                    <?php echo buatcombo('agama','app_agama','col-sm-2','keterangan','agama_id','',''); ?></td></tr>
-                          <tr><td>Tempat, Tanggal Lahir</td>
+                          <tr style="display: none;"><td>Tempat, Tanggal Lahir</td>
                               <td>
                                   <?php echo inputan('text', 'tempat_lahir','col-sm-6','Tempat Lahir ..', 0, '','');?>
                                   <?php echo inputan('text', 'tanggal_lahir','col-sm-2','Tanggal Lahir ..', 0, '',array('id'=>'datepicker'));?>
@@ -99,7 +99,7 @@ else
                               </div>
                               </td>
                           </tr>
-                          <tr><td>Alamat</td><td>
+                          <tr style="display: none;"><td>Alamat</td><td>
                             <div class="col-sm-12">
                                <?php echo textarea('alamat', '', 'col-sm-02', 2, '');?>
                             </div>
