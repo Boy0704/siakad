@@ -22,8 +22,9 @@ class Feeder extends CI_Controller
                 'kode_jurusan' => $rw->kode_jurusan,
                 'status_eror' => 0,
             );
+            $feeder->insert('krs', $data);
         }
-        $feeder->insert('krs', $data);
+        
         ?>
         <script type="text/javascript">
             alert('Berhasil Import Krs Ke Import feeder');
@@ -50,8 +51,9 @@ class Feeder extends CI_Controller
                 'nilai_huruf' => $rw->nilai_huruf,
                 'nilai_indek' => $rw->nilai_indek,
             );
+            $feeder->insert('nilai', $data);
         }
-        $feeder->insert('nilai', $data);
+        
         ?>
         <script type="text/javascript">
             alert('Berhasil Import KHS Ke Import feeder');
