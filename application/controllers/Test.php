@@ -34,7 +34,7 @@ class Test extends CI_Controller
     //import user dosen yg tidak ada
     public function import_user_dosen()
     {
-        $dosen = $this->db->get('dosen');
+        $dosen = $this->db->get('app_dosen');
         foreach ($dosen->result() as $rw) {
             $cek_user = $this->db->get_where('app_users', array('keterangan'=>$rw->dosen_id));
             if ($cek_user->num_rows() == 0) {
