@@ -31,6 +31,31 @@ class Test extends CI_Controller
         $this->load->view('tes_select2');
     }
 
+    //import user dosen yg tidak ada
+    public function import_user_dosen(=)
+    {
+        $dosen = $this->db->get('dosen');
+        foreach ($dosen->result() as $rw) {
+            $cek_user = $this->db->get_where('app_users', array('keterangan'=>$rw->dosen_id));
+            if ($cek_user->num_rows() == 0) {
+                //insert user dosen
+                $this->db->insert('app_users', 
+                    array(
+                        'username'=>$rw->nidn,
+                        'nama'=>$rw->nama_lengkap,
+                        'password'=>$rw->nama,
+                        'level'=>3,
+                        'keterangan'=>$rw->dosen_id,
+                        'konsentrasi'=>$rw->konsentrasi_id,
+                    )
+                );
+                log_data('berhasil insert user dosen');
+            } else {
+                log_data('data sudah ada');
+            }
+        }
+    }
+
     function a()
     {
         $semester = 0;
