@@ -46,7 +46,7 @@ class Test extends CI_Controller
                         'password'=>$rw->nama,
                         'level'=>3,
                         'keterangan'=>$rw->dosen_id,
-                        'konsentrasi'=>$rw->konsentrasi_id,
+                        'konsentrasi_id'=>$rw->konsentrasi_id,
                     )
                 );
                 log_data('berhasil insert user dosen');
