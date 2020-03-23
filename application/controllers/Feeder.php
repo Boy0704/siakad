@@ -20,7 +20,7 @@ class Feeder extends CI_Controller
                 'nama_kelas' => $rw->nama_kelas,
                 'semester' => $rw->semester,
                 'kode_jurusan' => $rw->kode_jurusan,
-                'status_eror' => 0,
+                'status_error' => 0,
             );
             $feeder->insert('krs', $data);
         }
@@ -46,7 +46,7 @@ class Feeder extends CI_Controller
                 'nama_kelas' => $rw->nama_kelas,
                 'semester' => $rw->semester,
                 'kode_jurusan' => $rw->kode_jurusan,
-                'status_eror' => 0,
+                'status_error' => 0,
                 'nilai_angka' => $rw->nilai_angka,
                 'nilai_huruf' => $rw->nilai_huruf,
                 'nilai_indek' => $rw->nilai_indek,
