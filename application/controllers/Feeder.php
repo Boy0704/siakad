@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 
  */
-class Fedeer extends CI_Controller
+class Feeder extends CI_Controller
 {
 	
 	public function import_krs_feeder()
