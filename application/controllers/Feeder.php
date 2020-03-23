@@ -55,7 +55,7 @@ class Fedeer extends CI_Controller
         ?>
         <script type="text/javascript">
             alert('Berhasil Import KHS Ke Import feeder');
-            window.location="http://localhost/feeder-importer/admina/index.php/khs";
+            window.location="http://localhost/feeder-importer/admina/index.php/nilai-perkuliahan";
         </script>
         <?php
     }
