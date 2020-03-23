@@ -43,7 +43,7 @@ class Test extends CI_Controller
                     array(
                         'username'=>$rw->nidn,
                         'nama'=>$rw->nama_lengkap,
-                        'password'=>$rw->nama,
+                        'password'=>hash_string("123456"),
                         'level'=>3,
                         'keterangan'=>$rw->dosen_id,
                         'konsentrasi_id'=>$rw->konsentrasi_id,
