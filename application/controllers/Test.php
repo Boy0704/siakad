@@ -32,7 +32,7 @@ class Test extends CI_Controller
     }
 
     //import user dosen yg tidak ada
-    public function import_user_dosen(=)
+    public function import_user_dosen()
     {
         $dosen = $this->db->get('dosen');
         foreach ($dosen->result() as $rw) {
