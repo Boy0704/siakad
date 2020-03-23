@@ -23,7 +23,7 @@ class Fedeer extends CI_Controller
                 'status_eror' => 0,
             );
         }
-        $this->db->insert('krs', $data);
+        $feeder->insert('krs', $data);
         ?>
         <script type="text/javascript">
             alert('Berhasil Import Krs Ke Import feeder');
@@ -51,10 +51,10 @@ class Fedeer extends CI_Controller
                 'nilai_indek' => $rw->nilai_indek,
             );
         }
-        $this->db->insert('krs', $data);
+        $feeder->insert('nilai', $data);
         ?>
         <script type="text/javascript">
-            alert('Berhasil Import Krs Ke Import feeder');
+            alert('Berhasil Import KHS Ke Import feeder');
             window.location="http://localhost/feeder-importer/admina/index.php/khs";
         </script>
         <?php
