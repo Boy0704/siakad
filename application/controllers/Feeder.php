@@ -10,7 +10,7 @@ class Feeder extends CI_Controller
 	public function import_krs_feeder()
     {
         // Load database kedua
-        $fedeer = $this->load->database('feeder', TRUE);
+        $feeder = $this->load->database('feeder', TRUE);
         foreach ($this->db->get('v_import_krs')->result() as $rw) {
             $data = array(
                 'nim' => $rw->nim,
@@ -36,7 +36,7 @@ class Feeder extends CI_Controller
     public function import_khs_feeder()
     {
         // Load database kedua
-        $fedeer = $this->load->database('feeder', TRUE);
+        $feeder = $this->load->database('feeder', TRUE);
         foreach ($this->db->get('v_import_khs')->result() as $rw) {
             $data = array(
                 'nim' => $rw->nim,
