@@ -47,6 +47,64 @@ class mainmenu extends MY_Controller{
 
     }
 
+    public function cek_mainmenu($id,$level)
+    {
+        $cek_mainmenu = $this->db->get_where('mainmenu',array('id_mainmenu'=>$id,'level'=>$level));
+        $dt_mainmenu = $this->db->get_where('mainmenu',array('id_mainmenu'=>$id))->row();
+        if ($cek_mainmenu->num_rows() > 0) {
+            $mainmenu = $cek_mainmenu->row();
+            if ($mainmenu->aktif == 'y') {
+                $this->db->where('id_mainmenu', $id);
+                $this->db->update('mainmenu', array('aktif'=>'t'));
+            } else {
+                $this->db->where('id_mainmenu', $id);
+                $this->db->update('mainmenu', array('aktif'=>'y'));
+            }
+        } else {
+            //insert
+            $this->db->insert('mainmenu', array(
+                'nama_mainmenu'=>$dt_mainmenu->nama_mainmenu,
+                'icon'=>$dt_mainmenu->icon,
+                'aktif'=>$dt_mainmenu->aktif,
+                'link'=>$dt_mainmenu->link,
+                'level'=>$level,
+            ));
+        }
+        echo json_encode(array('berhasil'=>1));
+    }
+
+    public function cek_submenu($id,$level)
+    {
+        $cek_submenu = $this->db->get_where('submenu',array('id_submenu'=>$id,'level'=>$level));
+        $dt_submenu = $this->db->get_where('submenu',array('id_submenu'=>$id))->row();
+        if ($cek_submenu->num_rows() > 0) {
+            $submenu = $cek_submenu->row();
+            if ($submenu->aktif == 'y') {
+                $this->db->where('id_submenu', $id);
+                $this->db->update('submenu', array('aktif'=>'t'));
+            } else {
+                $this->db->where('id_submenu', $id);
+                $this->db->update('submenu', array('aktif'=>'y'));
+            }
+        } else {
+            //insert
+            $this->db->insert('submenu', array(
+                'nama_submenu'=>$dt_submenu->nama_submenu,
+                'icon'=>$dt_submenu->icon,
+                'aktif'=>$dt_submenu->aktif,
+                'link'=>$dt_submenu->link,
+                'level'=>$level,
+            ));
+        }
+        echo json_encode(array('berhasil'=>1));
+    }
+
+    public function menu_role()
+    {
+        $data['title']=  $this->title;
+        $this->template->load('template', 'setting_menu/menu_role',$data);
+    }
+
     function post()
     {
         if(isset($_POST['submit']))
