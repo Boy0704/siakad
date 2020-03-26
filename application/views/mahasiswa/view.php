@@ -140,9 +140,10 @@ else
 <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
 <div class="col-sm-12">
   <?php if ($level==1 OR $level==2): ?>
-    <a href="mahasiswa/form_import" class="btn btn-primary" >Import Mahasiswa</a>
+    <!-- <a href="mahasiswa/form_import" class="btn btn-primary" >Import Mahasiswa</a> -->
   <?php endif; ?>
-  <a href="javascript:void(0);" onclick="mhs_export()" class="btn btn-primary">Export Mahasiswa</a>
+  <!-- <a href="javascript:void(0);" onclick="mhs_export()" class="btn btn-primary">Export Mahasiswa</a> -->
+  <a href="<?php echo base_url('feeder/import_mhs') ?>" class="btn btn-primary">Import Mahasiswa Feeder </a>
 </div>
 
 
