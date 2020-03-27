@@ -64,7 +64,12 @@ $class      ="class='form-control' id='level'";
     <tr>
     <td width="150">Level</td><td>
         <div class="col-sm-3">
-        <?php echo form_dropdown('level',$level2,'',$class);?>
+        <select name="level" class='form-control' id='level'>
+          <?php foreach ($this->db->get('level') as $key => $value): ?>
+              <option value="<?php echo $value->id_level ?>"><?php echo $value->level ?></option>
+          <?php endforeach ?>
+          
+        </select>
         </div>
 
         <?php echo buatcombo('prodi', 'akademik_prodi', 'col-sm-3', 'nama_prodi', 'prodi_id', $param, array('id'=>'jurusan'))?>
