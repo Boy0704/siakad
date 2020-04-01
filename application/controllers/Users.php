@@ -155,11 +155,11 @@ class users extends MY_Controller{
                                                 'sekolah_tahun_lulus'=>$sekolah_tahun,
                                                 'sekolah_jurusan'=>$sekolah_jurus);
 
-                $kampus             =   array(  'kampus_nama'=>$sekolah_nama,
-                                                'kampus_telpon'=>$sekolah_telpon,
-                                                'kampus_alamat'=>$sekolah_alamat,
-                                                'kampus_tahun_lulus'=>$sekolah_tahun,
-                                                'kampus_jurusan'=>$sekolah_jurus);
+                $kampus             =   array(  'kampus_nama'=>$kampus_nama,
+                                                'kampus_telpon'=>$kampus_telpon,
+                                                'kampus_alamat'=>$kampus_alamat,
+                                                'kampus_tahun_lulus'=>$kampus_tahun,
+                                                'kampus_jurusan'=>$kampus_jurus);
 
                 $orangtua           =   array(  'nama_ayah'=>$nama_ayah,
                                                 'nama_ibu'=>$nama_ibu,
