@@ -139,6 +139,7 @@ class Feeder extends CI_Controller
             <tr>
                 <td>Kode MK</td>
                 <td>Nama MK</td>
+                <td>Jenis MK</td>
                 <td>SKS Tatap Muka</td>
                 <td>SKS Praktek</td>
                 <td>SKS Prak Lapaangan</td>
@@ -156,8 +157,10 @@ class Feeder extends CI_Controller
             <tr>
                 <td><?php echo $value->kode_makul ?></td>
                 <td><?php echo $value->nama_makul ?></td>
+                <td>A</td>
                 <td><?php echo $value->sks ?></td>
                 <td><?php echo $value->sks ?></td>
+                <td>0</td>
                 <td>0</td>
                 <td></td>
                 <td></td>
