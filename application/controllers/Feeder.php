@@ -128,6 +128,48 @@ class Feeder extends CI_Controller
         </script>
         <?php
     }
+
+    public function import_mk($konsentrasi_id)
+    {
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=Import-mk-feeder.xls");
+
+        ?>
+        <table>
+            <tr>
+                <td>Kode MK</td>
+                <td>Nama MK</td>
+                <td>SKS Tatap Muka</td>
+                <td>SKS Praktek</td>
+                <td>SKS Prak Lapaangan</td>
+                <td>SKS Simulasi</td>
+                <td>Metode Pembelajaran</td>
+                <td>Tgl Mulai Efektif</td>
+                <td>Tgl Akhir Efektir</td>
+                <td>Semester</td>
+            </tr>
+        
+        <?php
+        $data = $this->db->get_where('makul_matakuliah', array('aktif'=>'y','konsentrasi_id'=>$konsentrasi_id));
+        foreach ($data->result() as $key => $value) {
+            ?>
+            <tr>
+                <td><?php echo $value->kode_makul ?></td>
+                <td><?php echo $value->nama_makul ?></td>
+                <td><?php echo $value->sks ?></td>
+                <td><?php echo $value->sks ?></td>
+                <td>0</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><?php echo $value->semester ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+        </table>
+        <?php
+    }
 	
 
 

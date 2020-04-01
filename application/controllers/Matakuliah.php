@@ -151,6 +151,7 @@ class matakuliah extends MY_Controller{
         // apabila request semua semester
         if($semester==0)
         {
+            echo "<a href='".base_url()."'feeder/import_mk/".$konsentrasi."' class='btn btn-info'>Import Mata Kuliah Feeder</a>";
             echo"<table class='table table-bordered'>
             <tr class='alert-info'>
                 <th width=10>No</th>
