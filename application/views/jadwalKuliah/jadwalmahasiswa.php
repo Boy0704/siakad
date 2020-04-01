@@ -34,8 +34,13 @@
         $sql="SELECT jk.*,mm.jam,mm.nama_makul,mm.kode_makul,mm.sks,mm.semester,jk.jam_mulai,jk.jam_selesai,ah.hari,ar.nama_ruangan,ad.nama_lengkap FROM akademik_jadwal_kuliah as jk,makul_matakuliah as mm, app_hari as ah, app_ruangan as ar, app_dosen as ad WHERE mm.makul_id=jk.makul_id and jk.hari_id=ah.hari_id and jk.ruangan_id=ar.ruangan_id and jk.dosen_id=ad.dosen_id and jk.tahun_akademik_id=$thn and jk.konsentrasi_id=$kon and jk.semester=$semester";
             $data=  $this->db->query($sql)->result();
             $class="class='form-control'";
-            if (!empty($data)) 
+            if (empty($data) || $semester == '') 
             {
+                 echo" <td colspan='8' style='text-align:center;font-size:18px;'><i class='fa fa-info' style='font-size:60px;'></i><br>OPS DATA TIDAK DITEMUKAN</td>";
+            }
+            else{
+               
+
                 foreach ($data as $r)
                 {
                 echo    "<tr>
@@ -50,9 +55,6 @@
                         </tr>";
                     $i++;
                 }    
-            }
-            else{
-                echo" <td colspan='8' style='text-align:center;font-size:18px;'><i class='fa fa-info' style='font-size:60px;'></i><br>OPS DATA TIDAK DITEMUKAN</td>";
             }
             
         ?>
