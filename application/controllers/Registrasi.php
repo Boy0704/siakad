@@ -43,7 +43,7 @@ class registrasi extends MY_Controller{
             <th>Status</th>
             <th>Tanggal Registrasi</th>
             <th>Pembayaran</th>
-            <th></th></tr> </thead>";
+            <th>Aksi</th></tr> </thead>";
         if (!empty($data)) 
         {
             $no=1;
