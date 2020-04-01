@@ -123,8 +123,8 @@ class Feeder extends CI_Controller
         
         ?>
         <script type="text/javascript">
-            alert('Berhasil Import KHS Ke Import feeder');
-            window.location="http://localhost/feeder-importer/admina/index.php/nilai-perkuliahan";
+            alert('Berhasil Import Kelas Ke Import feeder');
+            window.location="http://localhost/feeder-importer/admina/index.php/kelas";
         </script>
         <?php
     }
