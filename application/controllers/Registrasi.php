@@ -38,12 +38,16 @@ class registrasi extends MY_Controller{
         echo "
         <table id='datatable' class='table table-striped table-bordered table-hover'>
         <thead>
-        <tr class='alert-info'><th width='5'>No</th><th width='70'>NIM</th><th>NAMA</th>
+        <tr class='alert-info'>
+        <th width='5'>No</th>
+        <th width='70'>NIM</th>
+        <th>NAMA</th>
             <th width=100>Tahun AKD</th>
             <th>Status</th>
             <th>Tanggal Registrasi</th>
             <th>Pembayaran</th>
-            <th>Aksi</th></tr> </thead>";
+            <th>Aksi</th></tr>
+             </thead>";
         if (!empty($data)) 
         {
             $no=1;
@@ -88,6 +92,7 @@ class registrasi extends MY_Controller{
             echo "<td colspan='7' rowspan='' align='center'>Data Tidak Ditemukan</td>";
             echo "</tbody>";
         }
+         echo "</tbody>";
         echo "</table>";
         ?>
         <script type="text/javascript">
