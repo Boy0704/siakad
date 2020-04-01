@@ -84,10 +84,11 @@ if ($this->session->userdata('level') == 4) {
             <?php
             $prodi=  getField('akademik_konsentrasi', 'prodi_id', 'konsentrasi_id', $r['konsentrasi_id'])
             ?>
-        <?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'),'',$disable)?>
+        <?php echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); //buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'),'',$disable) ?>
         </div>
             <div class="col-sm-6">
-         <?php echo editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable)?>
+              <input type="hidden" name="konsentrasi" value="<?php echo $r['konsentrasi_id'] ?>">
+         <?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi');//editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable) ?>
             </div>
     </td>
     <td>Penghasilan Ayah, Ibu</td>
