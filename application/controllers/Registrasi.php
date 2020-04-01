@@ -81,7 +81,7 @@ class registrasi extends MY_Controller{
                     <td align='center'><a href=\"keuangan/pembayaran/".$r->nim."\" class=\"btn btn-info\">Bayar</a></td>
                     <td align='center'>$btn</td>
                     </tr>";
-                    echo "</tbody>";
+                    
 
                 $no++;
                 // 
