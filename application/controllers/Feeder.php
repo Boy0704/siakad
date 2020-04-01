@@ -103,6 +103,31 @@ class Feeder extends CI_Controller
         </script>
         <?php
     }
+
+    public function import_kelas_feeder()
+    {
+        // Load database kedua
+        $feeder = $this->load->database('feeder', TRUE);
+        foreach ($this->db->get('v_import_kelas')->result() as $rw) {
+            $data = array(
+                'semester' => $rw->semester,
+                'kode_mk' => $rw->kode_makul,
+                'nama_mk' => $rw->nama_makul,
+                'nama_kelas' => $rw->nama_kelas,
+                'kode_jurusan' => $rw->kode_jurusan,
+                'status_error' => 0,
+                
+            );
+            $feeder->insert('kelas_kuliah', $data);
+        }
+        
+        ?>
+        <script type="text/javascript">
+            alert('Berhasil Import KHS Ke Import feeder');
+            window.location="http://localhost/feeder-importer/admina/index.php/nilai-perkuliahan";
+        </script>
+        <?php
+    }
 	
 
 
