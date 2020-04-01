@@ -1,6 +1,7 @@
 <?php
 echo anchor($this->uri->segment(1).'/post',"<i class='fa fa-plus'></i> Tambah Data",array('class'=>'btn btn-primary   btn-sm','title'=>'Tambah Data'))
 ?>
+<a href="<?php echo base_url() ?>feeder/import_kelas_feeder" class="btn btn-info">Import Kelas Feeder</a>
       
 <table id="datatable" class="table table-striped table-bordered table-hover nowrap">
     <thead>
