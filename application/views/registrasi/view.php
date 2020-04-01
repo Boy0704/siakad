@@ -98,7 +98,7 @@ else
 }
 ?>
 <div class="col-sm-3">
-    <a href="" class="btn btn-info">Bayar</a>
+    
     <table class="table table-bordered">
     <tr><td>Jurusan<?php echo buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'))?></td></tr>
     <tr><td>Prodi<?php echo combodumy('konsentrasi', 'konsentrasi')?></td></tr>

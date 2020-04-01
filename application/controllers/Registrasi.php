@@ -50,6 +50,7 @@ class registrasi extends MY_Controller{
              </thead>";
         if (!empty($data)) 
         {
+             echo "<tbody>";
             $no=1;
             foreach ($data as $r)
             {
@@ -63,7 +64,7 @@ class registrasi extends MY_Controller{
                 $btnaktf="<button class='btn btn-primary btn-sm' onclick='registrasi($r->mahasiswa_id)'>Belum Registrasi</button>";
                 $btnnon=anchor('registrasi/delete/'.$last_id['registrasi_id'],'Batalkan registrasi',array('class'=>'btn btn-success btn-sm'));
                 $btn=$tanggal==''?$btnaktf:$btnnon;
-                echo "<tbody>";
+               
                 echo "<tr id='hide$r->mahasiswa_id'>
                     <td align='center'>$no</td>
                     <td>".  strtoupper($r->nim)."</td>
@@ -86,13 +87,13 @@ class registrasi extends MY_Controller{
                 $no++;
                 // 
             }
+            echo "</tbody>";
         }
         else{
             echo "<tbody>";
             echo "<td colspan='7' rowspan='' align='center'>Data Tidak Ditemukan</td>";
             echo "</tbody>";
         }
-         echo "</tbody>";
         echo "</table>";
         ?>
         <script type="text/javascript">
