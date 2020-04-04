@@ -1,5 +1,5 @@
 <?php $level = $this->session->userdata('level'); ?>
-<?php if ($level == 1 or $level==2 or $level==3 OR $level==6): ?>
+<?php if ($level == 1 or $level==2 or $level==3 OR $level==5 OR $level==6): ?>
 
 <script src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
 <script>
