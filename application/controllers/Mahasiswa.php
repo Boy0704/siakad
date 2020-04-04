@@ -18,7 +18,7 @@ class mahasiswa extends MY_Controller{
     function index()
     {
         $level = $this->session->userdata('level');
-        if ($level==1 OR $level==2 OR $level==3 OR $level==6) {
+        if ($level==1 OR $level==2 OR $level==3 OR $level==5 OR $level==6) {
             // $tahun="SELECT ta.keterangan,ta.tahun_akademik_id
             //     FROM student_mahasiswa as sm,akademik_tahun_akademik as ta
             //     WHERE ta.tahun_akademik_id=sm.angkatan_id
@@ -768,7 +768,7 @@ class mahasiswa extends MY_Controller{
             }
         }
         else{
-            echo "<td colspan='6' rowspan='' align='center'>Data Tidak Ditemukan</td>";
+            echo "<td colspan='6' align='center'>Data Tidak Ditemukan</td>";
         }
                ?>
           </tbody>
