@@ -128,7 +128,7 @@ function hapus(id){
 </script>
 <?php
 $level = $this->session->userdata('level');
-if($level == 1 or $level == 6)
+if($level == 1 or $level == 6 or $level == 5)
 {
     $param="";
 }
@@ -139,7 +139,7 @@ else
 ?>
 <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
 <div class="col-sm-12">
-  <?php if ($level==1 OR $level==2 OR $level==5 ): ?>
+  <?php if ($level==1 OR $level==2): ?>
     <!-- <a href="mahasiswa/form_import" class="btn btn-primary" >Import Mahasiswa</a> -->
   <?php endif; ?>
   <!-- <a href="javascript:void(0);" onclick="mhs_export()" class="btn btn-primary">Export Mahasiswa</a> -->
