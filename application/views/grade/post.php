@@ -25,7 +25,7 @@ echo form_open_multipart($this->uri->segment(1).'/post');
 
     <tr>
     <td width="150">Mutu</td><td>
-        <?php echo inputan('number', 'mutu','col-sm-4','Example 0 - 4 ..', 1, '','');?>
+        <?php echo inputan('text', 'mutu','col-sm-4','Example 0 - 4 ..', 1, '','');?>
     </td>
     </tr>
 

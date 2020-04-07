@@ -25,8 +25,8 @@ echo "<input type='hidden' name='id' value='$r[nilai_id]'>";
     </tr>
 
     <tr>
-    <td width="150">Grade</td><td>
-        <?php echo inputan('number', 'grade','col-sm-4','Mutu ..', 1, $r['mutu'],'');?>
+    <td width="150">Mutu</td><td>
+        <?php echo inputan('text', 'mutu','col-sm-4','Mutu ..', 1, $r['mutu'],'');?>
     </td>
     </tr>
 
