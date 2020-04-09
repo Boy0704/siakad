@@ -65,7 +65,7 @@ $class      ="class='form-control' id='level'";
     <td width="150">Level</td><td>
         <div class="col-sm-3">
         <select name="level" class='form-control' id='level'>
-          <?php foreach ($this->db->get('level') as $key => $value): ?>
+          <?php foreach ($this->db->get('level')->result() as $key => $value): ?>
               <option value="<?php echo $value->id_level ?>"><?php echo $value->level ?></option>
           <?php endforeach ?>
           
