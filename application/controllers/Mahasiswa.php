@@ -608,6 +608,8 @@ class mahasiswa extends MY_Controller{
                 $status_mhs         =   $this->input->post('status_mhs');
                 $keterangan         =   $this->input->post('keterangan_mhs');
 
+                $semester_aktif         =   $this->input->post('semester_aktif');
+
                 if ($status_mhs=='') {
                   $status_mhs = Null;
                 }

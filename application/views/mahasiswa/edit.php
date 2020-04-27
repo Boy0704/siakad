@@ -139,8 +139,12 @@ if ($this->session->userdata('level') == 4) {
            </div>                            
          </div>
       </td>
-      <td></td>
-      <td></td>
+      <td>
+        Semester Saat ini
+      </td>
+      <td>
+        <input type="text" name="semester_aktif" class="form-control" value="<?php echo $r['semester_aktif'] ?>">
+      </td>
     </tr>
     <?php 
     }
