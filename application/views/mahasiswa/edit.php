@@ -85,7 +85,8 @@ if ($this->session->userdata('level') == 4) {
             $prodi=  getField('akademik_konsentrasi', 'prodi_id', 'konsentrasi_id', $r['konsentrasi_id'])
             ?>
         <?php //echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); //buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'),'',$disable) ?>
-          <select name="" class="form-control" >
+          <?php if ($this->session->userdata('level') =='1'): ?>
+            <select name="" class="form-control" >
             <option value="<?php echo $prodi ?>"><?php echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); ?></option>
 
             <?php foreach ($this->db->get('akademik_prodi')->result() as $key => $value): ?>
@@ -93,12 +94,18 @@ if ($this->session->userdata('level') == 4) {
             <?php endforeach ?>
 
           </select>
+          <?php endif ?>
+
+          <?php if ($this->session->userdata('level') == '4'): ?>
+            <?php echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); ?>
+          <?php endif ?>
         </div>
             <div class="col-sm-6">
               <!-- <input type="hidden" name="konsentrasi" value="<?php echo $r['konsentrasi_id'] ?>"> -->
-         <?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi');//editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable) ?>
+         <?php echo //get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi');//editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable) ?>
 
-          <select name="konsentrasi" class="form-control" >
+         <?php if ($this->session->userdata('level') =='1'): ?>
+           <select name="konsentrasi" class="form-control" >
             <option value="<?php echo $r['konsentrasi_id'] ?>"><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi'); ?></option>
 
             <?php foreach ($this->db->get('akademik_konsentrasi')->result() as $key => $value): ?>
@@ -106,6 +113,12 @@ if ($this->session->userdata('level') == 4) {
             <?php endforeach ?>
 
           </select>
+         <?php endif ?>
+
+         <?php if ($this->session->userdata('level') == '4'): ?>
+           <?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi'); ?>
+         <?php endif ?>
+          
 
             </div>
     </td>
