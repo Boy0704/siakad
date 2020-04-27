@@ -102,7 +102,7 @@ if ($this->session->userdata('level') == 4) {
         </div>
             <div class="col-sm-6">
               <!-- <input type="hidden" name="konsentrasi" value="<?php echo $r['konsentrasi_id'] ?>"> -->
-         <?php echo //get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi');//editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable) ?>
+         <?php //echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi');//editcombo('konsentrasi', 'akademik_konsentrasi', '', 'nama_konsentrasi', 'konsentrasi_id', array('prodi_id'=>$prodi), array('id'=>'konsentrasi'),$r['konsentrasi_id'],'',$disable) ?>
 
          <?php if ($this->session->userdata('level') =='1'): ?>
            <select name="konsentrasi" class="form-control" >
