@@ -143,7 +143,7 @@ else
     <!-- <a href="mahasiswa/form_import" class="btn btn-primary" >Import Mahasiswa</a> -->
   <?php endif; ?>
   <!-- <a href="javascript:void(0);" onclick="mhs_export()" class="btn btn-primary">Export Mahasiswa</a> -->
-  <a href="<?php echo base_url('feeder/import_mhs') ?>" class="btn btn-primary">Import Mahasiswa Feeder </a>
+  <a href="<?php echo base_url('feeder/import_mhs') ?>" class="btn btn-primary">Export Mahasiswa Feeder </a>
 </div>
 
 

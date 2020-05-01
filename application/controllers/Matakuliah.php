@@ -149,9 +149,10 @@ class matakuliah extends MY_Controller{
         $semester       =   $_GET['semester'];
         $level          = $this->session->userdata('level');
         // apabila request semua semester
+        echo '<a href="'.base_url().'feeder/import_mk/'.$konsentrasi.'" class="btn btn-info">Export MK Feeder</a> <br>';
         if($semester==0)
         {
-            echo '<a href="'.base_url().'feeder/import_mk/'.$konsentrasi.'" class="btn btn-info">Import Mata Kuliah Feeder</a>';
+            
             echo"<table class='table table-bordered'>
             <tr class='alert-info'>
                 <th width=10>No</th>
@@ -215,7 +216,6 @@ class matakuliah extends MY_Controller{
                             FROM makul_matakuliah as mm,makul_kelompok as mk
                             WHERE mk.kelompok_id=mm.kelompok_id and mm.konsentrasi_id='$konsentrasi' and mm.semester='$semester' order by mm.kode_makul asc";
         $makul          =   $this->db->query($query)->result();
-            echo '<a href="'.base_url().'feeder/import_mk/'.$konsentrasi.'" class="btn btn-info">Import Mata Kuliah Feeder</a>';
             echo"<table class='table table-bordered'>
             <tr class='alert-info'>
                 <th width=10>No</th>
