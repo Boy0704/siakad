@@ -166,7 +166,11 @@ $class      ="class='form-control' id='status'"; ?>
       </td>
     </tr>
     <?php if ($level==1 OR $level==2): ?>
-     <tr><td colspan="4"><?php echo anchor('mahasiswa/post','<span class="fa fa-plus"></span> Input Data',array('class'=>'btn btn-primary btn-sm'));?> <?php //echo anchor('','Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?></td></tr>
+     <tr><td colspan="4"><?php echo anchor('mahasiswa/post','<span class="fa fa-plus"></span> Input Data',array('class'=>'btn btn-primary btn-sm'));?> <?php //echo anchor('','Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?> 
+     <a href="<?php echo base_url() ?>mahasiswa/cari_mahasiswa" class="btn btn-sm btn-primary">Cari Mahasiswa</a>
+   </td>
+      
+     </tr>
     <?php endif; ?>
 </table>
 </div>

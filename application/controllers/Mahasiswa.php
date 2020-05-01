@@ -705,6 +705,12 @@ class mahasiswa extends MY_Controller{
         }
     }
 
+    public function cari_mahasiswa()
+    {
+        $data['title']=  $this->title;
+        $this->template->load('template', $this->folder.'/cari_mahasiswa',$data);
+    }
+
 
     function tampilkanmahasiswa($kelulusan="")
     {
