@@ -65,7 +65,7 @@ if (sha1($request['nomorPembayaran'].$secret_key.$request['tanggalTransaksi']) !
 //asumsinya database pakai MySQL, silahkan sesuaikan dengan database kampus
 // $koneksi = mysqli_connect($db_host, $db_user, $db_pass,$db_name);
 $keuangan = $this->load->database('keuangan', TRUE);
-if (!$koneksi) {
+if (!$keuangan) {
     response(array(
         'code'    => '91',
         'message' => 'Gagal koneksi database di ' . $kampus
@@ -106,6 +106,11 @@ switch ($_POST['action']) {
         }
         // cek apakah ada data tagihan?
         $isAdaTagihan = false; // silahkan cek di database apakah ada tagihan dengan nomor pembayaran tersebut?
+        $tagihan_db = $keuangan->get_where('tagihan', array('nomor_pembayaran'=>$nomorPembayaran));
+        if ($tagihan_db->num_rows() > 0) {
+            $isAdaTagihan = TRUE;
+        }
+
         if ($isAdaTagihan == false) {
             response(array(
                 'code'    => '14',
@@ -114,6 +119,12 @@ switch ($_POST['action']) {
         }
         // cek apakah masih dalam periode pembayaran yang diperbolehkan?
         $isDalamPeriodepembayaran = false; // silahkan cek di database apakah tagihan masih dalam periode pembayaran?
+
+        $date_tagihan = $tagihan_db->row();
+        if (strtotime($date_tagihan->waktu_berlaku) < strtotime(date('Y-m-d')) && strtotime(date('Y-m-d')) < strtotime($date_tagihan->waktu_berakhir) ) {
+            $isDalamPeriodepembayaran = TRUE;
+        }
+
         if ($isDalamPeriodepembayaran == false) {
             response(array(
                 'code'    => '14',
@@ -122,36 +133,45 @@ switch ($_POST['action']) {
         }
         // cek apakah sudah lunas apa belum?
         $sudahLunas = false; // silahkan cek di database apakah tagihan tersebut sudah lunas apa belum.
+
+        $pembayaran_db = $keuangan->get_where('pembayaran', array('nomor_pembayaran'=>$nomorPembayaran));
+        if ($pembayaran_db->num_rows() > 0) {
+            $sudahLunas = TRUE;
+        }
+
         if ($sudahLunas == true) {
             response(array(
                 'code'    => '88',
                 'message' => 'Tagihan sudah terbayar di ' . $kampus
             ));
         }
+
+        // ambil data tagihan mahasiswa
+        $tagihan = $tagihan_db->row();
+
+        $detail_tagihan = $keuangan->get_where('detail_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
+
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
-            'idTagihan'       => 'abc123456',
-            'nomorInduk'      => '123456',
-            'nama'            => 'Abdulloh Umar',
-            'fakultas'        => 'Ekonomi',
-            'jurusan'         => 'Manajemen',
-            'strata'          => 'S1',
-            'periode'         => '2016/2017',
-            'angkatan'        => '2015',
-            'totalNominal'    => 1000000,
+            'idTagihan'       => $tagihan->id_record_tagihan,
+            'nomorInduk'      => $tagihan->no_induk,
+            'nama'            => $tagihan->nama,
+            'fakultas'        => $tagihan->fakultas,
+            'jurusan'         => $tagihan->nama_prodi,
+            'strata'          => $tagihan->strata,
+            'periode'         => $tagihan->nama_periode,
+            'angkatan'        => $tagihan->angkatan,
+            'totalNominal'    => $tagihan->total_tagihan,
+
+            
+
             'rincianTagihan'  => array(
                 array(
-                    'kodeDetailTagihan' => '123',
-                    'deskripsiPendek'   => 'SPP',
-                    'deskripsiPanjang'  => 'Sumbangan Pembinaan Pendidikan',
-                    'nominal'           => 700000
+                    'kodeDetailTagihan' => $detail_tagihan->$id_record_detil_tagihan,
+                    'deskripsiPendek'   => $detail_tagihan->label_jenis_biaya,
+                    'deskripsiPanjang'  => $detail_tagihan->label_jenis_biaya_panjang,
+                    'nominal'           => $detail_tagihan->nilai_tagihan
                 ),
-                array(
-                    'kodeDetailTagihan' => '45678',
-                    'deskripsiPendek'   => 'GEDUNG',
-                    'deskripsiPanjang'  => 'Uang Gedung',
-                    'nominal'           => 300000
-                )
             )
         );
         if (!is_array($dataTagihan)) {
@@ -230,6 +250,11 @@ switch ($_POST['action']) {
 
         // cek apakah ada data tagihan?
         $isAdaTagihan = false; // silahkan cek di database apakah ada tagihan dengan nomor pembayaran tersebut?
+        $tagihan_db = $keuangan->get_where('tagihan', array('nomor_pembayaran'=>$nomorPembayaran));
+        if ($tagihan_db->num_rows() > 0) {
+            $isAdaTagihan = TRUE;
+        }
+
         if ($isAdaTagihan == false) {
             response(array(
                 'code'    => '14',
@@ -238,6 +263,11 @@ switch ($_POST['action']) {
         }
         // cek apakah masih dalam periode pembayaran yang diperbolehkan?
         $isDalamPeriodepembayaran = false; // silahkan cek di database apakah tagihan masih dalam periode pembayaran?
+        $date_tagihan = $tagihan_db->row();
+        if (strtotime($date_tagihan->waktu_berlaku) < strtotime(date('Y-m-d')) && strtotime(date('Y-m-d')) < strtotime($date_tagihan->waktu_berakhir) ) {
+            $isDalamPeriodepembayaran = TRUE;
+        }
+
         if ($isDalamPeriodepembayaran == false) {
             response(array(
                 'code'    => '14',
@@ -246,36 +276,43 @@ switch ($_POST['action']) {
         }
         // cek apakah sudah lunas apa belum?
         $sudahLunas = false; // silahkan cek di database apakah tagihan tersebut sudah lunas apa belum.
+        $pembayaran_db = $keuangan->get_where('pembayaran', array('nomor_pembayaran'=>$nomorPembayaran));
+        if ($pembayaran_db->num_rows() > 0) {
+            $sudahLunas = TRUE;
+        }
+
         if ($sudahLunas == true) {
             response(array(
                 'code'    => '88',
                 'message' => 'Tagihan sudah terbayar di ' . $kampus
             ));
         }
+        // ambil data tagihan mahasiswa
+        $tagihan = $tagihan_db->row();
+
+        $detail_tagihan = $keuangan->get_where('detail_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
+        
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
-            'idTagihan'       => 'abc123456',
-            'nomorInduk'      => '123456',
-            'nama'            => 'Abdulloh Umar',
-            'fakultas'        => 'Ekonomi',
-            'jurusan'         => 'Manajemen',
-            'strata'          => 'S1',
-            'periode'         => '2016/2017',
-            'angkatan'        => '2015',
-            'totalNominal'    => 1000000,
+            'idTagihan'       => $tagihan->id_record_tagihan,
+            'nomorInduk'      => $tagihan->no_induk,
+            'nama'            => $tagihan->nama,
+            'fakultas'        => $tagihan->fakultas,
+            'jurusan'         => $tagihan->nama_prodi,
+            'strata'          => $tagihan->strata,
+            'periode'         => $tagihan->nama_periode,
+            'angkatan'        => $tagihan->angkatan,
+            'totalNominal'    => $tagihan->total_tagihan,
+
+            
+
             'rincianTagihan'  => array(
                 array(
-                    'kodeDetailTagihan' => '123',
-                    'deskripsiPendek'   => 'SPP',
-                    'deskripsiPanjang'  => 'Sumbangan Pembinaan Pendidikan',
-                    'nominal'           => 700000
+                    'kodeDetailTagihan' => $detail_tagihan->$id_record_detil_tagihan,
+                    'deskripsiPendek'   => $detail_tagihan->label_jenis_biaya,
+                    'deskripsiPanjang'  => $detail_tagihan->label_jenis_biaya_panjang,
+                    'nominal'           => $detail_tagihan->nilai_tagihan
                 ),
-                array(
-                    'kodeDetailTagihan' => '45678',
-                    'deskripsiPendek'   => 'GEDUNG',
-                    'deskripsiPanjang'  => 'Uang Gedung',
-                    'nominal'           => 300000
-                )
             )
         );
         if (!is_array($dataTagihan)) {
@@ -297,6 +334,24 @@ switch ($_POST['action']) {
         }
 
         $prosesmasukkanDatabase = false; // Silahkan memasukkan data pembayaran ke database.
+
+        //simpan pembayaran dari bank
+
+        $data_pembayaran = array(
+            'id_record_pembayaran' => time();
+            'id_record_tagihan' => $tagihan->id_record_tagihan,
+            'waktu_transaksi' => get_waktu(),
+            'nomor_pembayaran' => $nomorPembayaran,
+            'kode_unik_transaksi_bank' => date('Ymd').time(),
+            'waktu_transaksi_bank' => $tanggalTransaksi,
+            'kode_bank' => $kodeBank,
+            'kanal_bayar_bank' => $kodeChannel,
+            'kode_terminal_bank' => $kodeTerminal,
+            'total_nilai_pembayaran' => $totalNominal,
+            'status_pembayaran' => '1',
+        );
+        $prosesmasukkanDatabase = $keuangan->insert('pembayaran', $data);
+
         if ($prosesmasukkanDatabase == false) {
             response(array(
                 'code'    => '91',
@@ -350,6 +405,10 @@ switch ($_POST['action']) {
         }
         // cek apakah ada transaksi pembayaran tersebut sebelumnya?
         $isAdaDataPembayaranSebelumnya = false; // silahkan cek di database
+        $pembayaran_db = $keuangan->get_where('pembayaran', array('nomor_pembayaran'=>$nomorPembayaran));
+        if ($pembayaran_db->num_rows() > 0) {
+            $isAdaDataPembayaranSebelumnya = TRUE;
+        }
         if ($isAdaDataPembayaranSebelumnya == false) {
             response(array(
                 'code'    => '63',
@@ -364,18 +423,21 @@ switch ($_POST['action']) {
                 'message' => 'Reversal ditolak. Reversal sebelumnya sudah dilakukan di '.$kampus
             ));
         }
+
+        $tagihan = $tagihan_db->row();
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
-            'idTagihan'       => 'abc123456',
-            'nomorInduk'      => '123456',
-            'nama'            => 'Abdulloh Umar',
-            'fakultas'        => 'Ekonomi',
-            'jurusan'         => 'Manajemen',
-            'strata'          => 'S1',
-            'periode'         => '2016/2017',
-            'angkatan'        => '2015',
-            'totalNominal'    => 1000000
+            'idTagihan'       => $tagihan->id_record_tagihan,
+            'nomorInduk'      => $tagihan->no_induk,
+            'nama'            => $tagihan->nama,
+            'fakultas'        => $tagihan->fakultas,
+            'jurusan'         => $tagihan->nama_prodi,
+            'strata'          => $tagihan->strata,
+            'periode'         => $tagihan->nama_periode,
+            'angkatan'        => $tagihan->angkatan,
+            'totalNominal'    => $tagihan->total_tagihan,
         );
+        
         if (!is_array($dataTagihan)) {
             response(array(
                 'code'    => '14',
@@ -383,6 +445,9 @@ switch ($_POST['action']) {
             ));
         }
         $prosesReversalDiDatabase = false; // Silahkan membatalkan data pembayaran ke database.
+        //hapus pembayaran
+        $keuangan->where('nomor_pembayaran', $nomorPembayaran);
+        $prosesReversalDiDatabase = $keuangan->delete('pembayaran');
         if ($prosesReversalDiDatabase == false) {
             response(array(
                 'code'    => '91',
