@@ -1,4 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+    
+    function get_waktu()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        return date('Y-m-d H:i:s');
+    }
+    function nama_periode($thn)
+    {
+        $thn_ = $thn+1;
+        return $thn.'/'.$thn_;
+    }
 
     function ip($nim,$semester)
     {
