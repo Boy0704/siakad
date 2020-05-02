@@ -338,7 +338,7 @@ switch ($_POST['action']) {
         //simpan pembayaran dari bank
 
         $data_pembayaran = array(
-            'id_record_pembayaran' => time();
+            'id_record_pembayaran' => time(),
             'id_record_tagihan' => $tagihan->id_record_tagihan,
             'waktu_transaksi' => get_waktu(),
             'nomor_pembayaran' => $nomorPembayaran,
