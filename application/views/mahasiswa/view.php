@@ -216,6 +216,8 @@ $class      ="class='form-control' id='status'"; ?>
                         </div>
                      </td>
                     </tr>
+
+                    
                        <tr>
                       <td>
                          <div style="color:black;" class="col-md-9">
@@ -226,6 +228,19 @@ $class      ="class='form-control' id='status'"; ?>
                                       </div>
                         </div> </td>
                     </tr>
+
+                    <tr>
+                      <td>
+                        <div style="color:black;" class="col-md-9">
+                                      <span class="col-md-2" for="name">Prodi</span>
+                                      <span class=" col-md-2 ">:</span>
+                                      <div class="col-md-8">
+                                      <span><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$record->konsentrasi_id,'nama_konsentrasi'); ?></span><br>
+                                      </div>
+                        </div>
+                     </td>
+                    </tr>
+                    
                     <tr>
                       <td>
                           <div style="color:black;" class="col-md-9">
