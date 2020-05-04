@@ -1,4 +1,4 @@
-<script src="<?php echo base_url();?>assets/js/1.8.2.min.js"></script>
+<!-- <script src="<?php echo base_url();?>assets/js/1.8.2.min.js"></script>
 <script>
   $( document ).ready(function() {
     $( "#jurusan" ).hide();
@@ -53,4 +53,29 @@ $class      ="class='form-control' id='level'";
     
 </table>
   </div></div>
+</form> -->
+<h3>Edit Data User</h3>
+<form action="<?php echo base_url() ?>users/edit_user_new/<?php echo $this->uri->segment(3) ?>" method="POST">
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" name="username" class="form-control" value="<?php echo $r['username'] ?>">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" class="form-control">
+    <input type="hidden" name="pass_lama" value="<?php echo $r['password'] ?>">
+    <p>*) <b style="color: red">Kosongkan password jika tidak diubah</b></p>
+  </div>
+  <div class="form-group">
+    <label>Level</label>
+    <select name="level" class="form-control">
+      <option value="<?php echo $r['level'] ?>"><?php echo get_data('level','id_level',$r['level'],'level') ?></option>
+      <?php foreach ($this->db->get('level')->result() as $rw): ?>
+        <option value="<?php echo $rw->id_level ?>"><?php echo $rw->level ?></option>
+      <?php endforeach ?>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Ubah</button>
+  </div>
 </form>

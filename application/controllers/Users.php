@@ -56,6 +56,35 @@ class users extends MY_Controller{
         }
     }
 
+    public function edit_user_new($id)
+    {
+        if ($_POST) {
+            $username = $this->input->post('username');
+            $password = $this->input->post('pass_lama');
+            $password_new = $this->input->post('password');
+            $level = $this->input->post('level');
+            if ($password_new != '') {
+                $password = hash_string($password_new);
+            }
+
+            $data= array(
+                'username' => $username,
+                'password' => $password,
+                'level' => $level,
+            );
+
+            $this->db->where('id_users', $id);
+            $edit = $this->db->update('app_users', $data);
+            if ($edit) {
+                $this->session->set_flashdata('message', alert_biasa('Data User berhasil diedit','success'));
+                redirect('users','refresh');
+            } else {
+                $this->session->set_flashdata('message', alert_biasa('Data User gagal diedit','info'));
+                redirect('users/edit/'.$id,'refresh');
+            }
+        }
+    }
+
     function edit_mhs()
     {
         if(isset($_POST['submit']))
