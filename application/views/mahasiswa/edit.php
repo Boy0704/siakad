@@ -85,7 +85,7 @@ if ($this->session->userdata('level') == 4) {
             $prodi=  getField('akademik_konsentrasi', 'prodi_id', 'konsentrasi_id', $r['konsentrasi_id'])
             ?>
         <?php //echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); //buatcombo('prodi', 'akademik_prodi', '', 'nama_prodi', 'prodi_id', $param, array('id'=>'prodi'),'',$disable) ?>
-          <?php if ($this->session->userdata('level') =='1'): ?>
+          <?php if ($this->session->userdata('level') =='1' or $this->session->userdata('level') =='6'): ?>
             <select name="" class="form-control" >
             <option value="<?php echo $prodi ?>"><?php echo get_data('akademik_prodi','prodi_id',$prodi,'nama_prodi'); ?></option>
 
@@ -104,7 +104,7 @@ if ($this->session->userdata('level') == 4) {
               <!-- <input type="hidden" name="konsentrasi" value="<?php echo $r['konsentrasi_id'] ?>"> -->
          
 
-         <?php if ($this->session->userdata('level') =='1'): ?>
+         <?php if ($this->session->userdata('level') =='1' or $this->session->userdata('level') =='6'): ?>
            <select name="konsentrasi" class="form-control" >
             <option value="<?php echo $r['konsentrasi_id'] ?>"><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$r['konsentrasi_id'],'nama_konsentrasi'); ?></option>
 
