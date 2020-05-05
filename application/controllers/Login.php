@@ -45,7 +45,7 @@ class Login extends MY_Controller
                                     'sess_login_absen'=>  substr(waktu(), 0,10),
                                     'keterangan'=>$r->keterangan,
                                     'username'=>$username,
-                                    'konsentrasi_id'=>$r->konsentrasi_id,
+                                    'konsentrasi_id'=>get_data('student_mahasiswa','mahasiswa_id',$r->keterangan,'konsentrasi_id'),
                                     'prodi_id'=>$r->prodi_id
                                 );
                         $this->session->set_userdata($data);
