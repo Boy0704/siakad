@@ -107,7 +107,7 @@ function loadkonsentrasi2()
           });
 }
 
-<?php if ($level!='6') {?>
+
 function simpanhari(id)
 {
     var nilaihari=$("#hariid"+id).val();
@@ -214,7 +214,6 @@ function simpankuota(id)
     });
 }
 
-<?php } ?>
 
 function loadsemester()
 {
