@@ -165,7 +165,7 @@ $class      ="class='form-control' id='status'"; ?>
         Status<?php echo form_dropdown('status',$status,'',$class);?>
       </td>
     </tr>
-    <?php if ($level==1 OR $level==2): ?>
+    <?php if ($level==1 OR $level==2 OR $level==6): ?>
      <tr><td colspan="4"><?php echo anchor('mahasiswa/post','<span class="fa fa-plus"></span> Input Data',array('class'=>'btn btn-primary btn-sm'));?> <?php //echo anchor('','Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?> 
      <a href="<?php echo base_url() ?>mahasiswa/cari_mahasiswa" class="btn btn-sm btn-primary">Cari Mahasiswa</a>
    </td>
