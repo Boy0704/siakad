@@ -33,7 +33,7 @@ class jadwalkuliah extends MY_Controller
         $semester       =   $_GET['semester'];
         $level = $this->session->userdata('level');
 
-        if ($level=='6') {
+        if ($level=='3') {
           $disabled = "disabled";
         }else {
           $disabled = "";
