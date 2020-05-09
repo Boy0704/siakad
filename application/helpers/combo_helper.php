@@ -676,7 +676,7 @@ function akses_admin()
 {
     $CI     =   & get_instance();
     $sess=$CI->session->userdata('level');
-    if($sess==1 OR $sess==2)
+    if($sess==1 OR $sess==6)
     {
          "";
     }
