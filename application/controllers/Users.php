@@ -286,6 +286,13 @@ class users extends MY_Controller{
             $level     =   $this->input->post('level');
             $prodi     =   $this->input->post('prodi');
 
+
+            $cek = $this->db->get_where('app_users', array('username'=>$username));
+            if ($cek->num_rows() > 0) {
+                $this->session->set_flashdata('message', alert_biasa('Username sudah ada !','info'));
+                redirect('users/post','refresh');
+            }
+
             if($level==2)
             {
                  $data   =   array('username'   =>$username,
