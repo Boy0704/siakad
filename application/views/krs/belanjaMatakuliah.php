@@ -28,7 +28,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
 <div class="row">
 	<div class="col-md-12">
 		<table class='table table-bordered'>
-            <tr class='alert-info'><th colspan=7>DAFTAR MATAKULIAH</th><th colspan=3><a href="<?php echo base_url('krs'); ?>" class="btn btn-primary"><i class="fa fa-mail-reply-all"></i> Kembali</a></th></tr>
+            <tr class='alert-info'><th colspan=8>DAFTAR MATAKULIAH</th><th colspan=3><a href="<?php echo base_url('krs'); ?>" class="btn btn-primary"><i class="fa fa-mail-reply-all"></i> Kembali</a></th></tr>
             <tr class='alert-info'><th width=10>No</th><th width=20>Kode</th>
                 <th>Nama Matakuliah</th>
                 <th>Dosen</th>
