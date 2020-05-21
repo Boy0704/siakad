@@ -33,6 +33,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                 <th>Nama Matakuliah</th>
                 <th>Dosen</th>
                 <th width=60>SKS</th>
+                <th width=60>HARI</th>
                 <th width=60>RUANG</th>
                 <th width=60>WAKTU</th>
                 <th width=60>KUOTA KELAS</th>
@@ -46,7 +47,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                 else
                 {
                     echo"<tr>
-                            <td colspan='10' style='text-align:center;font-size:18px;'><i class='fa fa-info' style='font-size:60px;'></i><br>OPS DATA TIDAK DITEMUKAN</td>
+                            <td colspan='11' style='text-align:center;font-size:18px;'><i class='fa fa-info' style='font-size:60px;'></i><br>OPS DATA TIDAK DITEMUKAN</td>
                         </tr>";
                 }
 
@@ -98,6 +99,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         <td>".  strtoupper($m->nama_lengkap)."</td>
                         <td>$m->sks SKS</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'nama_ruangan'))."</td>
+                        <td>".  strtoupper(get_data('app_hari','hari_id',$m->hari_id,'hari'))."</td>
                         <td>".  get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'jam_mulai')." - ".get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'jam_selesai')."</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'kapasitas'))."</td>
                         <td>".  strtoupper(cek_sisa_kuota($m->jadwal_id))."</td>
