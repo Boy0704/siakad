@@ -48,7 +48,7 @@ class jadwalkuliah extends MY_Controller
         <th>Kode</th>
         <th>Matakuliah</th>
         <th width=5>SKS</th>
-        <th width=150>Ruang</th>
+        <th width=250>Ruang</th>
         <th  width=150>Jam</th>
         <th  width=150>Kuota Kelas</th>
         <th  width=100>Kuota Terisi</th>
