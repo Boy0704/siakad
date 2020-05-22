@@ -9,7 +9,7 @@ class Keuangan_hth extends CI_Controller
 	
     public function index()
     {
-        $data['title']=  'Tambah Tagihan';
+        $data['title']=  'Keuangan H2H Bank BSM';
         $this->template->load('template', 'keuangan_hth/add_tagihan',$data);
     }
 

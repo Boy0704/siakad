@@ -17,22 +17,26 @@
 		</div>
 		
 	</div>
-	<div class="col-md-12" style="margin-top: 20px;">
-		<table class="table table-bordered">
+	<div class="col-md-12" style="margin-top: 20px;" >
+		<table class="table table-bordered" id="datatable">
+			<thead>
 			<tr class="alert-success">
+				<td>No Pembayaran</td>
 				<td>Nim</td>
 				<td>Nama</td>
 				<td>Prodi</td>
+				<td>Kode Periode</td>
 				<td>Periode</td>
 				<td>Total Tagihan</td>
 				<td>Start Date</td>
 				<td>End Date</td>
-				<td>Aksi</td>
+				<td>Status Bayar</td>
 			</tr>
+			</thead>
 			<?php if ($_GET): 
 				$prodi = $this->input->get('prodi');
 				?>
-			<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Tambah Tagihan</button>
+			<!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Tambah Tagihan</button> -->
 
 			  <!-- Modal -->
 			  <div class="modal fade" id="myModal" role="dialog">
@@ -86,17 +90,35 @@
 				$sql = $keuangan->get_where('tagihan', array('kode_prodi'=>$prodi));
 				foreach ($sql->result() as $rw) {
 			 ?>
+			<tbody>
 			<tr>
-				<td><?php echo $rw->nim; ?></td>
+				<td><?php echo $rw->nomor_induk; ?></td>
+				<td><?php echo $rw->nomor_pembayaran; ?></td>
 				<td><?php echo $rw->nama; ?></td>
-				<td><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$rw->konsentrasi_id,'nama_konsentrasi'); ?></td>
+				<td><?php echo $rw->nama_prodi ?></td>
+				<td><?php echo $rw->kode_periode; ?></td>
+				<td><?php echo $rw->nama_periode; ?></td>
+				<td><?php echo number_format($rw->total_nilai_tagihan); ?></td>
+				<td><?php echo $rw->waktu_berlaku; ?></td>
+				<td><?php echo $rw->waktu_berakhir; ?></td>
 				<td>
-					<a href="<?php echo base_url() ?>keuangan_hth/edit_tagihan/<?php echo $rw->id_record_tagihan ?>" class="btn btn-sm btn-info">Edit</a>
+					<!-- <a href="<?php echo base_url() ?>keuangan_hth/edit_tagihan/<?php echo $rw->id_record_tagihan ?>" class="btn btn-sm btn-info">Edit</a> -->
+					<?php 
+					$cek_bayar = $keuangan->get_where('pembayaran', array('id_record_tagihan'=>$rw->id_record_tagihan));
+					if ($cek_bayar->num_rows() > 0) {
+						echo '<span class="label label-success">TERBAYAR</span>';
+					} else {
+						echo '<span class="label label-danger">BELUM DIBAYAR</span>';
+					}
+					 ?>
+					
 				</td>
+
 			</tr>
 			<?php } ?>
 
 			<?php endif ?>
+			</tbody>
 		</table>
 	</div>
 </div>
