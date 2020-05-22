@@ -44,7 +44,7 @@ class jadwalkuliah extends MY_Controller
         <th width=7>#</th>
         <th width=7>No</th>
         
-        <th width=120>Hari</th>
+        <th width=300>Hari</th>
         <th>Kode</th>
         <th>Matakuliah</th>
         <th width=5>SKS</th>
