@@ -71,7 +71,7 @@ function jumlah_sks()
                     $id   = $this->session->userdata('keterangan');
                     $d    = $this->db->query($mhs)->row();
                     $nim  =  getField('student_mahasiswa', 'nim', 'mahasiswa_id', $id);
-                    $krs  =   "SELECT ak.krs_id,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap
+                    $krs  =   "SELECT ak.krs_id,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,jk.hari_id,jk.jam_mulai,jk.jam_selesai
                                 FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,app_dosen as ad
                                 WHERE mm.makul_id=jk.makul_id and ad.dosen_id=jk.dosen_id and jk.jadwal_id=ak.jadwal_id and jk.tahun_akademik_id='$thn' and ak.nim='$nim' and ak.semester='".$d->semester_aktif."'";
                     $data =  $this->db->query($krs);
@@ -110,6 +110,8 @@ function jumlah_sks()
                 <th width='80'>KODE</th>
                 <th>NAMA MATAKULIAH</th>
                 <th width=10>SKS</th>
+                <th width=20>HARI</th>
+                <th width=20>JAM</th>
                 <th>DOSEN PENGAPU</th>
                 <th width='10'>Hapus</th>
             </tr>
@@ -131,7 +133,9 @@ function jumlah_sks()
                             <td align='center'>".  strtoupper($r->kode_makul)."</td>
                             <td>".  strtoupper($r->nama_makul)."</td>
                             <td align='center'>".  $r->sks."</td>
-                            <td>".  strtoupper($r->nama_lengkap)."</td>
+                            <td align='center'>".  get_data('app_hari','hari_id',$r->hari_id,'hari') ."</td>
+                            <td align='center'>". $r->jam_mulai." - ".$r->jam_selesai ."</td>
+                             <td>".  strtoupper($r->nama_lengkap)."</td>
                             <td align='center'><a href='javascript:void(0)' class='btn btn-sm btn-danger fa fa-trash-o' title='Batal Ambil Matakuliah' onclick='hapus($r->krs_id)'></a></td>
                             </tr>";
                         $no++;

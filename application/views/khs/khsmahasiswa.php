@@ -26,6 +26,8 @@
                     <th>NAMA MATAKULIAH</th>
                     <th>DOSEN PENGAPU</th>
                     <th>SKS</th>
+                    <th>HARI</th>
+                    <th>JAM</th>
                     <th>Grade</>
                     <th>Mutu</th>
                     <th>Sks x Mutu</th>
@@ -43,7 +45,7 @@
                     for($smt=1;$smt<=$d['semester_aktif'];$smt++)
                     {
                         echo "<tr class='warning'><th colspan='11'>SEMESTER $smt</th></tr>";
-                        $krs  = "SELECT kh.grade,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,kh.mutu,kh.confirm,kh.khs_id,kh.kehadiran,kh.tugas
+                        $krs  = "SELECT kh.grade,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,kh.mutu,kh.confirm,kh.khs_id,kh.kehadiran,kh.tugas,jk.hari_id,jk.jam_mulai,jk.jam_selesai
                                     FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,
                                     app_dosen as ad,akademik_khs as kh
                                     WHERE mm.makul_id=jk.makul_id and ad.dosen_id=jk.dosen_id and jk.jadwal_id=ak.jadwal_id
@@ -68,6 +70,8 @@
                                     <td>".  strtoupper($r->nama_makul)."</td>
                                     <td>".  strtoupper($r->nama_lengkap)."</td>
                                     <td align='center'>".  $r->sks."</td>
+                                    <td align='center'>".  get_data('app_hari','hari_id',$r->hari_id,'hari') ."</td>
+                                    <td align='center'>". $r->jam_mulai." - ".$r->jam_selesai ."</td>
                                     <td align='center'>".$r->grade."</td>
                                     <td align='center'>$r->mutu</td>
                                     <td align='center'>$hasilkali</td>
