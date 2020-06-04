@@ -148,7 +148,7 @@ function jumlah_sks()
                 </script>
             <?php
             }?>
-            <tr><td colspan='3' align='right'>Total SKS</td><td align='center'><?php //if($sks>$max_sks){echo $sks;}else{echo "<b id='jumlah_sks'></b>";} ?><b id='jumlah_sks'></b></td><td colspan=2></td></tr>
+            <tr><td colspan='3' align='right'>Total SKS</td><td align='center'><?php //if($sks>$max_sks){echo $sks;}else{echo "<b id='jumlah_sks'></b>";} ?><b id='jumlah_sks'></b></td><td colspan=4></td></tr>
 
         </table>
 

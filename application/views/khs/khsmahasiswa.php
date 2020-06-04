@@ -203,7 +203,7 @@
                 echo"<tr style='font-weight:bold;'>
                         <td colspan='4' align='center'>Total</td>
                         <td align='center'>$sks</td>
-                        <td></td>
+                        <td colspan='3'></td>
                         <td align='center'>".$mutu."</td>
                         <td align='center'>".$total."</td>
                         </tr>
