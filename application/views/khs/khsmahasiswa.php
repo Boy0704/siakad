@@ -125,8 +125,8 @@
                 }
                 else
                 {
-                    $krs       =   "SELECT kh.grade,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,kh.mutu,kh.confirm,kh.khs_id,kh.tugas,kh.kehadiran
-                                    FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,jk.hari_id,jk.jam_mulai,jk.jam_selesai
+                    $krs       =   "SELECT kh.grade,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,kh.mutu,kh.confirm,kh.khs_id,kh.tugas,kh.kehadiran,jk.hari_id,jk.jam_mulai,jk.jam_selesai
+                                    FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,
                                     app_dosen as ad,akademik_khs as kh
                                     WHERE mm.makul_id=jk.makul_id and ad.dosen_id=jk.dosen_id and jk.jadwal_id=ak.jadwal_id
                                     and ak.nim='$nim' and kh.krs_id=ak.krs_id and ak.semester='$semester' and kh.confirm='1' GROUP BY kh.krs_id";
