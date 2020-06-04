@@ -112,7 +112,7 @@
                             <td colspan='5' align='right'>Total SKS</td>
                             <td align='center'>$sks</td>
                             <td colspan='2' align='left'>IP = ".$ipk."</td>
-                            <td colspan='4'></td>
+                            <td colspan='6'></td>
                             </tr>
                     <tr>
                     <td colspan=11>".anchor('cetak/cetakkhs/'.$smt.'/'.$id,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'))."
@@ -126,7 +126,7 @@
                 else
                 {
                     $krs       =   "SELECT kh.grade,mm.kode_makul,mm.nama_makul,mm.sks,ad.nama_lengkap,kh.mutu,kh.confirm,kh.khs_id,kh.tugas,kh.kehadiran
-                                    FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,
+                                    FROM makul_matakuliah as mm,akademik_jadwal_kuliah as jk,akademik_krs as ak,jk.hari_id,jk.jam_mulai,jk.jam_selesai
                                     app_dosen as ad,akademik_khs as kh
                                     WHERE mm.makul_id=jk.makul_id and ad.dosen_id=jk.dosen_id and jk.jadwal_id=ak.jadwal_id
                                     and ak.nim='$nim' and kh.krs_id=ak.krs_id and ak.semester='$semester' and kh.confirm='1' GROUP BY kh.krs_id";
@@ -161,6 +161,8 @@
                                 <td>".  strtoupper($r->nama_makul)."</td>
                                 <td>".  strtoupper($r->nama_lengkap)."</td>
                                 <td align='center'>".  $r->sks."</td>
+                                <td align='center'>".  get_data('app_hari','hari_id',$r->hari_id,'hari') ."</td>
+                                <td align='center'>". $r->jam_mulai." - ".$r->jam_selesai ."</td>
                                 <td align='center'>".$r->grade."</td>
                                 <td align='center'>$r->mutu</td>
                                 <td align='center'>$hasilkali</td>
