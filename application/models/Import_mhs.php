@@ -32,6 +32,8 @@ class Import_mhs extends CI_Model {
 
 	public function cek_sks_old($nim,$semester_aktif)
 	{
+		return 30;
+		exit();
 		$semester_old = $semester_aktif-1;
 		if ($semester_old==0) {
 			$semester_old = Null;
