@@ -17,34 +17,7 @@
 			<div class="col-md-3">
 				<a class="btn btn-info" data-toggle="modal" data-target="#myModal">Import Tagihan</a>
 
-				<!-- Modal -->
-				<div id="myModal" class="modal fade" role="dialog">
-				  <div class="modal-dialog">
-
-				    <!-- Modal content-->
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal">&times;</button>
-				        <h4 class="modal-title">Import Tagihan H2H</h4>
-				      </div>
-				      <div class="modal-body">
-				        <form action="<?php echo base_url('keuangan_hth/import_tagihan') ?>" method="POST" enctype="multipart/form-data">
-				        	<div class="form-group">
-				        		<label>Upload Excel</label>
-				        		<input type="file" name="file_excel" class="form-control">
-				        	</div>
-				        	<div class="form-group">
-				        		<button type="submit" class="btn btn-info">Upload</button>
-				        	</div>
-				        </form>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				      </div>
-				    </div>
-
-				  </div>
-				</div>
+				
 			</div>
 			</form>
 		</div>
@@ -156,4 +129,33 @@
 			</tbody>
 		</table>
 	</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Import Tagihan H2H</h4>
+      </div>
+      <div class="modal-body">
+        <form action="<?php echo base_url('keuangan_hth/import_tagihan') ?>" method="POST" enctype="multipart/form-data">
+        	<div class="form-group">
+        		<label>Upload Excel</label>
+        		<input type="file" name="file_excel" class="form-control">
+        	</div>
+        	<div class="form-group">
+        		<button type="submit" class="btn btn-info">Upload</button>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
