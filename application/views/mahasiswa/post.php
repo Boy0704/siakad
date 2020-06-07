@@ -31,7 +31,7 @@ $(document).ready(function(){
 </script>
 <?php
 echo form_open_multipart($this->uri->segment(1).'/post');
-if($this->session->userdata('level')==1)
+if($this->session->userdata('level')==1 or $this->session->userdata('level')==6)
 {
     $param="";
 }
