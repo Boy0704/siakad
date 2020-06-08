@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="col-md-3">
-				<a class="btn btn-info" data-toggle="modal" data-target="#myModal">Import Tagihan</a>
+				<a class="btn btn-info" data-toggle="modal" data-target="#modalImport">Import Tagihan</a>
 
 				
 			</div>
@@ -95,6 +95,7 @@
 			
 			<?php 
 	        	$keuangan = $this->load->database('keuangan', TRUE);
+	        	$keuangan->order_by('id', 'desc');
 				$sql = $keuangan->get_where('tagihan', array('kode_prodi'=>$prodi));
 				foreach ($sql->result() as $rw) {
 			 ?>
@@ -132,7 +133,7 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="modalImport" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -143,6 +144,10 @@
       </div>
       <div class="modal-body">
         <form action="<?php echo base_url('keuangan_hth/import_tagihan') ?>" method="POST" enctype="multipart/form-data">
+        	<div class="form-group">
+        		
+        		<a href="excel/import_tagihan.xlsx"><label>Download Template</label></a>
+        	</div>
         	<div class="form-group">
         		<label>Upload Excel</label>
         		<input type="file" name="file_excel" class="form-control">
