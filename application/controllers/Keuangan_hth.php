@@ -105,7 +105,7 @@ class Keuangan_hth extends CI_Controller
                         'kode_periode'=>$kode_periode,
                         'nama_periode'=>$nama_periode,
                         'is_tagihan_aktif'=>1,
-                        'waktu_berlaku'=> get_waktu(),
+                        'waktu_berlaku'=> date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d')))),
                         'waktu_berakhir'=> date('Y-m-d', strtotime('+1 month', strtotime(date('Y-m-d')))),
                         'strata' => 'S1',
                         'angkatan'=> $angkatan,
