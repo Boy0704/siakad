@@ -58,8 +58,8 @@
 			 ?>
 			
 			<tr>
-				<td><?php echo $rw->nomor_induk; ?></td>
 				<td><?php echo $rw->nomor_pembayaran; ?></td>
+				<td><?php echo $rw->nomor_induk; ?></td>
 				<td><?php echo $rw->nama; ?></td>
 				<td><?php echo $rw->nama_prodi ?></td>
 				<td><?php echo $rw->kode_periode; ?></td>
