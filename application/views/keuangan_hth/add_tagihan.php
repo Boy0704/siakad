@@ -41,6 +41,7 @@
 				<td>Status Bayar</td>
 			</tr>
 			</thead>
+			<tbody>
 			<?php if ($_GET): 
 				$prodi = $this->input->get('prodi');
 				?>
@@ -55,7 +56,7 @@
 				$sql = $keuangan->get_where('tagihan', array('kode_prodi'=>$prodi));
 				foreach ($sql->result() as $rw) {
 			 ?>
-			<tbody>
+			
 			<tr>
 				<td><?php echo $rw->nomor_induk; ?></td>
 				<td><?php echo $rw->nomor_pembayaran; ?></td>
