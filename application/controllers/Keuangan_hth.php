@@ -89,7 +89,8 @@ class Keuangan_hth extends CI_Controller
 
                 $cek = $keuangan->get_where('tagihan', array('nomor_pembayaran'=>$nim.$kode_periode));
                 if ($cek->num_rows() > 0) {
-                    $this->session->set_flashdata('message',alert_biasa("terdapat data double di nim: $nim dan kode_periode: $kode_periode ",'error'));
+                    $dt = $row->row();
+                    $this->session->set_flashdata('message',alert_biasa("terdapat data double dengan nim: $dt->nim, kode_periode: $dt->kode_periode, nama : $dt->nama, prodi: $dt->nama_prodi  ",'error'));
                     redirect('Keuangan_hth','refresh');
                 } else {
 
