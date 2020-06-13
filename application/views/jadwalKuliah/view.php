@@ -281,11 +281,9 @@ else
       </tr>
       <tr>
         <td colspan="4">
-        <?php if ($level!="6"): ?>
           <?php //echo anchor('#example-modal','<span class="fa fa-circle-o-notch"></span> Autosetup',array('class'=>'btn btn-primary btn-sm','data-toggle'=>'modal'));?>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#example-modal"><span class="fa fa-circle-o-notch"></span> Autosetup</button>
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#example-modal2"><span class="fa fa-plus"></span> Manual Jadwal kuliah</button>
-        <?php endif; ?>
         <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-print"></span> Cetak Data</button>
       <?php //echo anchor('matakuliah/#','<span class="glyphicon glyphicon-print"></span> Cetak Data',array('class'=>'btn btn-primary  btn-sm'));?>
         </td>

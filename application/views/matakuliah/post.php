@@ -41,14 +41,14 @@ $semester=array(1=>'Semester 1',
                 6=>'Semester 6',
                 7=>'Semester 7',
                 8=>'Semester 8');
-if($this->session->userdata('level')==1)
-{
+// if($this->session->userdata('level')==1)
+// {
     $param="";
-}
-else
-{
-    $param=array('prodi_id'=>$this->session->userdata('keterangan'));
-}
+// }
+// else
+// {
+//     $param=array('prodi_id'=>$this->session->userdata('keterangan'));
+// }
 ?>
 <div class="panel panel-default">
   <div class="panel-heading">
