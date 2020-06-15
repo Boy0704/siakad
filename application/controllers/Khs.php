@@ -17,6 +17,7 @@ class khs extends MY_Controller{
         $level = $this->session->userdata('level');
         if ($level == 1 OR $level ==2 OR $level ==6) {
              $data['title']=  $this->title;
+             $this->db->order_by('keterangan', 'desc');
             $data['tahun_angkatan']=  $this->db->get('student_angkatan')->result();
             $this->template->load('template', $this->folder.'/view',$data);
         }
@@ -404,7 +405,7 @@ class khs extends MY_Controller{
                     <td colspan='4'></td>
                     </tr>
             <tr>
-            <td colspan=11>".anchor('cetak/cetakkhs/'.$smt.'/'.$id,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'))."
+            <td colspan=11>".anchor('cetak/cetak_khs_new/'.$nim.'/'.$smt,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'))."
 
             ".anchor('','<i class="fa fa-bar-chart-o"></i> Grafik',array('Title'=>'Lihat Grafik','class'=>'btn btn-primary btn-sm'))."
             </td></tr>";
@@ -495,7 +496,7 @@ class khs extends MY_Controller{
                 <td colspan='4'></td>
                 </tr>
             <tr>
-                <td colspan=11>".anchor('cetak/cetakkhs/'.$semester.'/'.$id,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'))."</td>
+                <td colspan=11>".anchor('cetak/cetak_khs_new/'.$nim.'/'.$semester,'<i class="fa fa-print"></i> Cetak KHS',array('title'=>$this->title,'class'=>'btn btn-primary btn-sm', 'target'=>'_blank'))."</td>
             </tr></table>";
         }
     }

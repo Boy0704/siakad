@@ -13,7 +13,7 @@
         <td style="text-align: center;font-size: 10px; font-weight: arial;">
           <div style="margin-left:-50px;margin-top:-20px;">
             Kampus : Jl. Lintas Barat KM. 19 Ceruk Ijuk Kelurahan Toapaya Asri - Bintan <br>
-            Website : www.stai-sultanabdurrahman.ac.id Email : stain.kepri@yahoo.com 
+            Website : www.stainkepri.ac.id Email : stain.kepri@yahoo.com 
           </div>
         </td>
     </tr>
