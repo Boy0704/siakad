@@ -20,6 +20,11 @@ class Keuangan_hth extends CI_Controller
         
     }
 
+    public function cetak_h2h()
+    {
+        $this->load->view('keuangan_hth/cetak_h2h');
+    }
+
     public function import_tagihan()
     {
         $this->import_excel();
