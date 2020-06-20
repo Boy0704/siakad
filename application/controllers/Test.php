@@ -3,6 +3,45 @@
 class Test extends CI_Controller
 {
 
+    public function cek_khs_double()
+    {
+        $a = array();
+        // $this->db->where('krs_id', );
+        $this->db->select('krs_id,nilai');
+        foreach ($this->db->get('akademik_khs')->result() as $rw) {
+            $this->db->select('krs_id');
+            $this->db->where('krs_id', $rw->krs_id);
+            $cek = $this->db->get('akademik_khs');
+            if ($cek->num_rows() > 1) {
+                log_data($rw->krs_id);
+                array_push($rw->krs_id, $a);
+            }
+        }
+        // log_r($a);
+    }
+
+    public function delete_khs_double()
+    {
+        $sql = "DELETE FROM akademik_khs WHERE krs_id IN (SELECT dd FROM aa GROUP BY dd) and nilai is null ";
+        // foreach ($this->db->query($sql)->result() as $key => $rw) {
+        //     log_data($rw);
+        // }
+        $this->db->query($sql);
+        echo "berhasil";
+    }
+
+    public function cek_krs_inkhs()
+    {
+        $this->db->select('krs_id');
+        $db = $this->db->get('akademik_krs');
+        foreach ($db->result() as $rw) {
+            $cek = $this->db->get_where('akademik_khs', array('krs_id'=>$rw->krs_id));
+            if ($cek->num_rows() == 0) {
+                $this->db->insert('akademik_khs', array('krs_id'=>$rw->krs_id));
+            }
+        }
+    }
+
     public function index()
    
     {
