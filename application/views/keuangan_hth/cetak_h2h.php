@@ -7,6 +7,7 @@
 	<table class="table table-bordered" border="1">
 			<thead>
 			<tr class="alert-success">
+				<td>Label</td>
 				<td>No Pembayaran</td>
 				<td>Nim</td>
 				<td>Nama</td>
@@ -23,6 +24,7 @@
 			<?php 
 				$prodi = $this->input->get('prodi');
 				$nim = $this->input->get('nim');
+				$tahun = $this->input->get('tahun');
 				?>
 			<!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Tambah Tagihan</button> -->
 
@@ -37,12 +39,14 @@
 	        	if ($nim !== '') {
 	        		$keuangan->where('nomor_induk', $nim);
 	        	}
+	        	$keuangan->like('waktu_berlaku', $tahun, 'after');
 	        	$keuangan->order_by('id', 'desc');
 				$sql = $keuangan->get('tagihan');
 				foreach ($sql->result() as $rw) {
 			 ?>
 			
 			<tr>
+				<td><?php echo $keuangan->get_where('detil_tagihan', array('id_record_tagihan'=>$rw->id_record_tagihan))->row()->label_jenis_biaya; ?></td>
 				<td><?php echo $rw->nomor_pembayaran; ?></td>
 				<td><?php echo $rw->nomor_induk; ?></td>
 				<td><?php echo $rw->nama; ?></td>

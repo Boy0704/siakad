@@ -10,10 +10,13 @@
 					<?php endforeach ?>
 				</select>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<input type="text" name="nim" class="form-control" placeholder="Masukkan Nim">
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-2">
+				<input type="text" name="tahun" class="form-control" placeholder="EX: 2019" required>
+			</div>
+			<div class="col-md-1">
 				<button class="btn btn-primary">Cari</button>
 			</div>
 
@@ -30,7 +33,7 @@
 	</div>
 	<div class="col-md-12" style="margin-top: 20px;" >
 		<p>
-			<a href="<?php echo $this->uri->segment(1)."/cetak_h2h?&prodi=".$_GET['prodi']."&nim=".$_GET['nim']."&aksi=cetak" ?>" class="btn btn-info">Cetak</a>
+			<a href="<?php echo $this->uri->segment(1)."/cetak_h2h?&prodi=".$_GET['prodi']."&nim=".$_GET['nim']."&tahun=".$_GET['tahun']."&aksi=cetak" ?>" class="btn btn-info">Cetak</a>
 		</p>
 		<table class="table table-bordered" id="datatable">
 			<thead>
@@ -51,6 +54,7 @@
 			<?php if ($_GET): 
 				$prodi = $this->input->get('prodi');
 				$nim = $this->input->get('nim');
+				$tahun = $this->input->get('tahun');
 				?>
 			<!-- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Tambah Tagihan</button> -->
 
@@ -65,6 +69,7 @@
 	        	if ($nim !== '') {
 	        		$keuangan->where('nomor_induk', $nim);
 	        	}
+	        	$keuangan->like('waktu_berlaku', $tahun, 'after');
 	        	$keuangan->order_by('id', 'desc');
 				$sql = $keuangan->get('tagihan');
 				foreach ($sql->result() as $rw) {

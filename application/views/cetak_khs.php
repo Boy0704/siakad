@@ -96,14 +96,14 @@
     </tr>
     <tr>
         <td style="padding-bottom: 60px;" align="center">Diketahui Oleh <br> Wakil Ketua I</td>
-        <td style="padding-bottom: 60px;" align="center">Ketua Prodi <br><?php echo strtoupper($profile['nama_konsentrasi'])?></td>
+        <td style="padding-bottom: 60px;" align="center">Ka. Subbag Akademik <br><?php echo strtoupper($profile['nama_konsentrasi'])?></td>
     </tr>
     <tr>
            
         <td align="center"><u>ARIS BINTANIA, M.Ag</u> <br>NIDN. 2023077501</td>
         <?php $ka_prodi = get_data('app_dosen','dosen_id',$profile['ka_prodi'],'nama_lengkap'); ?>
         <?php $nidn = get_data('app_dosen','dosen_id',$profile['ka_prodi'],'nidn'); ?>
-        <td align="center"><u><?php echo $ka_prodi; ?></u> <br>NIDN. <?php echo $nidn; ?></td>
+        <td align="center"><u>Dvi Afriansyah, S.Pd.I</u> <br>NIP. 19800428 200501 1 004</td>
     </tr>
 
 </table>
