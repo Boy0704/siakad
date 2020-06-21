@@ -96,7 +96,7 @@
     </tr>
     <tr>
         <td style="padding-bottom: 60px;" align="center">Diketahui Oleh <br> Wakil Ketua I</td>
-        <td style="padding-bottom: 60px;" align="center">Ka. Subbag Akademik <br><?php echo strtoupper($profile['nama_konsentrasi'])?></td>
+        <td style="padding-bottom: 60px;" align="center">Ka. Subbag Akademik</td>
     </tr>
     <tr>
            
