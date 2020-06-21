@@ -19,6 +19,12 @@ if ($_GET) {
 	</tr>
 	<?php 
 	$tahun_akademik = $this->input->get('thn_akademik');
+	$nim = $this->input->get('nim');
+
+	if ($nim !='') {
+		$this->db->where('nim', $nim);
+	}
+	
 	$this->db->where('tahun_akademik_id', $tahun_akademik);
 	$this->db->order_by('nim', 'desc');
 	foreach ($this->db->get('v_khs')->result() as $rw) {

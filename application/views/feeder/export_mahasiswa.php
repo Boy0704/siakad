@@ -55,8 +55,17 @@ if ($_GET) {
 	</tr>
 	<?php 
 	$tahun_angkatan = $this->input->get('thn_angkatan');
+	$keterangan_mhs = $this->input->get('keterangan_mhs');
+	$nim = $this->input->get('nim');
+
+	if ($nim !='') {
+		$this->db->where('nim', $nim);
+	}
+	
+	if ($keterangan_mhs != '') {
+		$this->db->where('keterangan', $keterangan_mhs);
+	}
 	$this->db->where('angkatan_id', $tahun_angkatan);
-	$this->db->where('keterangan', 'mahasiswa baru');
 	foreach ($this->db->get('student_mahasiswa')->result() as $rw) {
 	 ?>
 	<tr>
