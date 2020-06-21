@@ -1,7 +1,7 @@
 <?php 
 if ($_GET) {
-	// header("Content-type: application/vnd-ms-excel");
-	// header("Content-Disposition: attachment; filename=Export_akm_Feeder.xls");
+	header("Content-type: application/vnd-ms-excel");
+	header("Content-Disposition: attachment; filename=Export_akm_Feeder.xls");
  ?>
 
 <table border="1">
