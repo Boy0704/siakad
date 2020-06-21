@@ -33,9 +33,11 @@ if ($_GET) {
 		<td>NO HP</td>
 		<td>EMAIL</td>
 		<td style="background-color: red">TERIMA KPS</td>
+		<td>NO KPS</td>
 		<td>NIK AYAH</td>
 		<td>NAMA AYAH</td>
 		<td>TGL LAHIR AYAH</td>
+		<td>PENDIDIKAN AYAH</td>
 		<td>PEKERJAAN AYAH</td>
 		<td>PENGHASILAN AYAH</td>
 		<td>NIK IBU </td>
@@ -96,6 +98,8 @@ if ($_GET) {
 		<td></td>
 		<td></td>
 		<td>0</td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
