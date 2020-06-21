@@ -6,6 +6,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Feeder extends CI_Controller
 {
+
+    public function index()
+    {
+        $data['title']=  'Export Data ke Feeder';
+        $this->template->load('template', 'feeder/view',$data);
+    }
+
+    public function data_mahasiswa()
+    {
+        $this->load->view('feeder/export_mahasiswa');
+    }
+
+    public function data_krs()
+    {
+        $this->load->view('feeder/export_krs');
+    }
+
+    public function data_khs()
+    {
+        $this->load->view('feeder/export_khs');
+    }
+
+    public function data_akm()
+    {
+        $this->load->view('feeder/export_akm');
+    }
 	
     public function import_mhs()
     {

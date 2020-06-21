@@ -18,6 +18,27 @@
         return $data;
     }
 
+    function akm_ip($nim,$thn_akademik)
+    {
+        $CI =& get_instance();
+        $data = $CI->db->query("SELECT SUM(sks * mutu)/SUM(sks) as ip FROM `v_khs` WHERE nim='$nim' and tahun_akademik_id='$thn_akademik'")->row()->ip;
+        return $data;
+    }
+
+    function akm_sks($nim,$thn_akademik)
+    {
+        $CI =& get_instance();
+        $data = $CI->db->query("SELECT SUM(sks) as t_sks FROM `v_khs` WHERE nim='$nim' and tahun_akademik_id='$thn_akademik'")->row()->t_sks;
+        return $data;
+    }
+
+    function all_sks($nim)
+    {
+        $CI =& get_instance();
+        $data = $CI->db->query("SELECT SUM(sks) as t_sks FROM `v_khs` WHERE nim='$nim' ")->row()->t_sks;
+        return $data;
+    }
+
     function ipk($nim)
     {
         $CI =& get_instance();
