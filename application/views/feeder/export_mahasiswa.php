@@ -90,7 +90,7 @@ if ($_GET) {
 		<td></td>
 		<td></td>
 		<td><?php echo $rw->kelurahan ?></td>
-		<td>99999</td>
+		<td>999999</td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -106,10 +106,10 @@ if ($_GET) {
 		<td></td>
 		<td></td>
 		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
 		<td><?php echo $rw->nama_ibu ?></td>
+		<td></td>
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
