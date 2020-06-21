@@ -1,7 +1,7 @@
 <?php 
 if ($_GET) {
-	header("Content-type: application/vnd-ms-excel");
-	header("Content-Disposition: attachment; filename=Export_akm_Feeder.xls");
+	// header("Content-type: application/vnd-ms-excel");
+	// header("Content-Disposition: attachment; filename=Export_akm_Feeder.xls");
  ?>
 
 <table border="1">
@@ -35,9 +35,9 @@ if ($_GET) {
 		<td><?php echo get_data('student_mahasiswa','nim',$rw->nim,'nama') ?></td>
 		<td><?php echo get_data('akademik_tahun_akademik','tahun_akademik_id',$rw->tahun_akademik_id,'keterangan') ?></td>
 		<td><?php echo akm_sks($rw->nim,$rw->tahun_akademik_id) ?></td>
-		<td><?php echo floatval(akm_ip($rw->nim,$rw->tahun_akademik_id)) ?></td>
+		<td><?php echo akm_ip($rw->nim,$rw->tahun_akademik_id) ?></td>
 		<td><?php echo all_sks($rw->nim) ?></td>
-		<td><?php echo floatval(ipk($rw->nim)) ?></td>
+		<td><?php echo ipk($rw->nim) ?></td>
 		<td><?php 
 			$status = get_data('student_mahasiswa','nim',$rw->nim,'keterangan');
 			if ($status == 'mahasiswa aktif' or $status == 'mahasiswa baru' ) {
