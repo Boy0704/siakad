@@ -37,8 +37,8 @@ if ($_GET) {
 		<td><?php echo get_data('akademik_tahun_akademik','tahun_akademik_id',$rw->tahun_akademik_id,'keterangan') ?></td>
 		<td><?php echo $rw->ruangan_id ?></td>
 		<td><?php echo $rw->grade ?></td>
-		<td><?php echo $rw->mutu ?></td>
-		<td><?php echo $rw->nilai ?></td>
+		<td><?php echo floatval($rw->mutu) ?></td>
+		<td><?php echo floatval($rw->nilai) ?></td>
 		<td><?php echo get_data('akademik_konsentrasi','konsentrasi_id',$rw->konsentrasi_id,'kode_prodi') ?></td>
 		
 	</tr>
