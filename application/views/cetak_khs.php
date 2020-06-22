@@ -100,7 +100,7 @@
     </tr>
     <tr>
            
-        <td align="center"><u>ARIS BINTANIA, M.Ag</u> <br>NIDN. 2023077501</td>
+        <td align="center"><u>ARIS BINTANIA, M.Ag</u> <br>NIP. 19750723 200003 1 001</td>
         <?php $ka_prodi = get_data('app_dosen','dosen_id',$profile['ka_prodi'],'nama_lengkap'); ?>
         <?php $nidn = get_data('app_dosen','dosen_id',$profile['ka_prodi'],'nidn'); ?>
         <td align="center"><u>Dvi Afriansyah, S.Pd.I</u> <br>NIP. 19800428 200501 1 004</td>
