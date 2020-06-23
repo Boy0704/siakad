@@ -178,6 +178,9 @@ class cetak extends MY_Controller
       $profileSQL=    "SELECT sm.nama,sm.nim,ak.nama_konsentrasi,ap.nama_prodi FROM
                         student_mahasiswa  as sm,akademik_prodi as ap,akademik_konsentrasi as ak
                         WHERE sm.konsentrasi_id=ak.konsentrasi_id and ap.prodi_id=ak.prodi_id and sm.nim=$nim";
+        $konsentrasi_id = get_data('student_mahasiswa','nim',$nim,'konsentrasi_id');
+        $id_dosen_kepala = get_data('akademik_konsentrasi','konsentrasi_id',$konsentrasi_id,'ka_prodi');
+        $data['ka_prodi'] = get_data('app_dosen','dosen_id',$id_dosen_kepala,'nama_lengkap');
         $data['profile']   = $this->db->query($profileSQL)->row_array();
       $this->load->view('cetak_transkip',$data);
     }

@@ -94,7 +94,7 @@
     </tr>
     <tr>
         
-        <td align="center"><?php //echo $dosen_pa ?></td>
+        <td align="center"><?php echo $ka_prodi ?></td>
         <td align="center"><?php echo strtoupper($profile['nama']) ?></td>
     </tr>
 
