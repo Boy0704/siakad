@@ -120,7 +120,7 @@ function jumlah_sks()
                 $sks=0;
                 if($data->num_rows()<1)
                 {
-                    echo "<tr><td colspan=6 align='center' class='warning'>DATA KRS TIDAK DITEMUKAN</td></tr>";
+                    echo "<tr><td colspan=8 align='center' class='warning'>DATA KRS TIDAK DITEMUKAN</td></tr>";
                 }
                 else
                 {
