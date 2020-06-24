@@ -633,6 +633,7 @@ class mahasiswa extends MY_Controller{
                                                 'alamat'=>$alamat,
                                                 'dosen_pa'=>$dosen_pa,
                                                 'status_mhs'=>$status_mhs,
+                                                'semester_aktif'=>$semester_aktif,
                                                 'keterangan'=>$keterangan
                                                 );
 
