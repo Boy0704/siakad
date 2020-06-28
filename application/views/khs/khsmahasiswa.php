@@ -208,7 +208,7 @@
                         <td align='center'>".$total."</td>
                         </tr>
                         <tr>
-                            <td align='center' colspan='8' style='font-size:13px;font-family:arial;letter-spacing:0.6px;'><b>Index Predikat Kumulatif (IPK) = ".number_format(ip($nim,$semester),2)."</b></td>
+                            <td align='center' colspan='8' style='font-size:13px;font-family:arial;letter-spacing:0.6px;'><b>Index Predikat Sementara (IPS) = ".number_format(ip($nim,$semester),2)."</b></td>
                         </tr>
                    </table>";
                 }
