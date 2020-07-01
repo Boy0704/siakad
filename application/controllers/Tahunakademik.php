@@ -65,6 +65,13 @@ class tahunakademik extends MY_Controller
             $status = $this->input->post('status');
             $batas  = $this->input->post('batas');
             $id     = $this->input->post('id');
+
+            //ubah jadi status 'n' semua
+
+            if ($status == 'y') {
+                $this->db->update('akademik_tahun_akademik', array('status'=>'n'));
+            }
+
             $data   =   array('keterangan'=>$tahun,'status'=>$status,'batas_registrasi'=>$batas);
             $this->Mcrud->update($this->tables,$data, $this->pk,$id);
             redirect($this->uri->segment(1));
