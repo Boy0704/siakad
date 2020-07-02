@@ -24,7 +24,7 @@
   <link href="<?php echo base_url() ?>template/vendors/nprogress/nprogress.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>template/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>template/build/css/custom.min.css" rel="stylesheet">
-  <link href="<?php echo base_url() ?>template/vendors/starrr/dist/starrr.css" rel="stylesheet">
+  <!-- <link href="<?php echo base_url() ?>template/vendors/starrr/dist/starrr.css" rel="stylesheet"> -->
   <link href="<?php echo base_url() ?>template/vendors/css/bootstrap-toggle.css" rel="stylesheet">
     <style type="text/css">
     ::selection { background-color: #E13300; color: white; }
