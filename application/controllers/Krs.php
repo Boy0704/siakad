@@ -229,7 +229,7 @@ class Krs extends MY_Controller {
     {
         // log_r($this->session->userdata());
         $level = $this->session->userdata('level');
-        if ($level == 1 OR $level == 2) {
+        if ($level == 1 OR $level == 2 OR $level == 6) {
             $data['title']=  $this->title;
             $data['tahun_angkatan']=  $this->db->get('akademik_tahun_akademik')->result();
             $this->template->load('template', $this->folder.'/view',$data);
