@@ -10,6 +10,9 @@ header("Content-Disposition: attachment; filename=Rekap_PMB.xls");
 				<td>Nama Lengkap</td>
 				<td>No HP</td>
 				<td>Kota</td>
+				<td>Pilihan 1</td>
+				<td>Pilihan 2</td>
+				<td>Pilihan 3</td>
 				<td>Status Bayar</td>
 			</tr>
 			</thead>
@@ -24,6 +27,21 @@ header("Content-Disposition: attachment; filename=Rekap_PMB.xls");
 				<td><?php echo strtoupper($rw->nama) ?></td>
 				<td><?php echo strtoupper($rw->kota) ?></td>
 				<td><?php echo strtoupper($rw->selular) ?></td>
+				<td>
+					<?php 
+					echo $this->db->get_where('programstudi', array('id'=>$rw->jur1))->row()->nama;
+					 ?>
+				</td>
+				<td>
+					<?php 
+					echo $this->db->get_where('programstudi', array('id'=>$rw->jur2))->row()->nama;
+					 ?>
+				</td>
+				<td>
+					<?php 
+					echo $this->db->get_where('programstudi', array('id'=>$rw->jur3))->row()->nama;
+					 ?>
+				</td>
 				<td>
 					<?php 
 					$keuangan->like('nomor_pembayaran', $rw->nisn, 'after');
