@@ -24,6 +24,7 @@ header("Content-Disposition: attachment; filename=Rekap_PMB.xls");
 			 ?>
 			
 			<tr>
+				<td><?php echo $rw->noujian ?></td>
 				<td><?php echo $rw->nisn ?></td>
 				<td><?php echo strtoupper($rw->nama) ?></td>
 				<td><?php echo strtoupper($rw->kota) ?></td>
