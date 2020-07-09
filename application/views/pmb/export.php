@@ -19,6 +19,7 @@ header("Content-Disposition: attachment; filename=Rekap_PMB.xls");
 			<tbody>
 			<?php 
 			$keuangan = $this->load->database('keuangan', TRUE);
+			$pmb = $this->load->database('pmb', TRUE);
 				foreach ($query->result() as $rw) {
 			 ?>
 			
@@ -29,17 +30,17 @@ header("Content-Disposition: attachment; filename=Rekap_PMB.xls");
 				<td><?php echo strtoupper($rw->selular) ?></td>
 				<td>
 					<?php 
-					echo $this->db->get_where('programstudi', array('id'=>$rw->jur1))->row()->nama;
+					echo $pmb->get_where('programstudi', array('id'=>$rw->jur1))->row()->nama;
 					 ?>
 				</td>
 				<td>
 					<?php 
-					echo $this->db->get_where('programstudi', array('id'=>$rw->jur2))->row()->nama;
+					echo $pmb->get_where('programstudi', array('id'=>$rw->jur2))->row()->nama;
 					 ?>
 				</td>
 				<td>
 					<?php 
-					echo $this->db->get_where('programstudi', array('id'=>$rw->jur3))->row()->nama;
+					echo $pmb->get_where('programstudi', array('id'=>$rw->jur3))->row()->nama;
 					 ?>
 				</td>
 				<td>
