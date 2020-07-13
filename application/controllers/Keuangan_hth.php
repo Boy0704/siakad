@@ -20,6 +20,15 @@ class Keuangan_hth extends CI_Controller
         
     }
 
+    public function edit_tagihan()
+    {
+        $keuangan = $this->load->database('keuangan', TRUE);
+        $waktu_berakhir = $this->input->post('waktu_berakhir');
+        $keuangan->where('nomor_pembayaran', $this->input->post('nomor_pembayaran'));
+        $keuangan->update('tagihan', array('waktu_berakhir'=>$waktu_berakhir));
+
+    }
+
     public function cetak_h2h()
     {
         $this->load->view('keuangan_hth/cetak_h2h');

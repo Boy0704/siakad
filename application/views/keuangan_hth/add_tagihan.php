@@ -1,3 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#editTagihan").click(function() {
+			var nomor_pembayaran = $("#nomor_pembayaran").val();
+			var waktu_berakhir = $("#waktu_berakhir").val();
+			$.ajax({
+				url: 'Keuangan_hth/edit_tagihan',
+				type: 'POST',
+				dataType: 'html',
+				data: {nomor_pembayaran: nomor_pembayaran, waktu_berakhir: waktu_berakhir},
+			})
+			.done(function() {
+				console.log("success");
+				// window.location.reload();
+				alert("berhasil di edit !");
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
+	});
+</script>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="row">
@@ -35,6 +63,7 @@
 		<p>
 			<a href="<?php echo $this->uri->segment(1)."/cetak_h2h?&prodi=".$_GET['prodi']."&nim=".$_GET['nim']."&tahun=".$_GET['tahun']."&aksi=cetak" ?>" class="btn btn-info">Cetak</a>
 		</p>
+		<div class="table-responsive">
 		<table class="table table-bordered" id="datatable">
 			<thead>
 			<tr class="alert-success">
@@ -46,7 +75,7 @@
 				<td>Periode</td>
 				<td>Total Tagihan</td>
 				<td>Start Date</td>
-				<td>End Date</td>
+				<td width="250">End Date</td>
 				<td>Status Bayar</td>
 			</tr>
 			</thead>
@@ -84,7 +113,15 @@
 				<td><?php echo $rw->nama_periode; ?></td>
 				<td><?php echo number_format($rw->total_nilai_tagihan); ?></td>
 				<td><?php echo $rw->waktu_berlaku; ?></td>
-				<td><?php echo $rw->waktu_berakhir; ?></td>
+				<td>
+					<div class="input-group mb-3">
+						<input type="text" name="waktu_berakhir" value="<?php echo $rw->waktu_berakhir; ?>" id="waktu_berakhir" class="form-control" paria-describedby="basic-addon2">
+						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran">
+					  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="button" id="editTagihan"><i class="fa fa-edit"></i></button>
+					  </div>
+					</div>
+				</td>
 				<td>
 					<!-- <a href="<?php echo base_url() ?>keuangan_hth/edit_tagihan/<?php echo $rw->id_record_tagihan ?>" class="btn btn-sm btn-info">Edit</a> -->
 					<?php 
@@ -104,6 +141,7 @@
 			<?php endif ?>
 			</tbody>
 		</table>
+		</div>
 	</div>
 </div>
 
@@ -188,3 +226,4 @@
 			      
 			    </div>
 			  </div>
+
