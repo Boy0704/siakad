@@ -1,3 +1,17 @@
+<?php
+$batas_registrasi = $this->db->get_where('akademik_tahun_akademik', array('status'=>'y'))->row()->batas_registrasi;
+ if (strtotime($batas_registrasi) < strtotime(date('Y-m-d'))): ?>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <strong>Perhatian !</strong> Maaf, saat ini proses pengisian rencana studi sudah tutup pada tanggal : <?php echo $batas_registrasi; ?>.
+              </div>
+        </div>
+    </div>
+<?php else: ?>
+
+
+
 <script src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
 <script>
 function hapus(krs_id){
@@ -154,3 +168,5 @@ function jumlah_sks()
 
   </div>
 </div>
+
+<?php endif ?>
