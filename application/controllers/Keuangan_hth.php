@@ -29,6 +29,15 @@ class Keuangan_hth extends CI_Controller
 
     }
 
+    public function edit_tot_tagihan()
+    {
+        $keuangan = $this->load->database('keuangan', TRUE);
+        $total_nilai_tagihan = $this->input->post('total_nilai_tagihan');
+        $keuangan->where('nomor_pembayaran', $this->input->post('nomor_pembayaran'));
+        $keuangan->update('tagihan', array('total_nilai_tagihan'=>$total_nilai_tagihan));
+
+    }
+
     public function cetak_h2h()
     {
         $this->load->view('keuangan_hth/cetak_h2h');

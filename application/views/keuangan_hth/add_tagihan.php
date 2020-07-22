@@ -23,6 +23,29 @@
 			});
 			
 		});
+
+		$("#editTagihan").click(function() {
+			var nomor_pembayaran = $("#nomor_pembayaran").val();
+			var total_nilai_tagihan = $("#total_nilai_tagihan").val();
+			$.ajax({
+				url: 'Keuangan_hth/edit_tot_tagihan',
+				type: 'POST',
+				dataType: 'html',
+				data: {nomor_pembayaran: nomor_pembayaran, total_nilai_tagihan: total_nilai_tagihan},
+			})
+			.done(function() {
+				console.log("success");
+				// window.location.reload();
+				alert("berhasil di edit !");
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
 	});
 </script>
 
@@ -73,7 +96,7 @@
 				<td>Prodi</td>
 				<td>Kode Periode</td>
 				<td>Periode</td>
-				<td>Total Tagihan</td>
+				<td width="250">Total Tagihan</td>
 				<td>Start Date</td>
 				<td width="250">End Date</td>
 				<td>Status Bayar</td>
@@ -111,7 +134,15 @@
 				<td><?php echo $rw->nama_prodi ?></td>
 				<td><?php echo $rw->kode_periode; ?></td>
 				<td><?php echo $rw->nama_periode; ?></td>
-				<td><?php echo number_format($rw->total_nilai_tagihan); ?></td>
+				<td>
+					<div class="input-group mb-3">
+						<input type="text" name="total_nilai_tagihan" value="<?php echo $rw->total_nilai_tagihan; ?>" id="total_nilai_tagihan" class="form-control" paria-describedby="basic-addon2">
+						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran">
+					  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="button" id="editTotTagihan"><i class="fa fa-edit"></i></button>
+					  </div>
+					</div>
+				</td>
 				<td><?php echo $rw->waktu_berlaku; ?></td>
 				<td>
 					<div class="input-group mb-3">
