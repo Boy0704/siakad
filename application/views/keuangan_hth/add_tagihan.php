@@ -2,7 +2,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#editTagihan").click(function() {
-			var nomor_pembayaran = $("#nomor_pembayaran").val();
+			var nomor_pembayaran = $("#nomor_pembayaran2").val();
 			var waktu_berakhir = $("#waktu_berakhir").val();
 			$.ajax({
 				url: 'Keuangan_hth/edit_tagihan',
@@ -25,7 +25,7 @@
 		});
 
 		$("#editTotTagihan").click(function() {
-			var nomor_pembayaran = $("#nomor_pembayaran").val();
+			var nomor_pembayaran = $("#nomor_pembayaran1").val();
 			var total_nilai_tagihan = $("#total_nilai_tagihan").val();
 			$.ajax({
 				url: 'Keuangan_hth/edit_tot_tagihan',
@@ -137,7 +137,7 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="text" name="total_nilai_tagihan" value="<?php echo $rw->total_nilai_tagihan; ?>" id="total_nilai_tagihan" class="form-control" paria-describedby="basic-addon2">
-						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran">
+						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran1">
 					  <div class="input-group-append">
 					    <button class="btn btn-outline-secondary" type="button" id="editTotTagihan"><i class="fa fa-edit"></i></button>
 					  </div>
@@ -147,7 +147,7 @@
 				<td>
 					<div class="input-group mb-3">
 						<input type="text" name="waktu_berakhir" value="<?php echo $rw->waktu_berakhir; ?>" id="waktu_berakhir" class="form-control" paria-describedby="basic-addon2">
-						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran">
+						<input type="hidden" name="nomor_pembayaran" value="<?php echo $rw->nomor_pembayaran ?>" id="nomor_pembayaran2">
 					  <div class="input-group-append">
 					    <button class="btn btn-outline-secondary" type="button" id="editTagihan"><i class="fa fa-edit"></i></button>
 					  </div>
