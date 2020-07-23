@@ -24,7 +24,7 @@
 			
 		});
 
-		$("#editTagihan").click(function() {
+		$("#editTotTagihan").click(function() {
 			var nomor_pembayaran = $("#nomor_pembayaran").val();
 			var total_nilai_tagihan = $("#total_nilai_tagihan").val();
 			$.ajax({
