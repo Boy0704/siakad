@@ -1,9 +1,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#editTagihan").click(function() {
+		$(".editEndDate").click(function() {
 			var nomor_pembayaran = $(this).attr("data-no");
 			var waktu_berakhir = $("#waktu_berakhir"+nomor_pembayaran).val();
+			alert(waktu_berakhir);
 			$.ajax({
 				url: 'Keuangan_hth/edit_tagihan',
 				type: 'POST',
@@ -24,9 +25,10 @@
 			
 		});
 
-		$("#editTotTagihan").click(function() {
+		$(".editTotTagihan").click(function() {
 			var nomor_pembayaran = $(this).attr("data-no");
 			var total_nilai_tagihan = $("#total_nilai_tagihan"+nomor_pembayaran).val();
+			alert(total_nilai_tagihan);
 			$.ajax({
 				url: 'Keuangan_hth/edit_tot_tagihan',
 				type: 'POST',
@@ -147,7 +149,7 @@
 					<div class="input-group mb-3">
 						<input type="text" name="waktu_berakhir" value="<?php echo $rw->waktu_berakhir; ?>" id="waktu_berakhir<?php echo $rw->nomor_pembayaran ?>" class="form-control" paria-describedby="basic-addon2">
 					  <div class="input-group-append">
-					    <button class="btn btn-outline-secondary editEndDate" data-no="<?php echo $rw->nomor_pembayaran ?>" type="button" id="editTagihan"><i class="fa fa-edit"></i></button>
+					    <button class="btn btn-outline-secondary editEndDate" data-no="<?php echo $rw->nomor_pembayaran ?>" type="button" ><i class="fa fa-edit"></i></button>
 					  </div>
 					</div>
 				</td>
