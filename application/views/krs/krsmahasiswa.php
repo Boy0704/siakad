@@ -1,14 +1,4 @@
-<?php
-$batas_registrasi = $this->db->get_where('akademik_tahun_akademik', array('status'=>'y'))->row()->batas_registrasi;
- if (strtotime($batas_registrasi) < strtotime(date('Y-m-d'))): ?>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-danger">
-                <strong>Perhatian !</strong> Maaf, saat ini proses pengisian rencana studi sudah tutup pada tanggal : <?php echo $batas_registrasi; ?>.
-              </div>
-        </div>
-    </div>
-<?php else: ?>
+
 
 
 
@@ -97,8 +87,19 @@ function jumlah_sks()
                     ?>
             <tr>
                 <td colspan=6>
-
+                    <?php
+                    $batas_registrasi = $this->db->get_where('akademik_tahun_akademik', array('status'=>'y'))->row()->batas_registrasi;
+                     if (strtotime($batas_registrasi) < strtotime(date('Y-m-d'))): ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger">
+                                    <strong>Perhatian !</strong> Maaf, saat ini proses pengisian rencana studi sudah tutup pada tanggal : <?php echo $batas_registrasi; ?>.
+                                  </div>
+                            </div>
+                        </div>
+                    <?php else: ?>
                      <a href="<?php echo base_url('krs/belanjaMatakuliah') ?>" class="btn btn-primary btn-sm"><i class='fa fa-shopping-cart'></i> Input KRS</a>
+                    <?php endif ?>
                     <?php  echo anchor('cetak/cetakkrs/'.$d->nim.'/'.$semester_aktif,'<i class="fa fa-print"></i> Cetak KRS',array('class'=>'btn btn-default btn-sm','target'=>'_blank'));
                     ?>
 
@@ -169,4 +170,3 @@ function jumlah_sks()
   </div>
 </div>
 
-<?php endif ?>
