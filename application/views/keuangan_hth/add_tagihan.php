@@ -1,54 +1,55 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".editEndDate").click(function() {
-			var nomor_pembayaran = $(this).attr("data-no");
-			var waktu_berakhir = $("#waktu_berakhir"+nomor_pembayaran).val();
-			alert(waktu_berakhir);
-			$.ajax({
-				url: 'Keuangan_hth/edit_tagihan',
-				type: 'POST',
-				dataType: 'html',
-				data: {nomor_pembayaran: nomor_pembayaran, waktu_berakhir: waktu_berakhir},
-			})
-			.done(function() {
-				console.log("success");
-				// window.location.reload();
-				alert("berhasil di edit !");
-			})
-			.fail(function() {
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
-			});
-			
-		});
 
-		$(".editTotTagihan").click(function() {
-			var nomor_pembayaran = $(this).attr("data-no");
-			var total_nilai_tagihan = $("#total_nilai_tagihan"+nomor_pembayaran).val();
-			alert(total_nilai_tagihan);
-			$.ajax({
-				url: 'Keuangan_hth/edit_tot_tagihan',
-				type: 'POST',
-				dataType: 'html',
-				data: {nomor_pembayaran: nomor_pembayaran, total_nilai_tagihan: total_nilai_tagihan},
-			})
-			.done(function() {
-				console.log("success");
-				// window.location.reload();
-				alert("berhasil di edit !");
-			})
-			.fail(function() {
-				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
-			});
-			
+	function editEndDate(nomor_pembayaran) {
+		// var nomor_pembayaran = $(this).attr("data-no");
+		var waktu_berakhir = $("#waktu_berakhir"+nomor_pembayaran).val();
+		$.ajax({
+			url: 'Keuangan_hth/edit_tagihan',
+			type: 'POST',
+			dataType: 'html',
+			data: {nomor_pembayaran: nomor_pembayaran, waktu_berakhir: waktu_berakhir},
+		})
+		.done(function() {
+			console.log("success");
+			// window.location.reload();
+			alert("berhasil di edit !");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
 		});
-	});
+	}
+
+
+	function editTotalTagihan(nomor_pembayaran) {
+		// alert(nomor_pembayaran);
+		// var nomor_pembayaran = $(this).attr("data-no");
+		var total_nilai_tagihan = $("#total_nilai_tagihan"+nomor_pembayaran).val();
+		// alert(total_nilai_tagihan);
+		$.ajax({
+			url: 'Keuangan_hth/edit_tot_tagihan',
+			type: 'POST',
+			dataType: 'html',
+			data: {nomor_pembayaran: nomor_pembayaran, total_nilai_tagihan: total_nilai_tagihan},
+		})
+		.done(function() {
+			console.log("success");
+			// window.location.reload();
+			alert("berhasil di edit !");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+	}
+
+
+		
 </script>
 
 <div class="row">
@@ -140,7 +141,7 @@
 					<div class="input-group mb-3">
 						<input type="text" name="total_nilai_tagihan" value="<?php echo $rw->total_nilai_tagihan; ?>" id="total_nilai_tagihan<?php echo $rw->nomor_pembayaran ?>" class="form-control" paria-describedby="basic-addon2">
 					  <div class="input-group-append">
-					    <button class="btn btn-outline-secondary editTotTagihan" data-no="<?php echo $rw->nomor_pembayaran ?>" type="button"><i class="fa fa-edit"></i></button>
+					    <button class="btn btn-outline-secondary editTotTagihan" data-no="<?php echo $rw->nomor_pembayaran ?>" onclick="editTotalTagihan(<?php echo $rw->nomor_pembayaran ?>)" type="button"><i class="fa fa-edit"></i></button>
 					  </div>
 					</div>
 				</td>
@@ -149,7 +150,7 @@
 					<div class="input-group mb-3">
 						<input type="text" name="waktu_berakhir" value="<?php echo $rw->waktu_berakhir; ?>" id="waktu_berakhir<?php echo $rw->nomor_pembayaran ?>" class="form-control" paria-describedby="basic-addon2">
 					  <div class="input-group-append">
-					    <button class="btn btn-outline-secondary editEndDate" data-no="<?php echo $rw->nomor_pembayaran ?>" type="button" ><i class="fa fa-edit"></i></button>
+					    <button class="btn btn-outline-secondary editEndDate" data-no="<?php echo $rw->nomor_pembayaran ?>" onclick="editEndDate(<?php echo $rw->nomor_pembayaran ?>)" type="button" ><i class="fa fa-edit"></i></button>
 					  </div>
 					</div>
 				</td>
