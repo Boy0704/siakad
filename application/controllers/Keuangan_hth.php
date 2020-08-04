@@ -29,6 +29,17 @@ class Keuangan_hth extends CI_Controller
 
     }
 
+    public function tes()
+    {
+        $keuangan = $this->load->database('keuangan', TRUE);
+        foreach ($keuangan->get('tagihan')->result() as $rw) {
+            $keuangan->where('id_record_tagihan', $rw->id_record_tagihan);
+            $keuangan->update('detil_tagihan', array('nilai_tagihan'=>$rw->total_nilai_tagihan));
+        }
+        echo "berhasil";
+
+    }
+
     public function edit_tot_tagihan()
     {
         $keuangan = $this->load->database('keuangan', TRUE);
@@ -36,6 +47,10 @@ class Keuangan_hth extends CI_Controller
         $keuangan->where('nomor_pembayaran', $this->input->post('nomor_pembayaran'));
         $keuangan->update('tagihan', array('total_nilai_tagihan'=>$total_nilai_tagihan));
 
+        $id_record_tagihan = $keuangan->get_where('tagihan', array('nomor_pembayaran'=>$this->input->post('nomor_pembayaran')))->row()->id_record_tagihan;
+
+        $keuangan->where('id_record_tagihan', $id_record_tagihan);
+        $keuangan->update('detil_tagihan', array('nilai_tagihan'=>$total_nilai_tagihan));
     }
 
     public function cetak_h2h()
