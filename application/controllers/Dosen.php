@@ -51,7 +51,7 @@ class dosen extends MY_Controller{
 
     function post()
     {
-        akses_admin();
+        // akses_admin();
         if(isset($_POST['submit']))
         {
             // log_r($_POST);
@@ -99,7 +99,7 @@ class dosen extends MY_Controller{
     function edit()
     {
         // log_r($_POST);
-        akses_admin();
+        // akses_admin();
         if(isset($_POST['submit']))
         {
             $id     = $this->input->post('id');
@@ -144,7 +144,7 @@ class dosen extends MY_Controller{
     }
      function delete()
     {
-        akses_admin();
+        // akses_admin();
         $id     =  $_GET['id'];
         $this->Mcrud->delete($this->tables,  $this->pk,  $id);
         $this->Mcrud->delete('app_users',  'keterangan',  $id);
