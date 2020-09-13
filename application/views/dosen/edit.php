@@ -1,6 +1,6 @@
 
 <?php
-if ($this->session->userdata('level') == '1') {
+if ($this->session->userdata('level') == '1' or $this->session->userdata('level') == '6') {
   echo form_open(base_url().'dosen/edit');
 } else {
   echo form_open(base_url().'users/edit_dosen');

@@ -1,6 +1,6 @@
 <?php
 $level =$this->session->userdata('level');
-if ($level == 1 OR $level ==2) {
+if ($level == 1 OR $level ==2 or $level==6) {
     echo anchor($this->uri->segment(1).'/post','<span class="fa fa-plus"></span> Tambah Data',array('class'=>'btn btn-primary btn-sm'));
 }
 ?>
