@@ -185,7 +185,7 @@ class matakuliah extends MY_Controller{
                         <td>".  strtoupper($m->nama_makul)."</td>
                         <td>$m->sks SKS</td>
                         <td>$m->jam JAM</td>";
-                      if ($level<='3') {
+                      if ($level == '1' OR $level == '2' OR $level == '3' OR $level == '6') {
                         echo "
                         <td align='center'>
                         <div class='btn-group'>
