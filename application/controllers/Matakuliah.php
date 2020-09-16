@@ -19,7 +19,7 @@ class matakuliah extends MY_Controller{
         $data['desc']    =   "";
         $data['makul']=  $this->db->query($query)->result();
         $data['prodi']=  $this->db->get('akademik_prodi')->result();
-	    $this->template->load('template', $this->folder.'/view',$data);
+        $this->template->load('template', $this->folder.'/view',$data);
     }
 
 
@@ -54,7 +54,7 @@ class matakuliah extends MY_Controller{
                 WHERE mk.kelompok_id=mm.kelompok_id";
         $data['makul']=  $this->db->query($query)->result();
         $data['prodi']=  $this->db->get('akademik_prodi')->result();
-	$this->template->load('template', $this->folder.'/jadwalkuliah',$data);
+    $this->template->load('template', $this->folder.'/jadwalkuliah',$data);
     }
 
 
@@ -223,7 +223,7 @@ class matakuliah extends MY_Controller{
                 <th>Nama Matakuliah</th>
                 <th width=60>SKS</th>
                 <th width=60>Waktu</th>";
-                if ($level<='3') {
+                if ($level == '1' OR $level == '2' OR $level == '3' OR $level == '6') {
                   echo "<th colspan=3>Operasi</th>";
                 }
             echo "
@@ -240,7 +240,7 @@ class matakuliah extends MY_Controller{
                         <td>".  strtoupper($m->nama_makul)."</td>
                         <td>$m->sks SKS</td>
                         <td>$m->jam JAM</td>";
-                      if ($level<='3') {
+                      if ($level == '1' OR $level == '2' OR $level == '3' OR $level == '6') {
                         echo "
                        <td align='center'>
                         <div class='btn-group'>
