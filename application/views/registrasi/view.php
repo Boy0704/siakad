@@ -88,7 +88,7 @@ function pesan()
 }
 </script>
 <?php
-if($this->session->userdata('level')==1 or $this->session->userdata('level')==5)
+if($this->session->userdata('level')==1 or $this->session->userdata('level')==5 or $this->session->userdata('level')==6)
 {
     $param="";
 }
