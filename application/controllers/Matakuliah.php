@@ -160,7 +160,7 @@ class matakuliah extends MY_Controller{
                 <th>Nama Matakuliah</th>
                 <th width=60>SKS</th>
                 <th width=60>Waktu</th>";
-                if ($level<='3') {
+                if ($level == '1' OR $level == '2' OR $level == '3' OR $level == '6') {
                   echo "<th colspan=3>Operasi</th>";
                 }
             echo "
