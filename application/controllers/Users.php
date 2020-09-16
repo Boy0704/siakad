@@ -172,7 +172,6 @@ class users extends MY_Controller{
                                                 'tempat_lahir'=>$tempat_lahir,
                                                 'tanggal_lahir'=>$tgl_lahir,
                                                 'nim'=>$nim,
-                                                'konsentrasi_id'=>$konsentrasi,
                                                 'alamat'=>$alamat,
                                                 'dosen_pa'=>$dosen_pa,
                                                 'status_mhs'=>$status_mhs
