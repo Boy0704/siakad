@@ -731,7 +731,7 @@ class mahasiswa extends MY_Controller{
             <?php 
             echo "<tr class='alert-info'><th width='5'>No</th><th width='70'>Nim</th><th>Nama</th>
             <th>Status</th><th>Keterangan</th>";
-            if ($level=='1' or $level=='2') {
+            if ($level=='1' or $level=='2' OR $level==6) {
               echo "
               <th width='150'>Operasi</th></tr>";
             }
@@ -761,7 +761,7 @@ class mahasiswa extends MY_Controller{
                     <td>".  ucwords($r->status_mhs)."</td>";
                     echo " <td>".  ucwords($r->keterangan)."</td>";
                     ?>
-                    <?php if ($level== 1 OR $level==2): ?>
+                    <?php if ($level== 1 OR $level==2 OR $level==6): ?>
                     <td class='text-center'>
                       <div class="btn-group">
                          <a href="<?php echo base_url().'cetak/kartu_mhs/'.$r->mahasiswa_id;?>" data-toggle="tooltip" data-placement='bottom' title="Cetak Kartu Mahasiswa" class="btn btn-sm btn-info" target="_blank"><span class="fa fa-credit-card"></span></a>
