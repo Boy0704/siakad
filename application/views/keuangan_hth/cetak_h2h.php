@@ -45,11 +45,11 @@
 				foreach ($sql->result() as $rw) {
 					if ($rw->kode_prodi == '') {
 						// update
-						$keuangan->select('ak.kode_prodi, ak.nama_konsentrasi');
-						$keuangan->from('student_mahasiswa sm');
-						$keuangan->join('akademik_konsentrasi ak', 'sm.konsentrasi_id = ak.konsentrasi_id', 'inner');
-						$keuangan->where('sm.nim', $rw->nomor_induk);
-						$cek = $keuangan->get();
+						$this->db->select('ak.kode_prodi, ak.nama_konsentrasi');
+						$this->db->from('student_mahasiswa sm');
+						$this->db->join('akademik_konsentrasi ak', 'sm.konsentrasi_id = ak.konsentrasi_id', 'inner');
+						$this->db->where('sm.nim', $rw->nomor_induk);
+						$cek = $this->db->get();
 						if ($cek->num_rows() > 0) {
 							$dt = $cek->row();
 							$keuangan->where('id_record_tagihan', $rw->id_record_tagihan);
