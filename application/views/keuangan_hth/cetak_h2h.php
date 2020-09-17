@@ -43,6 +43,23 @@
 	        	$keuangan->order_by('id', 'desc');
 				$sql = $keuangan->get('tagihan');
 				foreach ($sql->result() as $rw) {
+					if ($rw->kode_prodi == '') {
+						// update
+						$keuangan->select('ak.kode_prodi, ak.nama_konsentrasi');
+						$keuangan->from('student_mahasiswa sm');
+						$keuangan->join('akademik_konsentrasi ak', 'sm.konsentrasi_id = ak.konsentrasi_id', 'inner');
+						$keuangan->where('sm.nim', $rw->nomor_induk);
+						$cek = $keuangan->get();
+						if ($cek->num_rows() > 0) {
+							$dt = $cek->row();
+							$keuangan->where('id_record_tagihan', $rw->id_record_tagihan);
+							$keuangan->update('tagihan', array(
+								'kode_prodi' => $dt->kode_prodi,
+								'nama_prodi' => $dt->nama_konsentrasi
+							));
+						}
+
+					}
 			 ?>
 			
 			<tr>
