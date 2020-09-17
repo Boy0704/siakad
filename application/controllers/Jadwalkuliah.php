@@ -30,6 +30,7 @@ class jadwalkuliah extends MY_Controller
     {
         $konsentrasi    =   $_GET['konsentrasi'];
         // $tahun_akademik =   $_GET['tahun_akademik'];
+        $tahun_akademik =   get_tahun_ajaran_aktif('tahun_akademik_id');
         $semester       =   $_GET['semester'];
         $level = $this->session->userdata('level');
 
@@ -65,8 +66,8 @@ class jadwalkuliah extends MY_Controller
                 echo"<tr class='warning'><th colspan=10>SEMESTER $j</th></tr>";
                 $sql="  SELECT jk.*,mm.jam,mm.nama_makul,mm.kode_makul,mm.sks,mm.semester,jk.jam_mulai,jk.jam_selesai
                 FROM akademik_jadwal_kuliah as jk,makul_matakuliah as mm
-                WHERE mm.makul_id=jk.makul_id and jk.konsentrasi_id=$konsentrasi and jk.semester=$j";
-                // and jk.tahun_akademik_id=$tahun_akademik
+                WHERE mm.makul_id=jk.makul_id and jk.konsentrasi_id=$konsentrasi and jk.semester=$j
+                and jk.tahun_akademik_id=$tahun_akademik";
 
                 $data=  $this->db->query($sql)->result();
                 $class="class='form-control'";
@@ -123,8 +124,8 @@ class jadwalkuliah extends MY_Controller
         {
             $sql="SELECT jk.*,mm.jam,mm.nama_makul,mm.kode_makul,mm.sks,mm.semester,jk.jam_mulai,jk.jam_selesai
                 FROM akademik_jadwal_kuliah as jk,makul_matakuliah as mm
-                WHERE mm.makul_id=jk.makul_id and jk.konsentrasi_id=$konsentrasi and jk.semester=$semester";
-                // and jk.tahun_akademik_id=$tahun_akademik
+                WHERE mm.makul_id=jk.makul_id and jk.konsentrasi_id=$konsentrasi and jk.semester=$semester
+                and jk.tahun_akademik_id=$tahun_akademik";
 
                 $data=  $this->db->query($sql)->result();
                 $class="class='form-control'";
