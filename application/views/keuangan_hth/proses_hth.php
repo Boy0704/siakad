@@ -15,7 +15,7 @@ $db_user                   = 'siakad_2019'; // contoh
 $db_pass                   = 'admin2019'; // contoh
 $db_name                   = 'siakad_keuangan'; // contoh
 
-$log_directory = $_SERVER['DOCUMENT_ROOT'].'hth-log/'; // harus writable
+$log_directory = $_SERVER['DOCUMENT_ROOT'].'/hth-log/'; // harus writable
 
 
 // start functions -------------------------------------------------------------
