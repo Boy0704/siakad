@@ -22,7 +22,7 @@ $log_directory = $_SERVER['DOCUMENT_ROOT'].'hth-log/'; // harus writable
 function debugLog($o) {
     // ini adalah fungsi untuk menulis log setiap request dan response ke dalam sebuah file.
     // Jika ada waktu, silahkan buat loh nya ke dalam database.
-    $file_debug = $log_directory.'debug-h2h-' . date("Y-m-d") . '.log';
+    $file_debug = $log_directory . 'debug-h2h-' . date("Y-m-d") . '.log';
     ob_start();
     var_dump(date("Y-m-d h:i:s"));
     var_dump($o);
@@ -149,7 +149,7 @@ switch ($_POST['action']) {
         // ambil data tagihan mahasiswa
         $tagihan = $tagihan_db->row();
 
-        $detail_tagihan = $keuangan->get_where('detail_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
+        $detail_tagihan = $keuangan->get_where('detil_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
 
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
@@ -161,13 +161,13 @@ switch ($_POST['action']) {
             'strata'          => $tagihan->strata,
             'periode'         => $tagihan->nama_periode,
             'angkatan'        => $tagihan->angkatan,
-            'totalNominal'    => $tagihan->total_tagihan,
+            'totalNominal'    => $tagihan->total_nilai_tagihan,
 
             
 
             'rincianTagihan'  => array(
                 array(
-                    'kodeDetailTagihan' => $detail_tagihan->$id_record_detil_tagihan,
+                    'kodeDetailTagihan' => $detail_tagihan->id_record_detil_tagihan,
                     'deskripsiPendek'   => $detail_tagihan->label_jenis_biaya,
                     'deskripsiPanjang'  => $detail_tagihan->label_jenis_biaya_panjang,
                     'nominal'           => $detail_tagihan->nilai_tagihan
@@ -290,7 +290,7 @@ switch ($_POST['action']) {
         // ambil data tagihan mahasiswa
         $tagihan = $tagihan_db->row();
 
-        $detail_tagihan = $keuangan->get_where('detail_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
+        $detail_tagihan = $keuangan->get_where('detil_tagihan', array('id_record_tagihan'=>$tagihan->id_record_tagihan))->row();
         
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
@@ -302,13 +302,13 @@ switch ($_POST['action']) {
             'strata'          => $tagihan->strata,
             'periode'         => $tagihan->nama_periode,
             'angkatan'        => $tagihan->angkatan,
-            'totalNominal'    => $tagihan->total_tagihan,
+            'totalNominal'    => $tagihan->total_nilai_tagihan,
 
             
 
             'rincianTagihan'  => array(
                 array(
-                    'kodeDetailTagihan' => $detail_tagihan->$id_record_detil_tagihan,
+                    'kodeDetailTagihan' => $detail_tagihan->id_record_detil_tagihan,
                     'deskripsiPendek'   => $detail_tagihan->label_jenis_biaya,
                     'deskripsiPanjang'  => $detail_tagihan->label_jenis_biaya_panjang,
                     'nominal'           => $detail_tagihan->nilai_tagihan
@@ -350,7 +350,7 @@ switch ($_POST['action']) {
             'total_nilai_pembayaran' => $totalNominal,
             'status_pembayaran' => '1',
         );
-        $prosesmasukkanDatabase = $keuangan->insert('pembayaran', $data);
+        $prosesmasukkanDatabase = $keuangan->insert('pembayaran', $data_pembayaran);
 
         if ($prosesmasukkanDatabase == false) {
             response(array(
@@ -436,7 +436,7 @@ switch ($_POST['action']) {
                 'message' => 'Reversal ditolak. Reversal sebelumnya sudah dilakukan di '.$kampus
             ));
         }
-
+        $tagihan_db = $keuangan->get_where('tagihan', array('nomor_pembayaran'=>$nomorPembayaran));
         $tagihan = $tagihan_db->row();
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
@@ -448,7 +448,7 @@ switch ($_POST['action']) {
             'strata'          => $tagihan->strata,
             'periode'         => $tagihan->nama_periode,
             'angkatan'        => $tagihan->angkatan,
-            'totalNominal'    => $tagihan->total_tagihan,
+            'totalNominal'    => $tagihan->total_nilai_tagihan,
         );
         
         if (!is_array($dataTagihan)) {
