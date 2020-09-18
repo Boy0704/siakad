@@ -20,30 +20,32 @@ class mainmenu extends MY_Controller{
 
     function level($id)
     {
-        if($id==1)
-        {
-            return "Admin";
-        }
-        elseif($id==2)
-        {
-            return "Jurusan";
-        }
-        elseif($id==3)
-        {
-            return 'Dosen';
-        }
-        elseif($id==5)
-        {
-            return 'Bendahara';
-        }
-        elseif($id==6)
-        {
-            return 'Pimpinan';
-        }
-        else
-        {
-            return "Mahasiswa";
-        }
+        // if($id==1)
+        // {
+        //     return "Admin";
+        // }
+        // elseif($id==2)
+        // {
+        //     return "Jurusan";
+        // }
+        // elseif($id==3)
+        // {
+        //     return 'Dosen';
+        // }
+        // elseif($id==5)
+        // {
+        //     return 'Bendahara';
+        // }
+        // elseif($id==6)
+        // {
+        //     return 'Pimpinan';
+        // }
+        // else
+        // {
+        //     return "Mahasiswa";
+        // }
+         $l = get_data('level','id_level',$id,'level');
+        return $l;
 
     }
 

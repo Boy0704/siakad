@@ -52,22 +52,24 @@ echo anchor('submenu','<span class="fa fa-align-left"></span> Sub Menu',array('c
 
     function level($id)
     {
-        if($id==1)
-        {
-            return "Admin";
-        }
-        elseif($id==2)
-        {
-            return "Jurusan";
-        }
-        elseif($id==3)
-        {
-            return 'Dosen';
-        }
-        else
-        {
-            return "Mahasiswa";
-        }
+        // if($id==1)
+        // {
+        //     return "Admin";
+        // }
+        // elseif($id==2)
+        // {
+        //     return "Jurusan";
+        // }
+        // elseif($id==3)
+        // {
+        //     return 'Dosen';
+        // }
+        // else
+        // {
+        //     return "Mahasiswa";
+        // }
+        $l = get_data('level','id_level',$id,'level');
+        return $l;
 
     }
 

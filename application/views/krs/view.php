@@ -1,7 +1,7 @@
 
  <?php
 $level = $this->session->userdata('level');
-if ($level == 1 or $level==2 or $level==3): ?>
+if ($level == 1 or $level==2 or $level==3 OR $level==6): ?>
 <script src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
 
 <script>
@@ -181,7 +181,7 @@ function hapus(krs_id){
 
 </script>
 <?php
-if($level==1)
+if($level==1 OR $level==6)
 {
     $param="";
 }

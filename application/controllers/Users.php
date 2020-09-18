@@ -228,6 +228,9 @@ class users extends MY_Controller{
         {
             $sess=$this->session->userdata('keterangan');
             $param="WHERE ad.keterangan='$sess'";
+
+        } elseif ($this->session->userdata('level') == '6') {
+            $param = "WHERE ad.level !='1' ";
         }
         else
         {
@@ -257,22 +260,24 @@ class users extends MY_Controller{
     
     function level($level)
     {
-        if($level==1)
-        {
-            return 'admin';
-        }
-        elseif($level==2)
-        {
-            return 'pihak jurusan';
-        }
-        elseif($level==3)
-        {
-            return 'pegawai';
-        }
-        else
-        {
-            return 'mahasiswa';
-        }
+        // if($level==1)
+        // {
+        //     return 'admin';
+        // }
+        // elseif($level==2)
+        // {
+        //     return 'pihak jurusan';
+        // }
+        // elseif($level==3)
+        // {
+        //     return 'pegawai';
+        // }
+        // else
+        // {
+        //     return 'mahasiswa';
+        // }
+        $l = get_data('level','id_level',$id,'level');
+        return $l;
     }
     
     function post()
