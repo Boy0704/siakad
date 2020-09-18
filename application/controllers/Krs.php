@@ -465,7 +465,7 @@ class Krs extends MY_Controller {
                 //tampilkan data Makul di KRS
                 $query          =   "SELECT mm.kode_makul,mm.sks,mm.jam,mm.kode_makul,mm.nama_makul,mm.sks,jk.jadwal_id,ds.nama_lengkap
                                     FROM akademik_jadwal_kuliah as jk, makul_matakuliah as mm, app_dosen as ds
-                                    WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$konsentrasi and mm.semester=$i and ds.dosen_id=jk.dosen_id and  jk.tahun_akademik_id='$thn' and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim')";
+                                    WHERE mm.makul_id=jk.makul_id and mm.konsentrasi_id=$konsentrasi and mm.semester=$i and ds.dosen_id=jk.dosen_id and  jk.tahun_akademik_id='$thn' and jk.jadwal_id not in(select jadwal_id from akademik_krs where nim='$nim' and semester='$i')";
                 $makul          = $this->db->query($query)->result();
                 // log_r($this->db->last_query());
                 $no=1;
