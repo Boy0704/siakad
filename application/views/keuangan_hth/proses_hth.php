@@ -358,14 +358,6 @@ switch ($_POST['action']) {
                 'message' => 'Database error saat proses FLAG Bayar di ' . $kampus
             ));
         }
-        unset($dataTagihan['rincianTagihan']); // rincianTagihan tidak diperlukan saat payment response
-        debugLog('RESPONSE:');
-        debugLog($dataTagihan);
-        response(array(
-            'code'    => '00',
-            'message' => 'Pembayaran sukses dicatat di '.$kampus,
-            'data'    => $dataTagihan
-        ));
 
         // auto registrasi
         $nim = $tagihan->nomor_induk;
@@ -375,9 +367,28 @@ switch ($_POST['action']) {
                                 'tahun_akademik_id'=>  get_tahun_ajaran_aktif('tahun_akademik_id'),
                                 'semester'=>$semester,
                                 'tanggal_registrasi'=>  waktu());
+        $this->db->trans_start();
         $this->db->insert('akademik_registrasi',$data);
         $this->db->where('nim', $nim);
         $this->db->update('student_mahasiswa', array('semester_aktif'=>$semester));
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE)
+        {
+            response(array(
+                'code'    => '91',
+                'message' => 'Database error saat proses FLAG Bayar di ' . $kampus
+            ));
+        }
+
+        unset($dataTagihan['rincianTagihan']); // rincianTagihan tidak diperlukan saat payment response
+        debugLog('RESPONSE:');
+        debugLog($dataTagihan);
+        response(array(
+            'code'    => '00',
+            'message' => 'Pembayaran sukses dicatat di '.$kampus,
+            'data'    => $dataTagihan
+        ));
+
         
         break;
 
