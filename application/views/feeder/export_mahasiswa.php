@@ -82,7 +82,7 @@ if ($_GET) {
 		<td></td>
 		<td></td>
 		<td>ID</td>
-		<td>1</td>
+		<td><?php echo $rw->jenis_pendaftaran ?></td>
 		<td><?php echo substr($rw->date_create, 0,10) ?></td>
 		<td><?php echo get_tahun_ajaran_aktif('keterangan'); ?></td>
 		<td></td>
