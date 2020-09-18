@@ -404,9 +404,21 @@ class Krs extends MY_Controller {
           // $data = array('sks' => $maksimalsks );
           // echo json_encode($data);
           // exit();
+          $this->db->trans_start();
           $this->db->insert($this->tables,$data);
           $id_krs= $this->db->get_where('akademik_krs',array('nim'=>$nim,'jadwal_id'=>$jadwal_id))->row_array();
           $this->db->insert('akademik_khs',array('krs_id'=>$id_krs['krs_id'],'mutu'=>0,'confirm'=>'2'));
+          $this->db->trans_complete();
+          if ($this->db->trans_status() === FALSE)
+            {
+                    // generate an error... or use the log_message() function to log your error
+                ?>
+                <script type="text/javascript">
+                    alert("Ada eror sistem, ulangi lagi ambil krs");
+                    window.location="<?php echo base_url() ?>krs";
+                </script>
+                <?php
+            }
           echo json_encode(array('status'=>'1','max_sks'=>$max_sks));
         }
     }

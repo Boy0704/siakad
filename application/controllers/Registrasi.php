@@ -139,8 +139,20 @@ class registrasi extends MY_Controller{
                                 'tahun_akademik_id'=>  get_tahun_ajaran_aktif('tahun_akademik_id'),
                                 'semester'=>$semester,
                                 'tanggal_registrasi'=>  waktu());
+        $this->db->trans_start();
         $this->db->insert($this->tables,$data);
         $this->Mcrud->update('student_mahasiswa',array('semester_aktif'=>$semester), 'nim',$sql['nim']);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE)
+        {
+                // generate an error... or use the log_message() function to log your error
+           ?>
+            <script type="text/javascript">
+                alert("Ada eror sistem, ulangi lagi registrasi");
+                window.location="<?php echo base_url() ?>registrasi";
+            </script>
+            <?php
+        }
         // insert krs automatic
         $r=  $this->db->query("select semester_aktif,konsentrasi_id from student_mahasiswa where mahasiswa_id='$id_ms'")->row_array();
         $sms_aktf   =   $r['semester_aktif'];
