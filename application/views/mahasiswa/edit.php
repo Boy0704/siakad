@@ -177,6 +177,17 @@ if ($this->session->userdata('level') == 4) {
         <input type="text" name="semester_aktif" class="form-control" value="<?php echo $r['semester_aktif'] ?>">
       </td>
     </tr>
+    <tr>
+      <td>Jenis Pendaftaran</td>
+      <td>
+        <select name="jenis_pendaftaran" class="form-control">
+          <option value="<?php echo $r['jenis_pendaftaran'] ?>"> <?php echo get_data('jenis_pendaftaran','id_jenis_pendaftaran',$r['jenis_pendaftaran'],'jenis_pendaftaran') ?></option>
+          <?php foreach ($this->db->get('jenis_pendaftaran')->result() as $rw): ?>
+            <option value="<?php echo $rw->id_jenis_pendaftaran ?>"><?php echo $rw->jenis_pendaftaran ?></option>
+          <?php endforeach ?>
+        </select>
+      </td>
+    </tr>
     <?php 
     }
         ?>

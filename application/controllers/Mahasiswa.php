@@ -610,6 +610,7 @@ class mahasiswa extends MY_Controller{
                 $tgl_lahir          =   $this->input->post('tanggal_lahir');
                 $agama              =   $this->input->post('agama');
                 $gender             =   $this->input->post('gender');
+                $jenis_pendaftaran = $this->input->post('jenis_pendaftaran');
                 // orang tua
                 $nama_ayah          =   $this->input->post('nama_ayah');
                 $nama_ibu           =   $this->input->post('nama_ibu');
@@ -674,7 +675,9 @@ class mahasiswa extends MY_Controller{
                                                 'dosen_pa'=>$dosen_pa,
                                                 'status_mhs'=>$status_mhs,
                                                 'semester_aktif'=>$semester_aktif,
-                                                'keterangan'=>$keterangan
+                                                'keterangan'=>$keterangan,
+                                                'jenis_pendaftaran' => $jenis_pendaftaran
+
                                                 );
 
                 $sekolah            =   array(  'sekolah_nama'=>$sekolah_nama,
