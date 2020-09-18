@@ -104,21 +104,63 @@ class mahasiswa extends MY_Controller{
         $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
 
         // Buat sebuah variabel array untuk menampung array data yg akan kita insert ke database
+        unset($sheet[1]);
 
         $numrow = 1;
         foreach($sheet as $row){
             // Cek $numrow apakah lebih dari 1
             // Artinya karena baris pertama adalah nama-nama kolom
             // Jadi dilewat saja, tidak usah diimport
-            $prodi_id = getField('akademik_prodi', 'prodi_id', 'kode_prodi', $row['AT']);
-            $konsentrasi_id = getField('akademik_konsentrasi', 'konsentrasi_id', 'prodi_id', $prodi_id);
+            // $prodi_id = getField('akademik_prodi', 'prodi_id', 'kode_prodi', $row['AT']);
+            // $konsentrasi_id = getField('akademik_konsentrasi', 'konsentrasi_id', 'prodi_id', $prodi_id);
             $thn = substr($row['N'], 0,4);
             $angkatan_id = getField('student_angkatan', 'angkatan_id', 'keterangan', $thn);
+            $konsentrasi_id = get_data('akademik_konsentrasi','kode_prodi',$row['AT'],'konsentrasi_id');
 
-            if(empty($row['A']) && empty($row['B']) && empty($row['C']) && empty($row['D']) && empty($row['E']) && empty($row['F']) && empty($row['G']))
-                continue;
+            $cek_prodi = $this->db->get_where('akademik_konsentrasi', array('kode_prodi'=>$row['AT']));
 
-            if($numrow > 1){
+            if (empty($row['A'])) {
+                $this->session->set_flashdata('message',alert_biasa("Nim tidak boleh kosong di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+            if (empty($row['B'])) {
+                $this->session->set_flashdata('message',alert_biasa("Nama tidak boleh kosong di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+            if (empty($row['F'])) {
+                $this->session->set_flashdata('message',alert_biasa("Nik tidak boleh kosong di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+            if (empty($row['N'])) {
+                $this->session->set_flashdata('message',alert_biasa("Mulai Semester tidak boleh kosong di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+            if (empty($row['AT'])) {
+                $this->session->set_flashdata('message',alert_biasa("Kode Prodi tidak boleh kosong di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+            if ($cek_prodi->num_rows() == 0) {
+                $this->session->set_flashdata('message',alert_biasa("Kode Prodi tidak di temukan di baris $numrow ",'error'));
+                redirect('mahasiswa','refresh');
+                exit();
+            }
+
+
+
+            // if(empty($row['A']) && empty($row['B']) && empty($row['C']) && empty($row['D']) && empty($row['E']) && empty($row['F']) && empty($row['G']))
+            //     continue;
+
+            if($numrow > 0){
 
                 $data = array(
                     'nim'               =>$row['A'],
@@ -126,7 +168,7 @@ class mahasiswa extends MY_Controller{
                     'konsentrasi_id'    =>$konsentrasi_id,
                     'angkatan_id'       =>$angkatan_id,
                     'alamat'            =>$row['O'].' RT'.$row['P'].' RW'.$row['Q'].' '.$row['R'].' '.$row['S'].' '.$row['T'].' '.$row['U'],
-                    'gender'            =>$row['E'],
+                    'gender'            => $retVal = ($row['E'] == 'L') ? '1' : '2',
                     'tempat_lahir'      =>$row['C'],
                     'tanggal_lahir'     =>$row['D'],
                     'jenis_kelamin'     =>$row['E'],
@@ -172,11 +214,12 @@ class mahasiswa extends MY_Controller{
                     'penghasilan_wali'  =>$row['AS'],
                     'kode_prodi'        =>$row['AT'],
                     'jenis_pembiayaan'  =>$row['AU'],
+                    'jumlah_biaya_masuk'  =>$row['AV'],
                 );
-
+                // log_r($data);
                 $this->db->insert('student_mahasiswa', $data);
-                $id             = getField('student_mahasiswa', 'mahasiswa_id', 'nim', $row['A']);
-                $account        = array('username'=>$row['A'],'password'=>  hash_string($row['A']),'keterangan'=>$id,'level'=>4, 'konsentrasi_id'=>$konsentrasi_id);
+                $id             = $this->db->insert_id();
+                $account        = array('username'=>$row['A'],'password'=>  hash_string('123456'),'keterangan'=>$id,'level'=>4, 'konsentrasi_id'=>$konsentrasi_id);
                 $this->db->insert('app_users',$account);
 
             }
@@ -184,11 +227,8 @@ class mahasiswa extends MY_Controller{
             $numrow++; // Tambah 1 setiap kali looping
         }
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong><i class="fa fa-check"></i> Success!</strong> Data Mahasiswa Berhasil ditambahkan.
-                </div>');
-            redirect(site_url('mahasiswa'));
+        $this->session->set_flashdata('message',alert_biasa("Data mahasiswa berhasil di import sebanyak $numrow ",'success'));
+        redirect(site_url('mahasiswa'));
 
     }
 

@@ -5,6 +5,11 @@
   });
   </script>
 
+<p>
+  
+  <h2><a href="<?php echo base_url() ?>excel/import_data_mhs.xlsx" target="_blank" class="btn btn-info">Download Template</a></h2>
+</p>
+
 <form action="<?php echo base_url() ?>mahasiswa/form_import" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Hanya File .xlsx</label>
@@ -41,6 +46,7 @@
               <th>Jenis Kelamin</th>
               <th>Nik</th>
               <th>Agama</th>
+              <th>Kode Prodi</th>
             </tr>";
             
             $numrow = 1;
@@ -57,6 +63,7 @@
               $jenis_kelamin = $row['E']; // Ambil data alamat
               $nik = $row['F']; // Ambil data alamat
               $agama = $row['G']; // Ambil data alamat
+              $prodi = $row['AT']; // Ambil data alamat
               
               // Cek jika semua data tidak diisi
               if(empty($nim) && empty($nama) && empty($tempat_lahir) && empty($tgl_lahir) && empty($jenis_kelamin) && empty($nik) && empty($agama))
@@ -74,9 +81,10 @@
                 $jk_td = ( ! empty($jenis_kelamin))? "" : " style='background: #E07171;'"; 
                 $nik_td = ( ! empty($nik))? "" : " style='background: #E07171;'"; 
                 $agama_td = ( ! empty($agama))? "" : " style='background: #E07171;'"; 
+                $prodi_td = ( ! empty($prodi))? "" : " style='background: #E07171;'"; 
                 
                 // Jika salah satu data ada yang kosong
-                if(empty($nim) or empty($nama) or empty($tempat_lahir) or empty($tgl_lahir) or empty($jenis_kelamin) or empty($nik) or empty($agama)){
+                if(empty($nim) or empty($nama) or empty($tempat_lahir) or empty($tgl_lahir) or empty($jenis_kelamin) or empty($nik) or empty($agama) or empty($prodi)){
                   $kosong++; // Tambah 1 variabel $kosong
                 }
                 
@@ -88,6 +96,7 @@
                 echo "<td".$jk_td.">".$jenis_kelamin."</td>";
                 echo "<td".$nik_td.">".$nik."</td>";
                 echo "<td".$agama_td.">".$agama."</td>";
+                echo "<td".$prodi_td.">".$prodi."</td>";
                 echo "</tr>";
               }
               
