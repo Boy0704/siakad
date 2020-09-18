@@ -23,7 +23,7 @@ $(document).ready(function(){
 echo form_open_multipart($this->uri->segment(1).'/edit_mhs/');
 echo "<input type='hidden' name='id' value='$r[mahasiswa_id]'>";
 echo form_hidden('nim_old', $r['nim']);
-if($this->session->userdata('level')==1)
+if($this->session->userdata('level')==1 OR $this->session->userdata('level') == 6)
 {
     $param="";
 }
@@ -150,7 +150,7 @@ if ($this->session->userdata('level') == 4) {
     </td>
     </tr>
     <?php 
-    if ($this->session->userdata('level') == 1) {
+    if ($this->session->userdata('level') == 1 OR $this->session->userdata('level') == 6) {
         ?>
     <tr>
         <td>Keterangan Mahasiswa</td><td>
@@ -235,7 +235,7 @@ if ($this->session->userdata('level') == 4) {
       <th colspan="2">STATUS MAHASISWA</th>
     </tr>
     <?php 
-    if ($this->session->userdata('level') == 1) {
+    if ($this->session->userdata('level') == 1 OR $this->session->userdata('level') == 6) {
         ?>
         <tr>
       <td colspan="2">
