@@ -1,3 +1,13 @@
+<?php 
+$tahun_akademik_aktif = get_tahun_ajaran_aktif('tahun_akademik_id');
+$cek = $this->db->get_where('akademik_register', array('tahun_akademik_id'=>$tahun_akademik_aktif));
+if ($cek->num_rows() == 0) {
+    $this->session->set_flashdata('message',alert_biasa(" Kamu belum terigistrasi di tahun akademik ini ",'error'));
+    redirect('krs','refresh');
+    exit();
+}
+ ?>
+
 <script src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
 <script>
 function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
