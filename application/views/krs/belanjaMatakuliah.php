@@ -1,10 +1,10 @@
 <?php 
 $tahun_akademik_aktif = get_tahun_ajaran_aktif('tahun_akademik_id');
-$cek = $this->db->get_where('akademik_register', array('tahun_akademik_id'=>$tahun_akademik_aktif));
+$cek = $this->db->get_where('akademik_registrasi', array('tahun_akademik_id'=>$tahun_akademik_aktif,'nim'=>$this->session->userdata('username')));
 if ($cek->num_rows() == 0) {
     $this->session->set_flashdata('message',alert_biasa(" Kamu belum terigistrasi di tahun akademik ini ",'error'));
     redirect('krs','refresh');
-    exit();
+    // exit();
 }
  ?>
 
