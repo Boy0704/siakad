@@ -15,14 +15,14 @@ $db_user                   = 'siakad_2019'; // contoh
 $db_pass                   = 'admin2019'; // contoh
 $db_name                   = 'siakad_keuangan'; // contoh
 
-$log_directory = 'hth-log/'; // harus writable
+$log_directory = $_SERVER['DOCUMENT_ROOT'].'hth-log/'; // harus writable
 
 
 // start functions -------------------------------------------------------------
 function debugLog($o) {
     // ini adalah fungsi untuk menulis log setiap request dan response ke dalam sebuah file.
     // Jika ada waktu, silahkan buat loh nya ke dalam database.
-    $file_debug = $GLOBALS['log_directory'] . 'debug-h2h-' . date("Y-m-d") . '.log';
+    $file_debug = $log_directory.'debug-h2h-' . date("Y-m-d") . '.log';
     ob_start();
     var_dump(date("Y-m-d h:i:s"));
     var_dump($o);
@@ -154,7 +154,7 @@ switch ($_POST['action']) {
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
             'idTagihan'       => $tagihan->id_record_tagihan,
-            'nomorInduk'      => $tagihan->no_induk,
+            'nomorInduk'      => $tagihan->nomor_induk,
             'nama'            => $tagihan->nama,
             'fakultas'        => $tagihan->fakultas,
             'jurusan'         => $tagihan->nama_prodi,
@@ -295,7 +295,7 @@ switch ($_POST['action']) {
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
             'idTagihan'       => $tagihan->id_record_tagihan,
-            'nomorInduk'      => $tagihan->no_induk,
+            'nomorInduk'      => $tagihan->nomor_induk,
             'nama'            => $tagihan->nama,
             'fakultas'        => $tagihan->fakultas,
             'jurusan'         => $tagihan->nama_prodi,
@@ -366,6 +366,19 @@ switch ($_POST['action']) {
             'message' => 'Pembayaran sukses dicatat di '.$kampus,
             'data'    => $dataTagihan
         ));
+
+        // auto registrasi
+        $nim = $tagihan->nomor_induk;
+        $thn_akademik = get_tahun_ajaran_aktif('keterangan');
+        $semester   =   cek_semester($nim,$thn_akademik);
+        $data       =   array( 'nim'=>$nim,
+                                'tahun_akademik_id'=>  get_tahun_ajaran_aktif('tahun_akademik_id'),
+                                'semester'=>$semester,
+                                'tanggal_registrasi'=>  waktu());
+        $this->db->insert('akademik_registrasi',$data);
+        $this->db->where('nim', $nim);
+        $this->db->update('student_mahasiswa', array('semester_aktif'=>$semester));
+        
         break;
 
     case 'reversal':
@@ -428,7 +441,7 @@ switch ($_POST['action']) {
         $dataTagihan = array( // silahkan diambil dari database untuk datagihannya
             'nomorPembayaran' => $nomorPembayaran,
             'idTagihan'       => $tagihan->id_record_tagihan,
-            'nomorInduk'      => $tagihan->no_induk,
+            'nomorInduk'      => $tagihan->nomor_induk,
             'nama'            => $tagihan->nama,
             'fakultas'        => $tagihan->fakultas,
             'jurusan'         => $tagihan->nama_prodi,
