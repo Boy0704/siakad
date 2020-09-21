@@ -21,12 +21,15 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
       dataType: "JSON",
         success: function(data)
         {
-        if (data.status=='0') {
-          alert("INFO: SKS Lebih Dari "+data.max_sks+" SKS !!");
-          location.reload();
-        }else {
-          $("#hide"+jadwal_id).hide(300);
-        }
+            if (data.status=='0') {
+              alert("INFO: SKS Lebih Dari "+data.max_sks+" SKS !!");
+              location.reload();
+            } else if (data.status=='01') {
+                alert("Ada eror system, silahkan ulangi lagi");
+              location.reload();
+            }else {
+              $("#hide"+jadwal_id).hide(300);
+            }
         }
         });
     }

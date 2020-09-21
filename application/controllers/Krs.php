@@ -406,18 +406,15 @@ class Krs extends MY_Controller {
           // exit();
           $this->db->trans_start();
           $this->db->insert($this->tables,$data);
-          $id_krs= $this->db->get_where('akademik_krs',array('nim'=>$nim,'jadwal_id'=>$jadwal_id))->row_array();
-          $this->db->insert('akademik_khs',array('krs_id'=>$id_krs['krs_id'],'mutu'=>0,'confirm'=>'2'));
+          $id_krs= $this->db->insert_id();
+          $this->db->insert('akademik_khs',array('krs_id'=>$id_krs,'mutu'=>0,'confirm'=>'2'));
           $this->db->trans_complete();
           if ($this->db->trans_status() === FALSE)
             {
                     // generate an error... or use the log_message() function to log your error
-                ?>
-                <script type="text/javascript">
-                    alert("Ada eror sistem, ulangi lagi ambil krs");
-                    window.location="<?php echo base_url() ?>krs";
-                </script>
-                <?php
+                // error system
+                echo json_encode(array('status'=>'01'));
+                exit();
             }
           echo json_encode(array('status'=>'1','max_sks'=>$max_sks));
         }
