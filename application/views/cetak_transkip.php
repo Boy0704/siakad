@@ -1,5 +1,5 @@
-<!-- <body onload="window.print()"> -->
-<body>
+<body onload="window.print()">
+<!-- <body> -->
 
 </body>
 <style type="text/css">
