@@ -1,4 +1,5 @@
-<body onload="window.print()">
+<!-- <body onload="window.print()"> -->
+<body>
 
 </body>
 <style type="text/css">
@@ -47,6 +48,7 @@
         <th width="10">NO</th>
         <th>KODE</th>
         <th>MATA KULIAH</th>
+        <th>Semester</th>
         <th>SKS</th>
         <th>NILAI</th>
         <th>MUTU</th>
@@ -57,12 +59,14 @@
     // $semester = $this->uri->segment(4);
     $no =1 ;
     $sks = 0;
+    $this->db->order_by('semester', 'asc');
     foreach ($this->db->get_where('v_khs', array('nim'=>$nim))->result() as $r) {
         ?>
             <tr>
                 <td align="center"><?php echo $no++; ?></td>
                 <td align="center" width="60"><?php echo strtoupper($r->kode_makul) ?></td>
                 <td style="padding-left: 10px;"><?php echo strtoupper($r->nama_makul) ?></td>
+                <td align="center" width="40"><?php echo $r->semester ?></td>
                 <td align="center" width="40"><?php echo $r->sks ?></td>
                 <td align="center" width="40"><?php echo $r->nilai ?></td>
                 <td align="center" width="40"><?php echo $r->mutu ?></td>
