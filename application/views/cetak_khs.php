@@ -85,7 +85,7 @@
     </tr>
     <tr>
         <td align="center" colspan="3"><b>Index Prestasi Komulatif (IPK)</b></td>
-        <td align="left" colspan="4"><b><?php echo number_format(ipk($nim),2);?></b></td>
+        <td align="left" colspan="4"><b><?php echo number_format(ipk_khs($nim,$semester),2);?></b></td>
     </tr>
 </table>
 

@@ -46,6 +46,14 @@
         return $data;
     }
 
+    function ipk_khs($nim,$semester)
+    {
+        $CI =& get_instance();
+
+        $data = $CI->db->query("SELECT SUM(sks * mutu)/SUM(sks) as ipk FROM `v_khs` WHERE nim='$nim' and semester <= $semester ")->row()->ipk;
+        return $data;
+    }
+
     function get_data($tabel,$primary_key,$id,$select)
     {
         $CI =& get_instance();
