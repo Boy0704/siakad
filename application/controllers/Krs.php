@@ -384,7 +384,7 @@ class Krs extends MY_Controller {
                     WHERE mm.makul_id=jk.makul_id and ad.dosen_id=jk.dosen_id and jk.jadwal_id=ak.jadwal_id and jk.tahun_akademik_id='$thn' and ak.nim='$nim' and ak.semester='".$d->semester_aktif."'";
         $jml_sks =  $this->db->query($krs)->row()->sks;
         // $max_sks = $this->Import_mhs->cek_sks_old($nim,$smt);
-        $max_sks = 30;
+        $max_sks = 24;
 
         if ($jml_sks>=$max_sks) {
           echo json_encode(array('status'=>'0','max_sks'=>$max_sks));
