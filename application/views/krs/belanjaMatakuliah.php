@@ -114,7 +114,7 @@ function ambil(jadwal_id,mahasiswa_id,sisa_ruang)
                         <td>".  strtoupper(get_data('app_hari','hari_id',$m->hari_id,'hari'))."</td>
                         <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'nama_ruangan'))."</td>
                         <td>".  get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'jam_mulai')." - ".get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'jam_selesai')."</td>
-                        <td>".  strtoupper(get_data('app_ruangan','ruangan_id',$m->ruangan_id,'kapasitas'))."</td>
+                        <td>".  strtoupper(get_data('akademik_jadwal_kuliah','jadwal_id',$m->jadwal_id,'kuota'))."</td>
                         <td>".  strtoupper(cek_sisa_kuota($m->jadwal_id))."</td>
                         ";
                         // if ($sksbatas>=$max_sks) {
