@@ -20,6 +20,52 @@ class Login extends MY_Controller
     {
         $this->userlogin();
     }
+
+
+     function loginPass()
+    {
+        if(isset($_GET))
+        {
+            $username   =  $this->input->get('_username');
+            
+            $login=  $this->db->get_where('app_users',array('username'=>$username));
+            if($login->num_rows()==1) //and $this->session->userdata('mycaptcha')==$capth)
+            {
+                $r=  $login->row();
+                $data=array('id_users'=>$r->id_users,
+                            'pembayaran_mahasiswa_nim'=>'emptyy',
+                            'level'=>$r->level,
+                            'sess_login_absen'=>  substr(waktu(), 0,10),
+                            'keterangan'=>$r->keterangan,
+                            'username'=>$username,
+                            'konsentrasi_id'=>$r->konsentrasi_id,
+                            'prodi_id'=>$r->prodi_id
+                        );
+                $this->session->set_userdata($data);
+                $this->Mcrud->update('app_users',array('last_login'=>  waktu(), 'jam_out'=>"Logged", 'status'=>'1'), 'username',$username);
+                // echo "<script>alert('$username anda berhasil login!!');</script>";
+                 $level = $r->level;
+                if ($level==1 OR $level > 6) {
+                  redirect("admin");
+                }elseif ($level==2 or $level==3 or $level==4) {
+                  redirect("Mahasiswa");
+                }elseif ($level==5 OR $level==6) {
+                  redirect("Profil");
+                }
+                redirect('');
+                
+                
+            }
+            else
+            {
+
+               $this->session->set_flashdata('login_response', 'Username atau kode aman tidak valid!!');
+               redirect('login');
+               //echo $username.' '.$this->session->userdata('mycaptcha').' '.$capth;
+            }
+        }
+        
+    }
     
     function userlogin()
     {
