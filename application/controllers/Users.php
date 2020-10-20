@@ -109,6 +109,7 @@ class users extends MY_Controller{
                             // pribadi
                 $nama               =   $this->input->post('nama');
                 // $nim                =   $this->input->post('nim');
+                $nik                =   $this->input->post('nik');
                 $alamat             =   $this->input->post('alamat');
                 $konsentrasi        =   $this->input->post('konsentrasi');
                 $tahun              =   $this->input->post('tahun_angkatan');
@@ -172,6 +173,7 @@ class users extends MY_Controller{
                                                 'tempat_lahir'=>$tempat_lahir,
                                                 'tanggal_lahir'=>$tgl_lahir,
                                                 'nim'=>$nim,
+                                                'nik'=>$nik,
                                                 'alamat'=>$alamat,
                                                 'dosen_pa'=>$dosen_pa,
                                                 'status_mhs'=>$status_mhs
