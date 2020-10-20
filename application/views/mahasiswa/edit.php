@@ -149,6 +149,15 @@ if ($this->session->userdata('level') == 4) {
         <?php echo inputan('text', 'no_hp_ortu','col-sm-7','No Hp Orang Tua ..', 0, $r['no_hp_ortu'],'');?>
     </td>
     </tr>
+
+    <tr>
+      <td width="050">NIK (NO KTP)</td><td>
+          <input type="text" name="nik" class="form-control" placeholder="Masukkan nik ktp anda" value="<?php echo $r['nik'] ?>">
+      </td>
+      <td colspan="2"></td>
+      
+    </tr>
+
     <?php 
     if ($this->session->userdata('level') == 1 OR $this->session->userdata('level') == 6) {
         ?>
