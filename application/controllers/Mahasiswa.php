@@ -601,7 +601,8 @@ class mahasiswa extends MY_Controller{
             {
                 $id     = $this->input->post('id');
                             // pribadi
-                $nama               =   $this->input->post('nama')
+                $nama               =   $this->input->post('nama');
+                $nik             =   $this->input->post('nik');
                 // $nim                =   $this->input->post('nim');
                 $alamat             =   $this->input->post('alamat');
                 $konsentrasi        =   $this->input->post('konsentrasi');
@@ -670,7 +671,7 @@ class mahasiswa extends MY_Controller{
                                                 'tempat_lahir'=>$tempat_lahir,
                                                 'tanggal_lahir'=>$tgl_lahir,
                                                 'nim'=>$nim,
-                                                'nik'=> $this->input->post('nik'),
+                                                'nik'=>$nik,
                                                 'konsentrasi_id'=>$konsentrasi,
                                                 'alamat'=>$alamat,
                                                 'dosen_pa'=>$dosen_pa,
